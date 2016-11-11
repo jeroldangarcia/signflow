@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "icon": "list",
+    "title": "LAMP Promoción Navidad",
+    "subtitle": "01/11/2016",
+    "state": "Propuesta",
+    "year": "2016"
+  },
+  {
+    "id": 2,
+    "icon": "list",
+    "title": "LAMP Promoción Semana Santa",
+    "subtitle": "01/11/2016",
+    "state": "Propuesta",
+    "year": "2016"
+  },
+  {
+    "id": 3,
+    "icon": "list",
+    "title": "LAMP Promoción Verano",
+    "subtitle": "01/11/2016",
+    "state": "Aprobada",
+    "year": "2016"
+  }
+]
