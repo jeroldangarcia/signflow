@@ -1,26 +1,68 @@
 [
   {
-    "id": 1,
-    "icon": "list",
-    "title": "LAMP Promoción Navidad",
+    "id": 0,
+    "icon": "assignment",
+    "decorator": "stop",
+    "title": "[21800] Directa - Catálogo - Black Friday 2016",
+    "cells": [],
     "subtitle": "01/11/2016",
     "state": "Propuesta",
-    "year": "2016"
+    "year": "2016",
+    "campaign": "0306 / 20129 Black Friday 2016"
+  },
+  {
+    "id": 1,
+    "icon": "assignment",
+    "decorator": "stop",
+    "title": "[21800] Directa - Catálogo - Black Friday 2016",
+    "cells": ["Canarias"],
+    "subtitle": "01/11/2016",
+    "state": "Propuesta",
+    "year": "2016",
+    "campaign": "0306 / 20129 Black Friday 2016"
   },
   {
     "id": 2,
-    "icon": "list",
-    "title": "LAMP Promoción Semana Santa",
+    "icon": "assignment",
+    "decorator": "stop",
+    "title": "[21800] Directa - Catálogo - Black Friday 2016",
+    "cells": ["Cataluña"],
     "subtitle": "01/11/2016",
     "state": "Propuesta",
-    "year": "2016"
+    "year": "2016",
+    "campaign": "0306 / 20129 Black Friday 2016"
   },
   {
     "id": 3,
-    "icon": "list",
-    "title": "LAMP Promoción Verano",
+    "icon": "assignment",
+    "decorator": "play_arrow",
+    "title": "[20062] Directa - Triptico - Black Friday 2016",
+    "cells": [""],
     "subtitle": "01/11/2016",
     "state": "Aprobada",
-    "year": "2016"
+    "year": "2016",
+    "campaign": "0306 / 20129 Black Friday 2016"
+  },
+  {
+    "id": 4,
+    "icon": "assignment",
+    "decorator": "play_arrow",
+    "title": "[21997] Directa - Flyer - PS4",
+    "cells": [""],
+    "subtitle": "01/11/2016",
+    "state": "Aprobada",
+    "year": "2016",
+    "campaign": "0306 / 20129 Adornos Navidad"
+  },
+  {
+    "id": 5,
+    "icon": "assignment",
+    "decorator": "stop",
+    "title": "[21800] Directa - Catálogo - Black Friday 2016 Cataluña",
+    "cells": [""],
+    "subtitle": "01/11/2016",
+    "state": "Pendiente Aprobación",
+    "year": "2016",
+    "campaign": "0306 / 20129 Black Friday 2016"
   }
 ]

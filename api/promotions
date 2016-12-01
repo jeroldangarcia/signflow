@@ -8,18 +8,18 @@
     "subtitle": "24/10/2016 - 1/12/2016",
     "month": "Julio",
     "year": "2016",
-    "group": "Campañas Clientes Moda"
+    "group": "Clientes Moda"
   },
   {
     "id": 2,
     "icon": "card_giftcard",
-    "title": "SEMANA DEL BRICOLAJE",
-    "caption": "0000 / 00000",
+    "title": "Black Friday 2016",
+    "caption": "0306 / 20129",
     "cells": [],
-    "subtitle": "24/10/2016 - 1/12/2016",
-    "month": "Julio",
+    "subtitle": "24/11/2016 - 27/11/2016",
+    "month": "Noviembre",
     "year": "2016",
-    "group": "Campañas Clientes Moda"
+    "group": "Grupo XXXX"
   },
   {
     "id": 3,
@@ -30,7 +30,7 @@
     "subtitle": "24/10/2016 - 1/12/2016",
     "month": "Julio",
     "year": "2016",
-    "group": "Campañas Clientes Hogar"
+    "group": "Clientes Hogar"
   },
   { "id": 4,
     "icon": "card_giftcard",
@@ -40,7 +40,7 @@
     "subtitle": "7/11/2016 - 11/11/2016",
     "month":  "Diciembre",
     "year": "2016",
-    "group": "Campañas Clientes Hogar"
+    "group": "Clientes Hogar"
   },
   { "id": 5,
     "icon": "card_giftcard",
@@ -70,7 +70,7 @@
     "subtitle": "7/11/2016 - 11/11/2016",
     "month":  "Diciembre",
     "year": "2016",
-    "group": "Campañas Clientes Hogar"
+    "group": "Clientes Hogar"
   },
   { "id": 8,
     "icon": "card_giftcard",
@@ -80,6 +80,6 @@
     "subtitle": "7/11/2016 - 11/11/2016",
     "month":  "Diciembre",
     "year": "2016",
-    "group": "Campañas Alimentación"
+    "group": "Alimentación"
   }
 ]
