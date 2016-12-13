@@ -1,0 +1,64 @@
+@import '../app.scss';
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  z-index: 8;
+
+  >header {
+    flex: 1;
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+
+    background-color: $header;
+    border-top: solid 1px #F5F5F5;
+    border-bottom: solid 1px #DDD;
+
+    .title {
+      flex: 1;
+      line-height: 4.1rem;
+      padding: 0 1rem;
+      font-size: 1.5rem;
+      font-weight: 300;
+      white-space: nowrap;
+    }
+
+    .info {
+      line-height: 4.1rem;
+      padding: 0 1rem;
+      white-space: nowrap;
+    }
+  }
+
+  >.content {
+    flex: 1;
+    padding-left: 5rem;
+    padding-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    border-left: dashed 1px $primary-color-light-trans;
+  }
+
+  &.window {
+
+    min-width: 40rem;
+    min-height: 20rem;
+    box-shadow: $shadow1;
+    background-color: $background;
+    border: solid 1px $primary-color-dark;
+    border-radius: 3px;
+
+    >header {
+      border-bottom: solid 1px $primary-color-dark;
+      max-height: 5rem;
+    }
+  }
+
+  &.static {
+    >header {
+      background-color: $background;
+      border: 0;
+    }
+  }
+}

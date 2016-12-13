@@ -1,0 +1,107 @@
+@import '../app.scss';
+
+.screen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  //background-color: $primary-color-dark;
+  display: flex;
+  overflow: hidden;
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: $primary-color-dark-trans;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  header {
+
+  }
+
+  >aside {
+    width: 60px;
+    height: 100vh;
+    overflow: hidden;
+    @media (max-width: 480px) {
+      width: 1px;
+    }
+  }
+
+  main {
+
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+
+    article {
+      flex: 1;
+      color: $secondary-text-color;
+      background-color: $background;
+
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      overflow-y: auto;
+
+      >.page {
+        min-width: 50rem;
+        max-width: 1000px;
+        width: 100%;
+        padding: 1.6rem;
+        padding-bottom: 10rem;
+      }
+    }
+  }
+
+  footer {
+    display: flex;
+    align-content: center;
+    justify-content: flex-end;
+    background-color: $background;
+    border-top: solid 1px $divider-color;
+  }
+
+  &.fullscreen {
+    >.page {
+      flex: 1;
+      background-color: $background;
+    }
+  }
+}
+
+
+
+@media (min-width: 480px ) {
+
+  .screen {
+
+    >aside {
+      min-width: 320px;
+      width: 0vw;
+
+      &.hidden {
+        width: 0.0001px;
+      }
+    }
+
+    .page {
+      max-width: 1200px;
+      align-self: center;
+    }
+
+    &.fullscreen {
+      .page {
+        padding: 0;
+        max-width: none;
+      }
+    }
+  }
+}

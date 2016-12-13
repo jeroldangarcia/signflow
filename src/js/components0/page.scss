@@ -1,0 +1,57 @@
+@import '../app.scss';
+
+.page {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+
+  background-color: $primary-color-dark;
+
+  display: flex;
+  overflow: hidden;
+
+  aside {
+    display: flex;
+  }
+
+  main {
+
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+
+    article {
+      flex: 1;
+
+      color: $secondary-text-color;
+      background-color: $background;
+
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      overflow-y: auto;
+
+      &.nopage {
+        color: $primary-color-text;
+        background-color: $primary-color-dark;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      &.white {
+        background-color: #FFF;
+      }
+    }
+  }
+
+  footer {
+    display: flex;
+    align-content: center;
+    justify-content: flex-end;
+    background-color: $background;
+    border-top: solid 1px $divider-color;
+  }
+
+}

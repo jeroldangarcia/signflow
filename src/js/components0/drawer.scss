@@ -1,0 +1,47 @@
+@import '../app.scss';
+
+.drawer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-right: solid 1px $divider-color;
+
+  header {
+    background-color: $primary-color-dark;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  main {
+    padding-top: 1rem;
+    flex: 1;
+    background-color: $background;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .icon:first-child {
+      background-color: $primary-color-light-trans;
+      &:hover {
+        background-color:  $primary-color-dark-trans;
+      }
+    }
+
+    .icon {
+      margin: .5rem 0;
+      &:hover {
+        background-color: $primary-color-light-trans;
+      }
+    }
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $background;
+    border-top: solid 1px $divider-color;
+  }
+
+}

@@ -1,0 +1,30 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic,900,900italic,300italic,300,100italic,100);
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i,500,500i,700,700i');
+
+/* Palette */
+$primary-color-dark:       #455A64;
+$primary-color-dark-trans: rgba(69, 90, 100, .87);
+$primary-color:            #20A867;
+$primary-color-light:      #CFD8DC;
+$primary-color-light-trans: rgba(207, 216, 220, .38);
+$primary-color-text:       rgba(255,255,255,.94);
+$accent-color:             #455A64;
+$danger-color:             #ff4400;
+$danger-color-trans:       rgba(255,44, 0, .58);
+
+// light content theme
+$primary-text-color:   rgba(0,0,0,0.87);
+$secondary-text-color: rgba(0,0,0,0.54);
+$hint-text-color:      rgba(0,0,0,0.38);
+$divider-color:        #BDBDBD;
+
+$status:     #E0E0E0;
+$header:     #F5F5F5;
+$background: #FFF;
+$info:       #FFFFFF;
+
+$icon-active:   rgba(0,0,0,.54);
+$icon-inactive: rgba(0,0,0,.38);
+$icon-hover:    rgba(255,255,255,.12);
+
+$shadow1: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);

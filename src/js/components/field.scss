@@ -1,0 +1,113 @@
+@import '../app.scss';
+
+.field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 1rem 0;
+
+  .field-box {
+    flex: 1;
+    padding: 2rem 0 0 0;
+
+    .field-line {
+      padding-top: .2rem;
+      border-bottom: solid 1px $divider-color;
+    }
+
+    input, select {
+      width: 100%;
+      box-sizing: border-box;
+      border: 0;
+      background-color: transparent;
+      line-height: 1.4;
+      font-size: 1.4rem;
+    }
+
+    label {
+      transition: all 0.5s ease;
+      position: absolute;
+      top: 2.2rem;
+      display: block;
+      color: $secondary-text-color;
+      min-width: 8rem;
+      font-size: 1.4rem;
+    }
+
+    input.notEmpty ~ label {
+      font-size: 1.2rem;
+      top: .1rem;
+    }
+
+    input:focus ~ label {
+      font-size: 1.2rem;
+      top: .1rem;
+    }
+
+    input:focus ~ .field-line {
+      border-bottom: solid 1px $accent-color;
+    }
+  }
+}
+
+.info {
+  display: flex;
+  padding: 0 0 1rem 0;
+  align-items: center;
+
+  .info-label {
+    color: $secondary-text-color;
+    min-width: 8rem;
+    font-size: 1.4rem;
+  }
+
+  input, select {
+    color: $primary-text-color;
+    flex: 1;
+    line-height: 2.2;
+    font-size: 1.4rem;
+    border: 0;
+    padding: 0 1rem;
+    margin-right: 1rem;
+
+    & + .icon {
+      color: #FFF;
+      background-color: $accent-color;
+    }
+    &.title-like {
+              background: transparent;
+              line-height: 1.6;
+              border: 0;
+              border-radius: 0;
+              font-family: 'Fira Sans', sans-serif;
+              font-size: 1.6rem;
+              font-weight: 400;
+              -webkit-appearance:none;
+    }
+  }
+
+  input.info-value:focus {
+    border-bottom: solid 1px $divider-color;
+  }
+
+}
+
+.searchBox {
+  display: flex;
+  background-color: #FFF;
+  padding: 0 1rem;
+  border: solid 0px $divider-color;
+  flex: 1;
+  .field {
+    flex: 1;
+    padding: 0;
+    border-left: solid 0px $divider-color;
+    .field-box{
+      padding: .5rem;
+      background-color: $primary-color-light-trans;
+    }
+    .field-line {
+      border-bottom: solid 0px;
+    }
+  }
+}
