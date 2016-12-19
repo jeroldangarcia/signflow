@@ -1,11 +1,10 @@
 import React from 'react';
 
 // components
-import Page from '../components/page';
-import Header from '../components/header';
-import Drawer from '../components/drawer';
+import { Page, Toolbar } from 'tatami';
+import { List } from 'seito';
+
 import Icon from '../components/icon';
-import List from '../components/list';
 
 // controller
 import controller from '../controllers/materials';
@@ -53,7 +52,8 @@ class Materials extends React.Component {
     })
 
     return (
-      <Page title="MATERIALES">
+      <Page>
+        <Toolbar icon="" title="MATERIALES" />
         <List title="Materiales" data={materials} itemStyle="tablerow" selected={true} groupBy="group"/>
       </Page>
     );

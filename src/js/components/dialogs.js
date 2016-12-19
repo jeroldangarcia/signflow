@@ -1,8 +1,7 @@
 import React from 'react';
 
 //components
-import { Button } from './button';
-import Panel from './panel';
+import { Button, Icon, Panel } from 'seito';
 
 // style
 import './dialogs.scss';
@@ -10,7 +9,7 @@ import './dialogs.scss';
 /**
  * Confirm Dialog
  */
-const ConfirmDialog = ({icon, title, message, onOK, onCancel, onClose, children, toggleDialog}) => {
+const ConfirmDialog = ({icon, title, message, onOK, onCancel, onClose, children, toggleDialog }) => {
 
   const handleOK = () => {
     onOK();
@@ -24,10 +23,10 @@ const ConfirmDialog = ({icon, title, message, onOK, onCancel, onClose, children,
     toggleDialog(null);
   }
 
-  const actions = [{ icon: 'close', do: () => { handleClose() }}];
+  const actions = [ <Icon icon="close" action={handleClose}/> ];
 
   return (
-    <Panel icon={icon} title={title} actions={actions} className="window dialog">
+    <Panel icon={icon} title={title} actions={actions} className="window dialog" collapsable={false} collapsed={false}>
       <div className="message">{children}</div>
       <div className="buttons">
         <Button label="CANCEL" className="accent" action={handleCancel}/>

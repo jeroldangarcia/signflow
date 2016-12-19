@@ -61,4 +61,23 @@
       border: 0;
     }
   }
+
+  &.list {
+    padding: 0;
+    >header {
+      border-bottom: solid 1px #DDD;
+      color: $primary-color;
+      background-color: $primary-color-light-trans;
+      max-height: 4rem;
+      >.title {
+        font-size: 1.3rem;
+        font-weight: 400;
+        font-variant: small-caps;
+        //text-transform: uppercase;
+      }
+    }
+    >.content {
+      padding-left: 1rem;
+    }
+  }
 }

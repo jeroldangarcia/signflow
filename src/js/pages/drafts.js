@@ -1,17 +1,13 @@
 import React from 'react';
 
 // components
-import Page from '../components/page';
-import Header from '../components/header';
-import Drawer from '../components/drawer';
-import Icon from '../components/icon';
-import List from '../components/list';
-import Panel from '../components/panel';
+import { Page, Toolbar } from 'tatami';
+import { Icon, FAB, Card, Header, Panel, List} from 'seito';
 
-import { FAB } from '../components/button';
 import { ConfirmDialog } from '../components/dialogs';
 import Form from '../components/form';
 import { Select } from '../components/field';
+import { JobItem, JobCard } from '../components/job';
 
 // controller
 import controller from '../controllers/lamps';
@@ -93,11 +89,34 @@ class DRAFTS extends React.Component {
       }
     })
     return (
-      <Page title={title}>
-        <div style={{ display: 'flex'}}>
-            <List data={materials} itemStyle="listItem" selected={false}/>
-          <div style={{ flex: '2'}}>....</div>
+      <Page>
+        <div style={{ paddingLeft: '.4rem', display: 'flex', justifyContent: 'flex-start', alignContent: 'center', lineHeight: '1.1rem', color: '#20A867', fontWeight: '400', fontSize: '1.3rem', textAlign: 'left' }}>
+          <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>empresa:</span> El Corte Inglés</span> |
+          <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>grupo:</span> [grupo campaña] </span> |
+          <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>grupo:</span> [campaña] </span> |
+          <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>clasificación:</span> [clasificacion] </span> |
         </div>
+
+        <Toolbar icon="inbox" title="Bandeja Entrada: Bocetos" className="pageBar" />
+
+        <div style={{ overflow: 'auto'}}>
+          <Panel title="Pendientes" collapsed={false}>
+            <JobItem ticket="0306 2019 0001 0001" title="Banderola GlassPack 60x140" motif="Nike"/>
+            <JobItem ticket="0306 2019 0001 0001" title="Banderola GlassPack 60x140" motif="Adidas"/>
+            <JobItem ticket="0306 2019 0001 0002" title="Canal Medio 200x100"  motif="Nike"/>
+            <JobItem ticket="0306 2019 0001 0003" title="Cartón Compacto 3mm"  motif="Nike"/>
+          </Panel>
+          <Panel title="Asignados">
+            <JobItem ticket="0306 2019 0001 0004" title="Cartulina 12cm"  motif="Nike" img="cartel2.jpeg"/>
+          </Panel>
+          <Panel title="Terminados">
+            <JobCard ticket="0306 2019 0001 0006" title="Cartulina Folding 48x78"  motif="Nike" img="cartel1.jpeg"/>
+          </Panel>
+          <br/>
+          <br/>
+          <br/>
+        </div>
+
       </Page>
     );
   }

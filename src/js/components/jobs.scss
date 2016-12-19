@@ -1,0 +1,53 @@
+@import '../app.scss';
+
+.jobitem {
+  background-color: $background;
+  padding: 0 0 1rem 0;
+  border-bottom: solid 1px $divider-color;
+  
+  >header {
+    display: flex;
+    margin-bottom: 1rem;
+
+    >aside {
+      min-width: 10rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      color: $secondary-text-color;
+    }
+    >section {
+      flex: 1;
+      display: flex;
+      align-items: flex-end;
+      color: $secondary-text-color;
+      padding-left: 2rem;
+    }
+  }
+
+  >main {
+    display: flex;
+
+    >aside {
+      min-width: 10rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    >section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding-left: 2rem;
+      padding-bottom: 1rem;
+      .title {
+        font-size: 1.4rem;
+        font-weight: 500;
+      }
+      .subtitle {
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+    }
+  }
+}

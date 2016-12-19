@@ -1,14 +1,11 @@
 import React from 'react';
-import Page from '../components/page';
-import Header from '../components/header';
+import { Page } from 'tatami';
 
 const Load = (props) => {
 
   const goto = () => {
     props.goto('PROMOTIONS');
   }
-
-  const header = <Header title="iDossiers" icon="folder"></Header>
 
   return (
     <Page className="nopage">

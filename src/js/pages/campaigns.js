@@ -1,13 +1,11 @@
 import React from 'react';
 
 // components
-import Page from '../components/page';
-import Header from '../components/header';
-import Drawer from '../components/drawer';
-import Icon from '../components/icon';
-import List from '../components/list';
+import { Page, Toolbar} from 'tatami';
+import { Icon, Select, List, GroupList } from 'seito';
+
 import { FAB } from '../components/button';
-import { InfoField, Select, SearchBox } from '../components/field';
+import { InfoField, SearchBox } from '../components/field';
 import { ConfirmDialog } from '../components/dialogs';
 import Form from '../components/form';
 
@@ -23,23 +21,16 @@ import session from '../stores/session';
 class Campaigns extends React.Component {
 
   state = {
-    items: [],
     searching: false,
     search: '',
-  }
-
-  componentWillMount() {
-    controller.load((items) => {
-      this.setState({ items });
-    });
   }
 
   exit = () => {
     this.props.goto('SPLASH');
   }
 
-  gotoPromotions = () => {
-    this.props.goto('CAMPAIGNS');
+  gotoCampaign = () => {
+    this.props.goto('CAMPAIGN');
   }
 
   goto = () => {
@@ -48,11 +39,11 @@ class Campaigns extends React.Component {
 
   handleAdd = () => {
     const onOK = () => {
-      console.log('OK');
       this.props.toggleDialog(null);
     }
+
     this.props.toggleDialog(
-      <ConfirmDialog title="Nueva Campaña" onOK={onOK}>
+      <ConfirmDialog title="Nueva Campaña" onOK={onOK} onCancel={onOK} onClose={onOK}>
         <Form title="Campaña">
           <InfoField id="" label="Nombre" />
           <InfoField id="" label="Fecha Inicio" />
@@ -61,7 +52,6 @@ class Campaigns extends React.Component {
         </Form>
         <Form title="Subcampañas">
           <div><input type="checkbox" /><label>Catálogo</label></div>
-          <div><input type="checkbox" /><label>Plan de Medios</label></div>
           <div><input type="checkbox" /><label>Cartelería Gran Formato</label></div>
         </Form>
       </ConfirmDialog>
@@ -92,25 +82,24 @@ class Campaigns extends React.Component {
                     <Select options={companies} className="title-like"/>
                   </div>
 
-    const header =  <Header icon="card_giftcard" title={title} className="page-title" >
-                      <Select options={groups} />
-                      <Select options={stateCriterias} />
-                      <Select options={time} />
-                      <Icon icon="search" action={this.toggleSearch}/>
-                    </Header>;
-
-    const data = this.state.items.filter( item => {
-      return this.state.search ? item.title.toUpperCase().indexOf(this.state.search.toUpperCase()) >= 0 : true;
-    });
-
     const searchBox = this.state.searching ? <div style={{ display: 'flex'}}>
       <SearchBox onChange={this.handleSearch} />
     </div> : '';
 
     return (
-      <Page title={header}>
+      <Page>
+
+        <Toolbar className="pageBar" icon="card_giftcard" title={title}>
+          <Select options={groups} />
+          <Select options={stateCriterias} />
+          <Select options={time} />
+          <Icon icon="search" action={this.toggleSearch}/>
+        </Toolbar>
+
         {searchBox}
-        <List data={data} groupBy="group" onSelected={this.handleSelected} className="bigGroup"/>
+
+        <GroupList data={campaigns} onPrimaryAction={this.gotoCampaign}/>
+
         <FAB icon="add" action={this.handleAdd}/>
       </Page>
     );
@@ -119,6 +108,19 @@ class Campaigns extends React.Component {
 };
 
 export default Campaigns;
+
+  const campaigns = [
+    { id: '1', label: 'Black Friday', items: [
+      { id: '22', icon: 'card_giftcard', label: 'BLACK FRIDAY 2016',      caption: '0306 / 20129' },
+    ]},
+    { id: '2', label: 'Clientes Moda', items: [
+      { id: '11', icon: 'card_giftcard', label: 'YA ES PRIMAVERA',        caption: '0000 / 00000' },
+    ]},
+    { id: '3', label: 'Clientes Hogar', items: [
+      { id: '33', icon: 'card_giftcard', label: 'ACCESORIOS DE INVIERNO', caption: '0000 / 00000' },
+      { id: '33', icon: 'card_giftcard', label: 'ACCESORIOS RRSS',        caption: '0000 / 00000' },
+    ]},
+  ]
 
 const user = {
   icon: 'person',

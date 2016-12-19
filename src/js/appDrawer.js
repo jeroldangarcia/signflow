@@ -19,7 +19,6 @@ const AppDrawer = (props) => {
     ]
 
   const menu = [
-    //{ id: 'CAMPAIGNS_GROUPS' , title: 'Grupos' , subtitle: '...', icon: 'card_giftcard', area: "InterMarketing" },
     { id: 'CAMPAIGNS'    , title: 'Campañas'              , subtitle: '...', icon: 'card_giftcard', area: "InterMarketing" },
     { id: 'SUBCAMPAIGNS' , title: 'SubCampañas'           , subtitle: '...', icon: 'card_giftcard', area: "InterMarketing" },
     { id: 'LAMPS'        , title: 'Solicitudes Materiales', subtitle: '...', icon: 'assignment'   , decorator: 'inbox' , area: "SignFlow"},
@@ -37,7 +36,6 @@ const AppDrawer = (props) => {
   const userMenu = menu.filter(option => {
     return deptnoOptions.includes(option.id);
   });
-  console.log(userMenu)
 
   return (
     <Drawer icon="menu" title="SignFlow">

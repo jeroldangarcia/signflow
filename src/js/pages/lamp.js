@@ -1,10 +1,8 @@
 import React from 'react';
 
-import Icon from '../components/icon';
-import Page from '../components/page';
-import Header from '../components/header';
-import Panel from '../components/panel';
-import List from '../components/list';
+import { Page, Toolbar } from 'tatami';
+import { Icon, Header, Panel, List } from 'seito';
+
 import { Button } from '../components/button';
 import { InfoField } from '../components/field';
 import { ConfirmDialog } from '../components/dialogs';

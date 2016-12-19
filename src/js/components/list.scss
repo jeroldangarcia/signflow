@@ -14,7 +14,7 @@
       top: 0px;
 
       color: $secondary-text-color;
-      padding: .7rem;
+    //  padding: .7rem;
       line-height: 3rem;
       border-bottom: solid 1px $divider-color;
     }
@@ -22,17 +22,17 @@
 
   &.bigGroup {
     .list-group {
-      margin-bottom: 1rem;
+    //  margin-bottom: 1rem;
       >.listitem {
         margin-left: 2rem;
       }
       >header {
-    border-bottom: solid 1px #DDD;
-    color: $primary-color;
-    font-size: 1.6rem;
-    font-weight: 500;
-    font-variant: small-caps;
-    //text-transform: uppercase;
+        border-bottom: solid 1px #DDD;
+        color: $primary-color;
+        font-size: 1.6rem;
+        font-weight: 500;
+        font-variant: small-caps;
+        //text-transform: uppercase;
       }
     }
   }

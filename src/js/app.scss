@@ -11,10 +11,8 @@ html {
 
 body {
   margin: 0;
-  background-color: $background;
-
-  background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9ImczNTciIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iODYuMTU2MzUxNzkxNTMwOTUlIiB5MT0iODEuNzg1NzE0Mjg1NzE0MjglIiB4Mj0iMjEuOTg2OTcwNjg0MDM5MDg2JSIgeTI9IjE4LjU3MTQyODU3MTQyODU3MyUiPgo8c3RvcCBzdG9wLWNvbG9yPSIjRUVFRUVFIiBvZmZzZXQ9IjAiLz48c3RvcCBzdG9wLWNvbG9yPSIjMDkwRjBDIiBvZmZzZXQ9IjEiLz4KPC9saW5lYXJHcmFkaWVudD4KPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNnMzU3KSIgLz4KPC9zdmc+);
-
+  //background-color: $primary-color;
+  //background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9ImczNTciIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iODYuMTU2MzUxNzkxNTMwOTUlIiB5MT0iODEuNzg1NzE0Mjg1NzE0MjglIiB4Mj0iMjEuOTg2OTcwNjg0MDM5MDg2JSIgeTI9IjE4LjU3MTQyODU3MTQyODU3MyUiPgo8c3RvcCBzdG9wLWNvbG9yPSIjRUVFRUVFIiBvZmZzZXQ9IjAiLz48c3RvcCBzdG9wLWNvbG9yPSIjMDkwRjBDIiBvZmZzZXQ9IjEiLz4KPC9saW5lYXJHcmFkaWVudD4KPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNnMzU3KSIgLz4KPC9zdmc+);
   color: $primary-text-color;
   font-size: 1.3rem;
   font-family: 'Fira Sans', sans-serif;
@@ -79,4 +77,63 @@ button {
   padding:.4rem .8rem;
   max-height: 2rem;
   align-self: center;
+}
+
+
+.flex20 {
+  flex: .2;
+}
+
+.flex40 {
+  flex: .4;
+}
+
+.flex60 {
+  flex: .6;
+}
+
+.flex80 {
+  flex: .8;
+}
+
+.flex-unit {
+  flex: 1;
+}
+
+.layout {
+
+  display: flex;
+
+  &.reverse {
+    flex-direction: row-reverse;
+  }
+
+  &.vertical {
+    flex-direction: column;
+  }
+
+  &.centered {
+    justify-content: center;
+    align-items: center;
+  }
+
+  >.right {
+    align-self: flex-end;
+  }
+
+  .red {
+    color: #ff4400;
+  }
+
+  .green {
+    color: #00FF44;
+  }
+
+  .blue {
+    color: #4400FF;
+  }
+
+  .grey {
+    color: $divider-color;
+  }
 }

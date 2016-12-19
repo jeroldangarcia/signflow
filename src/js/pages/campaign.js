@@ -4,11 +4,9 @@ import React from 'react';
 import {Line, Doughnut} from 'react-chartjs-2';
 
 // components
-import Icon from '../components/icon';
-import Page from '../components/page';
-import Header from '../components/header';
-import Panel from '../components/panel';
-import List from '../components/list';
+import { Page, Toolbar } from 'tatami';
+import { Icon, Button, Header, Panel } from 'seito';
+
 import Form from '../components/form';
 import { Select, InfoField } from '../components/field';
 import Timeline from '../components/timeline';
@@ -86,23 +84,6 @@ class Campaign extends React.Component {
 
   render() {
 
-    const title =
-      <div>
-        <div style={{ paddingLeft: '.4rem', display: 'flex', justifyContent: 'flex-start', alignContent: 'center', lineHeight: '1.1rem', color: '#20A867', fontWeight: '400', fontSize: '1.3rem', textAlign: 'left' }}>
-          <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>empresa:</span> El Corte Inglés</span> |
-          <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>grupo:</span> [grupo campaña] </span> |
-          <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>clasificación:</span> [clasificacion] </span> |
-        </div>
-        <Header icon="card_membership" action={this.back} title="BLACK FRIDAY" className="page-title">
-          <span style={{ lineHeight: '1.5rem', margin: '0 .5rem', display: 'flex', alignItems: 'center', fontWeight: '200', fontSize: '1.5rem'}}>
-            <span style={{ color: '#555', fontWeight: '200', display: 'none'}}>desde:</span> 11-11-2016 /
-            <span style={{ color: '#555', fontWeight: '200', display: 'none'}}>hasta:</span> 17-11-2016</span>
-            <Icon icon="edit" className="small" action={this.handleInfoDialog}/>
-        </Header>
-      </div>
-
-
-
       const data = {
       	labels: [
       		'Prod. Gráfica',
@@ -124,154 +105,176 @@ class Campaign extends React.Component {
       	}]
       };
 
+    const targetActions = [
+      <Icon icon="add" action={this.handleAddTargetDialog}/>,
+    ]
+    const budgetActions = [
+      <span style={{ margin: '0', fontSize: '1.4rem'}}>Total: 1200€</span>
+    ]
+    const subcampaignsActions = [
+      <Select label="Agrupado por" options={subcampaignGroups} />,
+      <Icon icon="add" action={this.handleAddSubCampaignDialog} />,
+    ]
+
+    const pageMenu = [
+      { icon: 'check', label: 'Tiene Medios'},
+      { icon: 'send' , label: 'Enviar Briefing'},
+    ]
 
     return (
-      <Page title={title}>
+      <Page>
 
-        <Header title="Objetivos" className="page-subtitle">
-          <span className="title" style={{ margin: '0', fontSize: '1.4rem'}}></span>
-          <Icon icon="add" action={this.handleAddTargetDialog}/>
-        </Header>
-        <Panel icon="flag" title="Fidelización --> Vinculación de Clientes" collapsable={false} open={false} />
-        <Panel icon="flag" title="Vinculacion --> Compra Declarada" collapsable={false} open={false} />
-
-        <br/>
-        <div style={{ display: 'flex', justifyContent: 'flex-end'}}>
-          <label for="mktroi">Seguimiento MKT ROI</label>
-          <input id="mktroi" type="checkbox" /><Select options={portadores}/>
+        <div style={{ paddingLeft: '.4rem', display: 'flex', justifyContent: 'flex-start', alignContent: 'center', lineHeight: '1.1rem', color: '#20A867', fontWeight: '400', fontSize: '1.3rem', textAlign: 'left' }}>
+          <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>empresa:</span> El Corte Inglés</span> |
+          <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>grupo:</span> [grupo campaña] </span> |
+          <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>clasificación:</span> [clasificacion] </span> |
         </div>
 
-        <Header title="Gastos Por Departamento" className="page-subtitle">
-          <span className="title" style={{ margin: '0', fontSize: '1.4rem'}}>Total: 1200€</span>
-        </Header>
+        <Toolbar icon="card_membership" className="pageBar" title="BLACK FRIDAY" menu={pageMenu}>
+            <span style={{ lineHeight: '1.5rem', margin: '0 .5rem', display: 'flex', alignItems: 'center', fontWeight: '200', fontSize: '1.5rem'}}>
+            <span style={{ color: '#555', fontWeight: '200', display: 'none'}}>desde:</span> 11-11-2016 /
+            <span style={{ color: '#555', fontWeight: '200', display: 'none'}}>hasta:</span> 17-11-2016</span>
+            <Icon icon="edit" className="small" action={this.handleInfoDialog}/>
+        </Toolbar>
 
-        <div style={{ display: 'flex'}}>
+        <Panel title="Objetivos" collapsable={false} collapsed={false} actions={targetActions}>
+          <Panel className="infopanel" icon="flag" title="Fidelización --> Vinculación de Clientes" collapsable={false} open={false} />
+          <Panel className="infopanel" icon="flag" title="Vinculacion --> Compra Declarada"         collapsable={false} open={false} />
+        </Panel>
 
-          <div style={{ flex: '1.3'}}>
-            <Panel icon="attach_money" title="Produccion Gráfica y Realización"  info="200€" collapsable={true} open={false}>
-              <div style={{ flex: 1, display: 'flex', justifyContent: 'space-around'}}>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems:'center'}}>
-                  <Icon icon="import_contacts" />
-                  <label>Catalogo</label>
-                  <span>0.00</span>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems:'center'}}>
-                  <Icon icon="photo_camera" />
-                  <label>Fotografía</label>
-                  <span>0.00</span>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems:'center'}}>
-                  <Icon icon="tv" />
-                  <label>TV</label>
-                  <span>0.00</span>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems:'center'}}>
-                  <Icon icon="headset" />
-                  <label>Estudio Grabación</label>
-                  <span>0.00</span>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems:'center'}}>
-                  <Icon icon="more_vertical" />
-                  <label>Otros</label>
-                  <span>0.00</span>
-                </div>
-              </div>
-            </Panel>
-            <Panel icon="attach_money" title="Medios" info="100€" collapsable={true} open={false}>
-              <div style={{ flex: 1, display: 'flex', justifyContent: 'space-around'}}>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems:'center'}}>
-                  <Icon icon="tv" />
-                  <label>TV</label>
-                  <span>0.00</span>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems:'center'}}>
-                  <Icon icon="devices_other" />
-                  <label>Internet</label>
-                  <span>0.00</span>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems:'center'}}>
-                  <Icon icon="store" />
-                  <label>Exterior</label>
-                  <span>0.00</span>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems:'center'}}>
-                  <Icon icon="print" />
-                  <label>Prensa</label>
-                  <span>0.00</span>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems:'center'}}>
-                  <Icon icon="import_contacts" />
-                  <label>Revista</label>
-                  <span>0.00</span>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems:'center'}}>
-                  <Icon icon="radio" />
-                  <label>Radio</label>
-                  <span>0.00</span>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems:'center'}}>
-                  <Icon icon="movie" />
-                  <label>Cine</label>
-                  <span>0.00</span>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems:'center'}}>
-                  <Icon icon="video_call" />
-                  <label>Producción</label>
-                  <span>0.00</span>
-                </div>
-              </div>
-            </Panel>
-            <Panel icon="attach_money" title="Resto" info="900€" collapsable={true} open={false}>
-              ...
-            </Panel>
+        <Panel title="Seguimiento" collapsable={false} collapsed={false}>
+          <div style={{ display: 'flex', padding: '1.6rem 5.6rem' }}>
+            <label for="mktroi">Seguimiento MKT ROI</label>
+            <input id="mktroi" type="checkbox" />
+            <Select options={portadores}/>
           </div>
+        </Panel>
 
-          <div style={{ flex: '.7', }}>
-            <Doughnut data={data} options={{ legend: { position: 'bottom' }}}/>
+        <Panel title="Gastos Por Departamento" collapsable={false} collapsed={false} actions={budgetActions}>
+          <div style={{ display: 'flex'}}>
+            <div style={{ flex: '1.3'}}>
+              <Panel className="infopanel" icon="attach_money" title="Prod. Gráfica y Realización" actions={<span>200€</span>} collapsable={true} collapsed={false}>
+                <div style={{ flex: 1, display: 'flex', justifyContent: 'space-around'}}>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems:'center'}}>
+                    <Icon icon="import_contacts" />
+                    <label>Catalogo</label>
+                    <span>0.00</span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems:'center'}}>
+                    <Icon icon="photo_camera" />
+                    <label>Fotografía</label>
+                    <span>0.00</span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems:'center'}}>
+                    <Icon icon="tv" />
+                    <label>TV</label>
+                    <span>0.00</span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems:'center'}}>
+                    <Icon icon="headset" />
+                    <label>Estudio Grabación</label>
+                    <span>0.00</span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems:'center'}}>
+                    <Icon icon="more_vertical" />
+                    <label>Otros</label>
+                    <span>0.00</span>
+                  </div>
+                </div>
+              </Panel>
+              <Panel className="infopanel" icon="attach_money" title="Medios" actions={<span>100€</span>} collapsable={true} collapsed={true}>
+                <div style={{ flex: 1, display: 'flex', justifyContent: 'space-around'}}>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems:'center'}}>
+                    <Icon icon="tv" />
+                    <label>TV</label>
+                    <span>0.00</span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems:'center'}}>
+                    <Icon icon="devices_other" />
+                    <label>Internet</label>
+                    <span>0.00</span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems:'center'}}>
+                    <Icon icon="store" />
+                    <label>Exterior</label>
+                    <span>0.00</span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems:'center'}}>
+                    <Icon icon="print" />
+                    <label>Prensa</label>
+                    <span>0.00</span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems:'center'}}>
+                    <Icon icon="import_contacts" />
+                    <label>Revista</label>
+                    <span>0.00</span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems:'center'}}>
+                    <Icon icon="radio" />
+                    <label>Radio</label>
+                    <span>0.00</span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems:'center'}}>
+                    <Icon icon="movie" />
+                    <label>Cine</label>
+                    <span>0.00</span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems:'center'}}>
+                    <Icon icon="video_call" />
+                    <label>Producción</label>
+                    <span>0.00</span>
+                  </div>
+                </div>
+              </Panel>
+              <Panel className="infopanel" icon="attach_money" title="Resto" actions={<span>900€</span>} collapsable={true} collapsed={true}>
+                ...
+              </Panel>
+            </div>
+
+            <div style={{ flex: '.7', }}>
+              <Doughnut data={data} options={{ legend: { position: 'bottom' }}}/>
+            </div>
           </div>
-
-        </div>
-        <br/>
-
-        <Header title="SubCampañas" className="page-subtitle">
-          <Select label="Agrupado por" options={subcampaignGroups} />
-          <Icon icon="add" action={this.handleAddSubCampaignDialog} />
-        </Header>
-
-        <Panel icon="import_contacts" title="[21997] Directa - Flyer - PS4"  info="24 ... 27 Noviembre 2016" collapsable={true} open={false}>
-          <Header className="default-title" icon="timeline" title="Timeline" />
-          <Timeline tokens={catalogTimeline} onTokenSelected={this.gotoTokenPage}/>
-          <br/>
         </Panel>
 
-        <Panel icon="import_contacts" title="[21800] Directa - Catálogo - Black Friday 2016 Canarias"  info="24 ... 27 Noviembre 2016" collapsable={true} open={false}>
-          <Header className="default-title" icon="timeline" title="Timeline" />
-          <Timeline tokens={catalogTimeline} onTokenSelected={this.gotoTokenPage}/>
-          <br/>
+        <Panel title="SubCampañas" collapsable={false} collapsed={false} actions={subcampaignsActions}>
+
+          <Panel className="infopanel" icon="import_contacts" title="[21997] Directa - Flyer - PS4"  info="24 ... 27 Noviembre 2016" collapsable={true} open={false}>
+            <Header className="default-title" icon="timeline" title="Timeline" />
+            <Timeline tokens={catalogTimeline} onTokenSelected={this.gotoTokenPage}/>
+            <br/>
+          </Panel>
+
+          <Panel className="infopanel" icon="import_contacts" title="[21800] Directa - Catálogo - Black Friday 2016 Canarias"  info="24 ... 27 Noviembre 2016" collapsable={true} open={false}>
+            <Header className="default-title" icon="timeline" title="Timeline" />
+            <Timeline tokens={catalogTimeline} onTokenSelected={this.gotoTokenPage}/>
+            <br/>
+          </Panel>
+
+          <Panel className="infopanel" icon="import_contacts" title="[21434] Directa - Triptico - Black Friday Especial (Solo Centros)"  info="24 ... 27 Noviembre 2016" collapsable={true} open={false}>
+            <Header className="default-title" icon="timeline" title="Timeline" />
+            <Timeline tokens={catalogTimeline} onTokenSelected={this.gotoTokenPage}/>
+            <br/>
+          </Panel>
+
+          <Panel className="infopanel" icon="import_contacts" title="[20062] Producción - Lona - Black Friday 2016"  info="24 ... 27 Noviembre 2016" collapsable={true} open={false}>
+            <Header className="default-title" icon="timeline" title="Timeline" />
+            <Timeline tokens={campaignsTimeline} onTokenSelected={this.gotoTokenPage}/>
+            <br/>
+          </Panel>
+
         </Panel>
 
-        <Panel icon="import_contacts" title="[21434] Directa - Triptico - Black Friday Especial (Solo Centros)"  info="24 ... 27 Noviembre 2016" collapsable={true} open={false}>
-          <Header className="default-title" icon="timeline" title="Timeline" />
-          <Timeline tokens={catalogTimeline} onTokenSelected={this.gotoTokenPage}/>
-          <br/>
+        <Panel title="Promociones SGP" collapsable={true} collapsed={true}>
+          <Panel className="infopanel" icon="card_giftcard" title="PromoFans GranCasa Black Friday"  info="23 Noviembre ... 11 Diciembre 2016" collapsable={false} open={false} />
+          <Panel className="infopanel" icon="card_giftcard" title="Black Friday: Club del Gourmet 2016"  info="24 ... 27 Noviembre 2016" collapsable={false} open={false} />
+          <Panel className="infopanel" icon="card_giftcard" title="Black Friday: Supermercado"  info="24 ... 27 Noviembre 2016" collapsable={false} open={false} />
+          <Panel className="infopanel" icon="card_giftcard" title="Black Friday 2016"  info="24 ... 27 Noviembre 2016" collapsable={false} open={false} />
+          <Panel className="infopanel" icon="card_giftcard" title="Mascotas Black Friday"  info="23 Noviembre ... 11 Diciembre 2016" collapsable={false} open={false} />
+          <Panel className="infopanel" icon="card_giftcard" title="Super Black Friday"  info="23 Noviembre ... 11 Diciembre 2016" collapsable={false} open={false} />
         </Panel>
-
-        <Panel icon="import_contacts" title="[20062] Producción - Lona - Black Friday 2016"  info="24 ... 27 Noviembre 2016" collapsable={true} open={false}>
-          <Header className="default-title" icon="timeline" title="Timeline" />
-          <Timeline tokens={campaignsTimeline} onTokenSelected={this.gotoTokenPage}/>
-          <br/>
-        </Panel>
-
-        <br/>
-        <Header title="Promociones SGP" className="page-subtitle"/>
-        <Panel className="static" icon="card_giftcard" title="PromoFans GranCasa Black Friday"  info="23 Noviembre ... 11 Diciembre 2016" collapsable={false} open={false} />
-        <Panel className="static" icon="card_giftcard" title="Black Friday: Club del Gourmet 2016"  info="24 ... 27 Noviembre 2016" collapsable={false} open={false} />
-        <Panel className="static" icon="card_giftcard" title="Black Friday: Supermercado"  info="24 ... 27 Noviembre 2016" collapsable={false} open={false} />
-        <Panel className="static" icon="card_giftcard" title="Black Friday 2016"  info="24 ... 27 Noviembre 2016" collapsable={false} open={false} />
-        <Panel className="static" icon="card_giftcard" title="Mascotas Black Friday"  info="23 Noviembre ... 11 Diciembre 2016" collapsable={false} open={false} />
-        <Panel className="static" icon="card_giftcard" title="Super Black Friday"  info="23 Noviembre ... 11 Diciembre 2016" collapsable={false} open={false} />
-
       </Page>
+
     )
   }
 }

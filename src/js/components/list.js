@@ -3,6 +3,7 @@ import React from 'react';
 // components
 import Icon from './icon';
 import { Link } from '../components/button';
+import Panel from '../components/panel';
 
 // style
 import './list.scss';
@@ -85,9 +86,11 @@ const List = (props) => {
       const items = values.map(renderItem);
       return (
         <div key={key} className="list-group">
-          <header className="sticky-header">{key}</header>
+          <Panel title={key} className="list" collapsable={true} open={false}>
           {items}
-        </div>)
+          </Panel>
+        </div>
+      )
     })
   }
 

@@ -1,11 +1,10 @@
 import React from 'react';
 
 // components
-import Page from '../components/page';
-import Header from '../components/header';
-import Drawer from '../components/drawer';
+import { Page, Toolbar } from 'tatami';
+import { Header, List } from 'seito';
+
 import Icon from '../components/icon';
-import List from '../components/list';
 import { FAB } from '../components/button';
 import { ConfirmDialog } from '../components/dialogs';
 import Form from '../components/form';

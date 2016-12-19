@@ -40,7 +40,6 @@ class Panel extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     return(
       <div className={`panel ${this.props.className}`}>
         <header onMouseUp={this.togglePanel}>

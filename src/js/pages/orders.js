@@ -1,10 +1,10 @@
 import React from 'react';
-import Page from '../components/page';
-import Header from '../components/header';
-import Drawer from '../components/drawer';
+
+// components
+import { Page, Toolbar } from 'tatami';
+import { Header, Panel, List } from 'seito';
+
 import Icon from '../components/icon';
-import List from '../components/list';
-import Panel from '../components/panel';
 
 const Orders = (props) => {
 
@@ -26,15 +26,8 @@ const Orders = (props) => {
       <Icon icon="exit_to_app" action={exit}/>
     </Header>
 
-  const drawer =
-    <Drawer icon="layers">
-      <Icon icon="inbox" action={back}/>
-      <Icon icon="card_giftcard" action={back}/>
-      <Icon icon="search" action={goto}/>
-    </Drawer>
-
   return (
-    <Page header={header} drawer={drawer}>
+    <Page  >
       <Panel title="filters" open="false">
         Filtros de peticiones
       </Panel>

@@ -1,10 +1,10 @@
 import React from 'react';
-import Page from '../components/page';
-import Header from '../components/header';
-import Drawer from '../components/drawer';
+
+// componentsimport { Page, Toolbar } from 'tatami';
+import { Page, Toolbar } from 'tatami';
+import { Header, PAnel, List} from 'seito';
+
 import Icon from '../components/icon';
-import List from '../components/list';
-import Panel from '../components/panel';
 import Form from '../components/form';
 import Field from '../components0/field';
 
@@ -37,15 +37,9 @@ const Order = (props) => {
       <Icon icon="exit_to_app" action={exit}/>
     </Header>
 
-  const drawer =
-    <Drawer icon="layers">
-      <Icon icon="inbox" action={gotoPromotions} />
-      <Icon icon="card_giftcard" action={gotoPromotions} />
-      <Icon icon="search" action={gotoOrder} />
-    </Drawer>
 
   return (
-    <Page header={header} drawer={drawer}>
+    <Page >
       <Form title="Info ">
         <Field icon="fingerprint" label="Código" type="text" value={order.id} />
         <Field icon="card_giftcard" label="Promocion" type="selection" options={promotions} value={order.promotion} />

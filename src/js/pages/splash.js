@@ -1,9 +1,5 @@
 import React from 'react';
-
-// chips
-import Icon from '../components/icon';
-import Page from '../components/page';
-import Header from '../components/header';
+import { Page } from 'tatami';
 
 /**
  * Page
