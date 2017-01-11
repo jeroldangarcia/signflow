@@ -2,13 +2,11 @@ import React from 'react';
 
 // components
 import { Page, Toolbar } from 'tatami';
-import { Header, List } from 'seito';
+import { Icon, FAB, Header, GroupList, Select } from 'seito';
 
-import Icon from '../components/icon';
-import { FAB } from '../components/button';
 import { ConfirmDialog } from '../components/dialogs';
+import { SearchBox } from '../components/field';
 import Form from '../components/form';
-import { Select, SearchBox } from '../components/field';
 
 // controller
 import controller from '../controllers/lamps';
@@ -81,15 +79,6 @@ class LAMPS extends React.Component {
 
   render () {
 
-    const title = <div style={{ display: 'flex' }}>
-                    <span>SOLICITUDES DE MATERIALES</span>
-                  </div>
-
-    const header =  <Header icon="assignment" decorator="inbox" title={title} className="page-title" >
-                      <Select id="groupBy" label="agrupar por: " options={groupCriterias} onChange={this.handleGroupCriteria}/>
-                      <Icon icon="search" action={this.toggleSearch}/>
-                    </Header>;
-
     const searchBox = this.state.searching ? <div style={{ display: 'flex'}}>
       <SearchBox onChange={this.handleSearch} />
     </div> : '';
@@ -99,9 +88,13 @@ class LAMPS extends React.Component {
     });
 
     return (
-      <Page title={header}>
+      <Page>
+        <Toolbar className="pageBar" icon="inbox" title="SOLICITUDES de MATERIALES">
+          <Select id="groupBy" label="Agrupadas por: " options={groupCriterias} onChange={this.handleGroupCriteria}/>
+          <Icon icon="search" action={this.toggleSearch}/>
+        </Toolbar>
         {searchBox}
-        <List data={data} onSelected={this.handleItemSelected} groupBy={this.state.groupBy} />
+        <GroupList data={solicitudes} onPrimaryAction={this.handleItemSelected}/>
         <FAB icon="add" action={this.handleAddDialog} />
       </Page>
     );
@@ -113,5 +106,21 @@ const groupCriterias = [
   { label: 'Campaña', value: 'campaign' },
   { label: 'Año', value: 'year' },
 ]
+
+  const solicitudes = [
+    { id: '1', label: 'Propuesta', items: [
+      { id: '22', icon: 'assignment', label: 'Directa - Catálogo - Black Friday 2016', caption: '21800', info: '10/11/2016' },
+      { id: '22', icon: 'assignment', label: 'Directa - Catálogo - Black Friday 2016 Cataluña', caption: '21800', info: '10/11/2016' },
+      { id: '22', icon: 'assignment', label: 'Directa - Catálogo - Black Friday 2016 Canarias', caption: '21800', info: '10/11/2016' },
+    ]},
+    { id: '2', label: 'Aprobada', items: [
+      { id: '11', icon: 'assignment', label: '[21800] Directa - Catálogo - Black Friday 2016', caption: '0000 / 00000', info: '10/11/2016' },
+    ]},
+    { id: '3', label: 'Pendiente Aprobación', items: [
+      { id: '33', icon: 'assignment', label: '[21800] Directa - Catálogo - Black Friday 2016', caption: '0000 / 00000', info: '10/11/2016' },
+      { id: '33', icon: 'assignment', label: '[21800] Directa - Catálogo - Black Friday 2016', caption: '0000 / 00000', info: '10/11/2016' },
+    ]},
+  ]
+
 
 export default LAMPS;

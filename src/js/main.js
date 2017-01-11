@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './app1';
-
-ReactDOM.render(<App />, document.getElementById('root'));
+import App from './app';
 
 /*
 if ('serviceWorker' in navigator) {
@@ -41,3 +39,6 @@ if (!Array.prototype.includes) {
     return false;
   };
 }
+
+
+ReactDOM.render(<App />, document.getElementById('root'));

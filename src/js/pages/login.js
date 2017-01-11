@@ -54,6 +54,7 @@ class Login extends React.Component {
   }
 
   render() {
+    sessionController.logout();
     return (
       <Page>
         <Toolbar className="pageBar" title="Login" />

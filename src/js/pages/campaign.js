@@ -117,8 +117,9 @@ class Campaign extends React.Component {
     ]
 
     const pageMenu = [
+      { icon: 'edit' , label: 'Editar Info' },
       { icon: 'check', label: 'Tiene Medios'},
-      { icon: 'send' , label: 'Enviar Briefing'},
+      { icon: 'assignment' , label: 'Enviar Briefing'},
     ]
 
     return (
@@ -129,15 +130,14 @@ class Campaign extends React.Component {
           <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>grupo:</span> [grupo campaña] </span> |
           <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>clasificación:</span> [clasificacion] </span> |
         </div>
-
-        <Toolbar icon="card_membership" className="pageBar" title="BLACK FRIDAY" menu={pageMenu}>
+        <br/>
+        <Toolbar icon="card_giftcard" className="pageBar" title="BLACK FRIDAY" menu={pageMenu}>
             <span style={{ lineHeight: '1.5rem', margin: '0 .5rem', display: 'flex', alignItems: 'center', fontWeight: '200', fontSize: '1.5rem'}}>
             <span style={{ color: '#555', fontWeight: '200', display: 'none'}}>desde:</span> 11-11-2016 /
             <span style={{ color: '#555', fontWeight: '200', display: 'none'}}>hasta:</span> 17-11-2016</span>
-            <Icon icon="edit" className="small" action={this.handleInfoDialog}/>
         </Toolbar>
 
-        <Panel title="Objetivos" collapsable={false} collapsed={false} actions={targetActions}>
+        <Panel title="Objetivos" collapsable={true} collapsed={true} actions={targetActions}>
           <Panel className="infopanel" icon="flag" title="Fidelización --> Vinculación de Clientes" collapsable={false} open={false} />
           <Panel className="infopanel" icon="flag" title="Vinculacion --> Compra Declarada"         collapsable={false} open={false} />
         </Panel>
@@ -153,7 +153,7 @@ class Campaign extends React.Component {
         <Panel title="Gastos Por Departamento" collapsable={false} collapsed={false} actions={budgetActions}>
           <div style={{ display: 'flex'}}>
             <div style={{ flex: '1.3'}}>
-              <Panel className="infopanel" icon="attach_money" title="Prod. Gráfica y Realización" actions={<span>200€</span>} collapsable={true} collapsed={false}>
+              <Panel className="infopanel" icon="attach_money" title="Prod. Gráfica y Realización" actions={<span>200€</span>} collapsable={true} collapsed={true}>
                 <div style={{ flex: 1, display: 'flex', justifyContent: 'space-around'}}>
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems:'center'}}>
                     <Icon icon="import_contacts" />

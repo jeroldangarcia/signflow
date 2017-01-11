@@ -39,7 +39,9 @@ const Order = (props) => {
 
 
   return (
-    <Page >
+    <Page>
+      <Toolbar icon="done" title="Solicitud de Materiales" />
+
       <Form title="Info ">
         <Field icon="fingerprint" label="Código" type="text" value={order.id} />
         <Field icon="card_giftcard" label="Promocion" type="selection" options={promotions} value={order.promotion} />

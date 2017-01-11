@@ -1,5 +1,5 @@
 import React from 'react';
-import {Icon} from 'seito';
+import {Icon, Tabs, Tab} from 'seito';
 import './jobs.scss';
 
 const JobItem = (props) => {
@@ -70,6 +70,11 @@ const JobCard = (props) => {
           </div>
         </section>
       </main>
+
+      <Tabs>
+        <Tab label="Actividad" className="selected"/>
+        <Tab label="" />
+      </Tabs>
 
       <main style={{ borderTop: '1px dotted #CCC', paddingTop: '2rem'}}>
         <aside>

@@ -1,12 +1,11 @@
 import React from 'react';
 
 // components
-import { Page, Toolbar } from 'tatami';
-import { Icon, FAB, Card, Header, Panel, List} from 'seito';
+import { Page, Toolbar, Inbox } from 'tatami';
+import { Icon, FAB, Card, Header, Panel, List, Select} from 'seito';
 
 import { ConfirmDialog } from '../components/dialogs';
 import Form from '../components/form';
-import { Select } from '../components/field';
 import { JobItem, JobCard } from '../components/job';
 
 // controller
@@ -88,49 +87,51 @@ class DRAFTS extends React.Component {
           </span>,
       }
     })
+
+
+
+    const list = [
+      <Panel title="Pendientes" collapsed={false}>
+        <JobItem ticket="0306 2019 0001 0001" title="Banderola GlassPack 60x140" motif="Nike"/>
+        <JobItem ticket="0306 2019 0001 0001" title="Banderola GlassPack 60x140" motif="Adidas"/>
+        <JobItem ticket="0306 2019 0001 0002" title="Canal Medio 200x100"  motif="Nike"/>
+        <JobItem ticket="0306 2019 0001 0003" title="Cartón Compacto 3mm"  motif="Nike"/>
+      </Panel>,
+      <Panel title="Asignados">
+        <JobItem ticket="0306 2019 0001 0004" title="Cartulina 12cm"  motif="Nike" img="cartel2.jpeg"/>
+      </Panel>,
+      <Panel title="Terminados">
+        <JobCard ticket="0306 2019 0001 0006" title="Cartulina Folding 48x78"  motif="Nike" img="cartel1.jpeg"/>
+      </Panel>,
+    ];
+
+    const viewer = (
+      <JobCard ticket="0306 2019 0001 0006" title="Cartulina Folding 48x78"  motif="Nike" img="cartel1.jpeg"/>
+    )
+
     return (
       <Page>
-        <div style={{ paddingLeft: '.4rem', display: 'flex', justifyContent: 'flex-start', alignContent: 'center', lineHeight: '1.1rem', color: '#20A867', fontWeight: '400', fontSize: '1.3rem', textAlign: 'left' }}>
-          <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>empresa:</span> El Corte Inglés</span> |
-          <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>grupo:</span> [grupo campaña] </span> |
-          <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>grupo:</span> [campaña] </span> |
-          <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>clasificación:</span> [clasificacion] </span> |
-        </div>
-
-        <Toolbar icon="inbox" title="Bandeja Entrada: Bocetos" className="pageBar" />
-
-        <div style={{ overflow: 'auto'}}>
-          <Panel title="Pendientes" collapsed={false}>
-            <JobItem ticket="0306 2019 0001 0001" title="Banderola GlassPack 60x140" motif="Nike"/>
-            <JobItem ticket="0306 2019 0001 0001" title="Banderola GlassPack 60x140" motif="Adidas"/>
-            <JobItem ticket="0306 2019 0001 0002" title="Canal Medio 200x100"  motif="Nike"/>
-            <JobItem ticket="0306 2019 0001 0003" title="Cartón Compacto 3mm"  motif="Nike"/>
-          </Panel>
-          <Panel title="Asignados">
-            <JobItem ticket="0306 2019 0001 0004" title="Cartulina 12cm"  motif="Nike" img="cartel2.jpeg"/>
-          </Panel>
-          <Panel title="Terminados">
-            <JobCard ticket="0306 2019 0001 0006" title="Cartulina Folding 48x78"  motif="Nike" img="cartel1.jpeg"/>
-          </Panel>
-          <br/>
-          <br/>
-          <br/>
-        </div>
-
+        <Toolbar icon="burst_mode" title="Bocetos:" className="pageBar">
+          <Select label="Ver como" options={views} />
+          &nbsp;|&nbsp;
+          <Select label="Agrupado por" options={groupBy} />
+        </Toolbar>
+        <Inbox list={list} viewer={viewer} />
       </Page>
     );
   }
 
 };
 
-const activity = [
-  { icon: 'playlist_add', title:'<usuario1> añadio <material1>', subtitle:'01/10/2016'},
-  { icon: 'playlist_add', title:'<usuario1> añadio <material2>', subtitle:'01/10/2016'},
-  { icon: 'playlist_add', title:'<usuario1> añadio <material3>', subtitle:'01/10/2016'},
-  { icon: 'playlist_add', title:'<usuario1> añadio <material4>', subtitle:'01/10/2016'},
-  { icon: 'remove_circle_outline', title:'<usuario2> elimina <material4>', subtitle:'01/10/2016'},
-  { icon: 'cloud_done', title:'<usuario2> aprueba <LAMP>', subtitle:'01/10/2016'},
-  { icon: 'cloud_upload', title:'<usuario3> publica <LAMP>', subtitle:'01/10/2016'},
+const views = [
+  { label: 'Lista', value: 1},
+  { label: 'Tabla', value: 2},
+  { label: 'Mosaico', value: 3},
+]
+
+const groupBy = [
+  { label: 'Estado', value: 1 },
+  { label: 'Campañas', value: 2 },
 ]
 
 

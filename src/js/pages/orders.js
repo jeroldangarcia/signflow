@@ -27,7 +27,8 @@ const Orders = (props) => {
     </Header>
 
   return (
-    <Page  >
+    <Page>
+      <Toolbar title="" />
       <Panel title="filters" open="false">
         Filtros de peticiones
       </Panel>

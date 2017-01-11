@@ -23,7 +23,20 @@ module.exports = env => {
       contentBase: './dist',
       https: false,
       //host: '192.168.1.237',
+      //host:'192.168.2.62',
       port: 5555,
+      proxy: {
+        "/authenticate": {
+          target:"http://localhost:5000/",
+          secure:"false"
+        },
+        "/api/*":{
+          target:"http://localhost:5000/",
+          secure:"false"
+        }
+      },
+      hot: true,
+      historyApiFallback: true,
     },
     module: {
       loaders: [

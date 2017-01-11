@@ -111,14 +111,14 @@ export default Campaigns;
 
   const campaigns = [
     { id: '1', label: 'Black Friday', items: [
-      { id: '22', icon: 'card_giftcard', label: 'BLACK FRIDAY 2016',      caption: '0306 / 20129' },
+      { id: '22', icon: 'card_giftcard', label: 'BLACK FRIDAY 2016',      caption: '0306 / 20129', info: '10/11/2016 12/11/2016' },
     ]},
     { id: '2', label: 'Clientes Moda', items: [
-      { id: '11', icon: 'card_giftcard', label: 'YA ES PRIMAVERA',        caption: '0000 / 00000' },
+      { id: '11', icon: 'card_giftcard', label: 'YA ES PRIMAVERA',        caption: '0000 / 00000', info: '10/11/2016 12/11/2016' },
     ]},
     { id: '3', label: 'Clientes Hogar', items: [
-      { id: '33', icon: 'card_giftcard', label: 'ACCESORIOS DE INVIERNO', caption: '0000 / 00000' },
-      { id: '33', icon: 'card_giftcard', label: 'ACCESORIOS RRSS',        caption: '0000 / 00000' },
+      { id: '33', icon: 'card_giftcard', label: 'ACCESORIOS DE INVIERNO', caption: '0000 / 00000', info: '10/11/2016 12/11/2016' },
+      { id: '33', icon: 'card_giftcard', label: 'ACCESORIOS RRSS',        caption: '0000 / 00000', info: '10/11/2016 12/11/2016' },
     ]},
   ]
 

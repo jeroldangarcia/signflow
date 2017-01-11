@@ -2,12 +2,10 @@ import React from 'react';
 
 // components
 import { Page, Toolbar } from 'tatami';
-import { Icon, Header, List } from 'seito';
+import { Icon, FAB, Header, List, Select } from 'seito';
 
-import { FAB } from '../components/button';
 import { ConfirmDialog } from '../components/dialogs';
 import Form from '../components/form';
-import { Select } from '../components/field';
 
 // controller
 import controller from '../controllers/lamps';
@@ -64,7 +62,9 @@ class Supply extends React.Component {
     const title = <Header icon="recent_actors" title="YA ES PRIMAVERA / Cartelería / Dotaciones a centros" className="page-title" />;
     return (
       <Page title={title}>
+        <Toolbar className="pageBar" title="DOTACIONES A CENTROS" >
 
+        </Toolbar>
       </Page>
     );
   }

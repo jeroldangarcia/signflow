@@ -1,5 +1,6 @@
 import React from 'react';
 import './user.scss';
+import session from '../stores/session';
 
 const User = ({avatar = 'user.png', role, fullname, email }) => {
   return (
@@ -10,8 +11,8 @@ const User = ({avatar = 'user.png', role, fullname, email }) => {
         </div>
       </div>
       <div className="text">
-        <div className="role">{role}</div>
-        <div className="name">{fullname}</div>
+        <div className="role">{session.name()}</div>
+        <div className="name">{session.rol()}</div>
         <div className="email">{email}</div>
       </div>
     </div>

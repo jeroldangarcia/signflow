@@ -1,5 +1,6 @@
 //const DOMAIN = 'https://signflow.herokuapp.com';
 const DOMAIN = 'http://localhost:5555';
+//const DOMAIN = 'http://192.168.2.62:5555';
 
 const URL_AUTHENTICATION = '/api/authenticate';
 
@@ -7,7 +8,7 @@ const URL_AUTHENTICATION = '/api/authenticate';
 import session from '../stores/session';
 
 // IO
-import HTTPClient from './HTTPClient.js';
+import { HTTPClient } from 'tatami';
 const http = HTTPClient(DOMAIN, session);
 
 const MESSAGES = {
@@ -43,7 +44,7 @@ const APIClient = {
   },
 
   me(onSuccess, onError) {
-    const ME = '/api/me';
+    const ME = '/me';
     http.GET(ME, onSuccess, onError);
   },
 

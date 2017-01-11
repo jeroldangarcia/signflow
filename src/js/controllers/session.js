@@ -20,13 +20,13 @@ const SessionController = {
   login(nickName, password, done, onError) {
     APIClient.authenticate(nickName, password, (token) => {
         session.init(token, this.rolFor[nickName], nickName);
-        //APIClient.me((data) => {
-          done();
-        //})
+        setTimeout(done, 1500);
       }, onError);
   },
 
-  logout() {}
+  logout() {
+    session.logout();
+  }
 
 }
 

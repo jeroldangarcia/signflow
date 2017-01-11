@@ -4,7 +4,7 @@ import React from 'react';
 import Icon from './icon';
 
 // styles
-import './field.scss';
+// import './field.scss';
 
 /**
  * InfoField

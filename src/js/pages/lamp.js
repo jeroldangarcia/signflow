@@ -94,42 +94,39 @@ class LAMP extends React.Component {
   }
 
   render () {
-    const title =
-      <div>
+
+    const materialsActions = session.rol() === 'ppv' ? [
+      { icon: 'add', do: this.handleAddDialog },
+    ] : '';
+
+    const materials = this.state.materials.slice(0,5).map( (material,index) => {
+      const m = {
+        id: '1',
+        caption: '000 00000',
+        icon: 'photo',
+        label: `${material.mounting} ${material.formats[0]}`,
+        subtitle: 'Nike',
+        info: '5uds / 100€',
+      }
+
+      return m;
+    })
+    return (
+      <Page>
+
         <div style={{ paddingLeft: '.4rem', display: 'flex', justifyContent: 'flex-start', alignContent: 'center', lineHeight: '1.1rem', color: '#20A867', fontWeight: '400', fontSize: '1.3rem', textAlign: 'left' }}>
           <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>empresa:</span> El Corte Inglés</span> |
           <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>grupo:</span> [grupo campaña] </span> |
           <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>grupo:</span> [campaña] </span> |
           <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>clasificación:</span> [clasificacion] </span> |
         </div>
-        <Header icon="assignment" action={this.back} title="SOLICITUD DE MATERIALES:" className="page-title" />
-      </div>
 
-    const materialsActions = session.rol() === 'ppv' ? [
-      { icon: 'add', do: this.handleAddDialog },
-    ] : '';
+        <Toolbar className="pageBar" icon="assignment" title="[21800] Directa - Catálogo - Black Friday 2016 Canarias" />
 
-    const materials = this.state.materials.slice(0,5).map( material => {
-      return {
-        icon: 'recent_actors',
-        title: material.mounting,
-        cells: [ material.formats[0], 'Nike'],
-        subtitle:
-          <span>5uds / 100€  &nbsp;
-            <Icon icon="edit" className="small" action={this.handleEditDialog}/>
-            <Icon icon="delete" className="small" action={this.handleDeleteDialog}/>
-          </span>,
-      }
-    })
-    return (
-      <Page title={title}>
-
-        <Header title="[21800] Directa - Catálogo - Black Friday 2016 Canarias" className="page-subtitle"></Header>
-
-        <Panel icon="recent_actors" title="Materiales" actions={materialsActions} collapsable={false} open={true}>
+        <Panel title="Materiales"  collapsable={false} collapsed={false}>
 
           <div style={{ display: 'flex'}}>
-            <List data={materials} itemStyle="tablerow" selected={false}/>
+            <List data={materials} />
           </div>
 
           <div style={{ display: 'flex'}}>
@@ -141,24 +138,9 @@ class LAMP extends React.Component {
             {this.renderActions()}
           </div>
         </Panel>
-
-
-        <Panel icon="messages" title="Actividad" collapsable={true} open={false}>
-          <List data={activity} itemStyle="tablerow" selected={false}/>
-        </Panel>
       </Page>
     )
   }
 }
-
-const activity = [
-  { icon: 'playlist_add', title:'<usuario1> añadio <material1>', subtitle:'01/10/2016'},
-  { icon: 'playlist_add', title:'<usuario1> añadio <material2>', subtitle:'01/10/2016'},
-  { icon: 'playlist_add', title:'<usuario1> añadio <material3>', subtitle:'01/10/2016'},
-  { icon: 'playlist_add', title:'<usuario1> añadio <material4>', subtitle:'01/10/2016'},
-  { icon: 'remove_circle_outline', title:'<usuario2> elimina <material4>', subtitle:'01/10/2016'},
-  { icon: 'cloud_done', title:'<usuario2> aprueba <LAMP>', subtitle:'01/10/2016'},
-  { icon: 'cloud_upload', title:'<usuario3> publica <LAMP>', subtitle:'01/10/2016'},
-]
 
 export default LAMP;
