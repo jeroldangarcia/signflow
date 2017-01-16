@@ -14,7 +14,31 @@ const users = {
     "family_name":"López",
     "login":"p_lopez",
     "roles":["compras"]
-  }
+  },
+  d_echebarria: {
+    "_id":"58505fc215d14cd1de5cc03c",
+    "email":"d_echebarria@eci.es",
+    "name":"David",
+    "family_name":"Echebarria",
+    "login":"d_echebarria",
+    "roles":["marketing"]
+  },
+  j_huete: {
+    "_id":"58505fc215d14cd1de5cc03c",
+    "email":"j_huete@eci.es",
+    "name":"Julio",
+    "family_name":"Huete",
+    "login":"j_huete",
+    "roles":["ppv"]
+  },
+  j_rayon: {
+    "_id":"58505fc215d14cd1de5cc03c",
+    "email":"j_rayon@eci.es",
+    "name":"Javier",
+    "family_name":"Rayon",
+    "login":"j_rayon",
+    "roles":["realizacion"]
+  },
 }
 
 server.post('/authenticate', function (req, res) {
@@ -26,8 +50,7 @@ server.post('/authenticate', function (req, res) {
 })
 
 server.get('/api/me', function (req, res) {
-  console.log(req.headers)
-  res.jsonp({ me: users[req.headers['x-access-token']]});
+  res.jsonp(users[req.headers['x-access-token']]);
 })
 
 server.use(function (req, res, next) {

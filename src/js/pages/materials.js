@@ -40,12 +40,13 @@ class Materials extends React.Component {
   render () {
 
     let materials = [];
+
     this.state.items.forEach( material => {
       material.formats.forEach( format => {
         materials.push({
           icon: 'recent_actors',
           title: material.mounting,
-          cells: [ format ],
+          subtitle: format,
           group: material.mounting
         })
       })
@@ -53,7 +54,7 @@ class Materials extends React.Component {
 
     return (
       <Page>
-        <Toolbar icon="" title="MATERIALES" />
+        <Toolbar className="pageBar" icon="recent_actors" title="MATERIALES" />
         <List title="Materiales" data={materials} itemStyle="tablerow" selected={true} groupBy="group"/>
       </Page>
     );

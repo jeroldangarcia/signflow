@@ -108,6 +108,9 @@ const groupCriterias = [
 ]
 
   const solicitudes = [
+    { id: '0', label: 'Creada', items: [
+      { id: '01', icon: 'assignment', label: '[21800] Directa - Catálogo - Black Friday 2016', caption: '0000 / 00000', info: '10/11/2016' },
+    ]},
     { id: '1', label: 'Propuesta', items: [
       { id: '22', icon: 'assignment', label: 'Directa - Catálogo - Black Friday 2016', caption: '21800', info: '10/11/2016' },
       { id: '22', icon: 'assignment', label: 'Directa - Catálogo - Black Friday 2016 Cataluña', caption: '21800', info: '10/11/2016' },

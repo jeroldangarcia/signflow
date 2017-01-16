@@ -1,5 +1,5 @@
 //const DOMAIN = 'https://signflow.herokuapp.com';
-const DOMAIN = 'http://localhost:5555';
+const DOMAIN = window.DOMAIN;
 //const DOMAIN = 'http://192.168.2.62:5555';
 
 const URL_AUTHENTICATION = '/api/authenticate';
@@ -32,20 +32,9 @@ const errorHandler = (onError) => {
  */
 const APIClient = {
 
-  authenticate(login, password, onSuccess, onError) {
-    const body = JSON.stringify({ login, password });
-    //http.POST(URL_AUTHENTICATION, body,
-    http.GET(URL_AUTHENTICATION,
-      (data) => {
-        onSuccess(data.token)
-      },
-      errorHandler(onError)
-    );
-  },
-
-  me(onSuccess, onError) {
-    const ME = '/me';
-    http.GET(ME, onSuccess, onError);
+  campaigns(onSuccess, onError) {
+    const CAMPAIGNS = "/campaigns";
+    http.GET(CAMPAIGNS, onSuccess, errorHandler(onError))
   },
 
   /**
@@ -94,7 +83,7 @@ const APIClient = {
    * materials
    */
   materials(onSuccess, onError) {
-    const MATERIALS = '/api/materials';
+    const MATERIALS = '/materials';
     http.GET(MATERIALS, onSuccess, onError);
   },
 

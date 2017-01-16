@@ -8,6 +8,7 @@ import { FAB } from '../components/button';
 import { InfoField, SearchBox } from '../components/field';
 import { ConfirmDialog } from '../components/dialogs';
 import Form from '../components/form';
+import API from '../api/apiClient';
 
 // controller
 import controller from '../controllers/promotions';
@@ -15,10 +16,23 @@ import controller from '../controllers/promotions';
 // store
 import session from '../stores/session';
 
+const loadCampaigns = (params, done) => {
+  API.campaigns((data) => {
+    console.log(data);
+    done({campaigns: data})
+  }, (error) => {
+    console.log(error);
+  })
+}
+
 /**
  * Promotions Page
  */
 class Campaigns extends React.Component {
+
+  static defaultProps = {
+    inputAction: loadCampaigns,
+  }
 
   state = {
     searching: false,
@@ -77,6 +91,8 @@ class Campaigns extends React.Component {
 
   render () {
 
+    console.log('CAMPIGNS', this.props.ctx)
+
     const title = <div style={{ display: 'flex' }}>
                     <span>CAMPAÑAS</span>
                     <Select options={companies} className="title-like"/>
@@ -98,7 +114,7 @@ class Campaigns extends React.Component {
 
         {searchBox}
 
-        <GroupList data={campaigns} onPrimaryAction={this.gotoCampaign}/>
+        <GroupList data={this.props.ctx.campaigns} onPrimaryAction={this.gotoCampaign}/>
 
         <FAB icon="add" action={this.handleAdd}/>
       </Page>
@@ -109,18 +125,6 @@ class Campaigns extends React.Component {
 
 export default Campaigns;
 
-  const campaigns = [
-    { id: '1', label: 'Black Friday', items: [
-      { id: '22', icon: 'card_giftcard', label: 'BLACK FRIDAY 2016',      caption: '0306 / 20129', info: '10/11/2016 12/11/2016' },
-    ]},
-    { id: '2', label: 'Clientes Moda', items: [
-      { id: '11', icon: 'card_giftcard', label: 'YA ES PRIMAVERA',        caption: '0000 / 00000', info: '10/11/2016 12/11/2016' },
-    ]},
-    { id: '3', label: 'Clientes Hogar', items: [
-      { id: '33', icon: 'card_giftcard', label: 'ACCESORIOS DE INVIERNO', caption: '0000 / 00000', info: '10/11/2016 12/11/2016' },
-      { id: '33', icon: 'card_giftcard', label: 'ACCESORIOS RRSS',        caption: '0000 / 00000', info: '10/11/2016 12/11/2016' },
-    ]},
-  ]
 
 const user = {
   icon: 'person',
@@ -129,9 +133,9 @@ const user = {
 }
 
 const time = [
-  { label: 'Último Mes', value: '1MONTH' },
   { label: 'Últimos 6 meses', value: '6MONTH' },
   { label: 'Últimos 12 meses', value: '12MONTH' },
+  { label: 'Último Mes', value: '1MONTH' },
   { label: 'Año Actual', value: 'THISYEAR' },
 ]
 

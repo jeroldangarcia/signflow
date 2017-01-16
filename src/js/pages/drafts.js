@@ -21,6 +21,7 @@ class DRAFTS extends React.Component {
   state = {
     materials: [],
     items: [],
+    draft: null,
   }
 
   componentWillMount() {
@@ -52,6 +53,10 @@ class DRAFTS extends React.Component {
     this.props.goto('LAMP');
   }
 
+  handleUnSelect = () => {
+    this.setState({ draft: null });
+  }
+
   exit = () => {
     this.props.goto('SPLASH');
   }
@@ -66,32 +71,33 @@ class DRAFTS extends React.Component {
 
 
   render () {
-    const title =
+
+    const breadcrumb =
       <div>
         <div style={{ paddingLeft: '.4rem', display: 'flex', justifyContent: 'flex-start', alignContent: 'center', lineHeight: '1.1rem', color: '#20A867', fontWeight: '400', fontSize: '1.3rem', textAlign: 'left' }}>
           <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>empresa:</span> El Corte Inglés</span> |
-          <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>grupo:</span> [grupo campaña] </span> |
-          <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>grupo:</span> [campaña] </span> |
-          <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>clasificación:</span> [clasificacion] </span> |
+          <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>grupo:</span> ECI/FV Verticales OI 2016 |</span> |
+          <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>grupo:</span> Fuerza de Venta/mixta </span>
         </div>
-        <Header icon="brush" action={this.back} title="BOCETOS:" className="page-title" />
       </div>
+
+    const title = <div style={{ display: 'flex' }}>
+                    <span>ARTE FINAL </span>
+                    <Select options={subcampaigns} className="title-like"/>
+                  </div>
+
     const materials = this.state.materials.slice(0,5).map( material => {
       return {
         icon: 'recent_actors',
         title: material.mounting,
         cells: [ material.formats[0], 'Nike'],
         subtitle:
-          <span>5uds / 100€  &nbsp;
-
-          </span>,
+          <span>5uds / 100€ &nbsp;</span>,
       }
     })
 
-
-
     const list = [
-      <Panel title="Pendientes" collapsed={false}>
+      <Panel title="Pendientes" collapsed={true}>
         <JobItem ticket="0306 2019 0001 0001" title="Banderola GlassPack 60x140" motif="Nike"/>
         <JobItem ticket="0306 2019 0001 0001" title="Banderola GlassPack 60x140" motif="Adidas"/>
         <JobItem ticket="0306 2019 0001 0002" title="Canal Medio 200x100"  motif="Nike"/>
@@ -100,23 +106,24 @@ class DRAFTS extends React.Component {
       <Panel title="Asignados">
         <JobItem ticket="0306 2019 0001 0004" title="Cartulina 12cm"  motif="Nike" img="cartel2.jpeg"/>
       </Panel>,
-      <Panel title="Terminados">
+      <Panel title="Enviados">
         <JobCard ticket="0306 2019 0001 0006" title="Cartulina Folding 48x78"  motif="Nike" img="cartel1.jpeg"/>
       </Panel>,
     ];
 
-    const viewer = (
+    const viewer = this.state.draft ?
       <JobCard ticket="0306 2019 0001 0006" title="Cartulina Folding 48x78"  motif="Nike" img="cartel1.jpeg"/>
-    )
+      : '';
 
     return (
       <Page>
-        <Toolbar icon="burst_mode" title="Bocetos:" className="pageBar">
+        {breadcrumb}
+        <Toolbar icon="burst_mode" title={title} className="pageBar">
           <Select label="Ver como" options={views} />
           &nbsp;|&nbsp;
           <Select label="Agrupado por" options={groupBy} />
         </Toolbar>
-        <Inbox list={list} viewer={viewer} />
+        <Inbox items={list} viewer={viewer} onCloseViewer={this.handleUnSelect} />
       </Page>
     );
   }
@@ -134,5 +141,8 @@ const groupBy = [
   { label: 'Campañas', value: 2 },
 ]
 
-
+const subcampaigns = [
+  { label: '[20062] Producción - Lona - Black Friday 2016', value: 1},
+  { label: 'Todas', value: 0 },
+]
 export default DRAFTS;
