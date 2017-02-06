@@ -5,7 +5,7 @@ import './jobs.scss';
 const JobItem = (props) => {
 
   return(
-        <div className="jobitem">
+        <div className="jobitem" onMouseUp={props.onSelection}>
           <br/>
           <header>
             <aside>

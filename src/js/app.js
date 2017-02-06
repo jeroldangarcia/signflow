@@ -5,8 +5,7 @@ import { Tatami, Drawer, User } from 'tatami';
 import { Header, Menu } from 'seito';
 
 // pages
-import Splash from './pages/splash';
-import { Login, Exit } from 'tatami';
+import { Login, Exit, Wait } from 'tatami';
 import Load from './pages/load';
 import Campaigns from './pages/campaigns';
 import Campaign from './pages/campaign';
@@ -17,8 +16,8 @@ import Orders from './pages/orders';
 import Order from './pages/order';
 import Drafts from './pages/drafts';
 import Draft from './pages/draft';
-import Assets from './pages/assets';
 import Supplies from './pages/supply';
+import Providers from './pages/providers';
 
 /**
  * Application
@@ -32,16 +31,17 @@ const Application = (props) => {
 
   const menu1 = [
     { id: 'CAMPAIGNS'    , label: 'Campañas'              , icon: 'card_giftcard' , roles: [ 'marketing', 'ppv', 'realizacion', 'compras' ]},
-    { id: 'MATERIALS'    , label: 'Materiales'            , icon: 'recent_actors' , roles: [ 'compras' ]},
+    { id: 'MATERIALS'    , label: 'Materiales'            , icon: 'recent_actors' , roles: [ 'compras', 'ppv' ]},
   ]
 
   const menu2 = [
-    { id: 'LAMPS'        , label: 'Solicitudes Materiales', icon: 'assignment' , roles: [ 'ppv', 'marketing', 'realizacion' ], info: '7'},
+    { id: 'LAMPS'        , label: 'Solicitudes Materiales', icon: 'assignment' , roles: [ 'ppv', 'marketing' ], info: '7'},
     { id: 'SUPPLIES'     , label: 'Dotaciones Centros'    , icon: 'store'      , roles: [ 'ppv', 'marketing' ]},
   ]
 
   const menu3 = [
-    { id: 'DRAFTS', label: 'Arte Final', icon: 'burst_mode', roles: [ 'realizacion' ], info: '10'},
+    { id: 'PROVIDERS', label: 'Provision Materiales', icon: 'burst_mode', roles: [ 'realizacion' ], info: '10'},
+    { id: 'DRAFTS'   , label: 'Arte Final'          , icon: 'burst_mode', roles: [ 'artefinal' ]  , info: '10'},
   ]
 
   const appDrawer = <Drawer>
@@ -51,28 +51,36 @@ const Application = (props) => {
                     </Drawer>
 
   const pages = {
-    'WAIT'      : <Splash     />,
-    'LOGIN'     : <Login title="Signage Flow" next="CAMPAIGNS" fullscreen={true} />,
+    'WAIT'      : <Wait     />,
+    'LOGIN'     : <Login title="SignFlow" next="LOAD" fullscreen={true} users={users}/>,
     'EXIT'      : <Exit       />,
 
-    'LOAD'      : <Load      />,
-    'CAMPAIGNS' : <Campaigns drawer={appDrawer} />,
-    'CAMPAIGN'  : <Campaign  drawer={appDrawer} />,
-    'MATERIALS' : <Materials drawer={appDrawer} />,
-    'LAMPS'     : <LAMPS     drawer={appDrawer} />,
-    'LAMP'      : <LAMP      drawer={appDrawer} />,
-    'DRAFTS'    : <Drafts    drawer={appDrawer} />,
-    'DRAFT'     : <Draft     drawer={appDrawer} />,
-    'ASSETS'    : <Assets    drawer={appDrawer} />,
-    'SUPPLIES'  : <Supplies  drawer={appDrawer} />,
-    'ORDERS'    : <Orders    drawer={appDrawer} />,
-    'ORDER'     : <Order     drawer={appDrawer} />,
+    'LOAD'      : <Load      drawer={true} />,
+    'CAMPAIGNS' : <Campaigns drawer={true} />,
+    'CAMPAIGN'  : <Campaign  drawer={true} />,
+    'MATERIALS' : <Materials drawer={true} />,
+    'LAMPS'     : <LAMPS     drawer={true} />,
+    'LAMP'      : <LAMP      drawer={true} />,
+    'DRAFTS'    : <Drafts    drawer={true} />,
+    'DRAFT'     : <Draft     drawer={true} />,
+    'SUPPLIES'  : <Supplies  drawer={true} />,
+    'ORDERS'    : <Orders    drawer={true} />,
+    'ORDER'     : <Order     drawer={true} />,
+    'PROVIDERS' : <Providers drawer={true} />,
   }
 
   return (
-    <Tatami title="Signage Flow" pages={pages} init="LOGIN" menu={ctxMenu} drawer={appDrawer} />
+    <Tatami title="SignFlow" pages={pages} init="LOGIN" menu={ctxMenu} drawer={appDrawer} />
   );
 
 }
 
 export default Application;
+
+  const users = [
+    {id:'p_lopez', icon:'person', title:'Pedro Lopez', caption:'Compras', role: 'compras'},
+    {id:'d_echebarria', icon:'person', title:'David Echevarria', caption:'Marketing', role: 'marketing' },
+    {id:'j_huete', icon:'person', title:'Julio Huete', caption:'PPV', role: 'ppv'},
+    {id:'j_rayon', icon:'person', title:'Javier Rayón', caption:'Realización', role: 'realizacion'},
+    {id:'p_mercado', icon:'person', title:'Paco Mercado', caption:'Arte Final', role: 'artefinal'},
+  ]

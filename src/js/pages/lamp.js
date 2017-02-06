@@ -106,13 +106,13 @@ class LAMP extends React.Component {
         <Button icon="done" label="Asignar Proveedor" className="primary" action={this.handleProviderDialog}/>
       ]
     }
-    const role = me.roles[0];
+    const role = me.rol;
     return actionsFor[role];
   }
 
   render () {
 
-    const iconsFor = Session.me().roles[0] === 'ppv' ? [
+    const iconsFor = Session.me().rol === 'ppv' ? [
       <Icon icon='add' action={this.handleAddDialog }/>
     ] : '';
 

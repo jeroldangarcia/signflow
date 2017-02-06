@@ -1,7 +1,7 @@
 import React from 'react';
 
 //components
-import Icon from './icon';
+import { Icon } from 'seito';
 
 //styles
 import './timeline.scss';

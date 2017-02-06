@@ -4,18 +4,31 @@ import React from 'react';
 import {Line, Doughnut} from 'react-chartjs-2';
 
 // components
-import { Page, Toolbar } from 'tatami';
+import { Page, Toolbar, ConfirmDialog } from 'tatami';
 import { Icon, Button, Header, Panel, Tabs, Tab, Stack } from 'seito';
 
 import Form from '../components/form';
 import { Select, InfoField } from '../components/field';
 import Timeline from '../components/timeline';
-import { ConfirmDialog } from '../components/dialogs';
+
+import API from '../api/apiClient';
+
+const loadCampaign = (params, done) => {
+  API.subcampaigns((data) => {
+    done({
+      subcampaigns: data,
+    })
+  })
+}
 
 /**
  * Campaign Page
  */
 class Campaign extends React.Component {
+
+  static defaultProps = {
+    inputAction: loadCampaign,
+  }
 
   state = {
     tab : 0,
@@ -87,7 +100,19 @@ class Campaign extends React.Component {
     }
 
   handleChangeTab = (tab) => {
-    this.setState( { tab })
+    this.setState({ tab })
+  }
+
+  renderSubcampaign = (data) => {
+    const title = `[${data.id}] ${data.type} - ${data.name}`;
+    const actions = <span>{data.state}</span>
+    return (
+      <Panel className="infopanel" icon="import_contacts" title={title}  info="24 ... 27 Noviembre 2016" collapsable={true} open={false}  actions={actions}>
+        <Header className="default-title" icon="timeline" title="Timeline" />
+        <Timeline tokens={catalogTimeline} onTokenSelected={this.gotoTokenPage}/>
+        <br/>
+      </Panel>
+    )
   }
 
   render() {
@@ -119,10 +144,11 @@ class Campaign extends React.Component {
     const budgetActions = [
       <span style={{ margin: '0', fontSize: '1.4rem'}}>Total: 905.750,67€</span>
     ]
-    const subcampaignsActions = [
-      <Select label="Agrupado por" options={subcampaignGroups} />,
-      <Icon icon="add" action={this.handleAddSubCampaignDialog} />,
-    ]
+    const subcampaignsActions = <Header>
+      <Select label="Agrupado por" options={subcampaignGroups} />
+      <Icon icon="add" action={this.handleAddSubCampaignDialog} />
+    </Header>
+
 
     const pageMenu = [
       { icon: 'edit' , label: 'Editar Info' },
@@ -132,7 +158,6 @@ class Campaign extends React.Component {
 
     return (
       <Page>
-
         <div style={{ paddingLeft: '.4rem', display: 'flex', justifyContent: 'flex-start', alignContent: 'center', lineHeight: '1.1rem', color: '#20A867', fontWeight: '400', fontSize: '1.3rem', textAlign: 'left' }}>
           <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>empresa:</span> El Corte Inglés</span> |
           <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>grupo:</span> ECI/FV Verticales OI 2016 </span> |
@@ -236,6 +261,7 @@ class Campaign extends React.Component {
                 </div>
               </Panel>
               <Panel className="infopanel" icon="attach_money" title="Resto" actions={<span>61.617,61€</span>} collapsable={true} collapsed={true}>
+                <div style={{ flex: 1, display: 'flex', justifyContent: 'space-around'}}>
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems:'center'}}>
                     <Icon icon="more_vertical" />
                     <label>Aportaciones</label>
@@ -246,6 +272,7 @@ class Campaign extends React.Component {
                     <label>PPV</label>
                     <span>61.617,61</span>
                   </div>
+                </div>
               </Panel>
             </div>
 
@@ -255,46 +282,27 @@ class Campaign extends React.Component {
           </div>
         </Panel>
         <br/>
+
         <Tabs selected={this.state.tab} onChange={this.handleChangeTab}>
           <Tab label="SUBCAMPAÑAS" />
           <Tab label="PROMOCIONES SGP" />
         </Tabs>
+
         <Stack selected={this.state.tab}>
-          <Panel title="" collapsable={false} collapsed={false} actions={subcampaignsActions}>
 
-            <Panel className="infopanel" icon="import_contacts" title="[21997] Directa - Flyer - PS4"  info="24 ... 27 Noviembre 2016" collapsable={true} open={false}  actions={<span>Creada</span>}>
-              <Header className="default-title" icon="timeline" title="Timeline" />
-              <Timeline tokens={catalogTimeline} onTokenSelected={this.gotoTokenPage}/>
-              <br/>
-            </Panel>
+          <div>
+            {subcampaignsActions}
+            {this.props.ctx.subcampaigns.map(this.renderSubcampaign)}
+          </div>
 
-            <Panel className="infopanel" icon="import_contacts" title="[21800] Directa - Catálogo - Black Friday 2016 Canarias"  info="24 ... 27 Noviembre 2016" collapsable={true} open={false} actions={<span>Creada</span>}>
-              <Header className="default-title" icon="timeline" title="Timeline" />
-              <Timeline tokens={catalogTimeline} onTokenSelected={this.gotoTokenPage}/>
-              <br/>
-            </Panel>
-
-            <Panel className="infopanel" icon="import_contacts" title="[21434] Directa - Triptico - Black Friday Especial (Solo Centros)"  info="24 ... 27 Noviembre 2016" collapsable={true} open={false}  actions={<span>Creada</span>}>
-              <Header className="default-title" icon="timeline" title="Timeline" />
-              <Timeline tokens={catalogTimeline} onTokenSelected={this.gotoTokenPage}/>
-              <br/>
-            </Panel>
-
-            <Panel className="infopanel" icon="import_contacts" title="[20062] Producción - Lona - Black Friday 2016"  info="24 ... 27 Noviembre 2016" collapsable={true} open={false}  actions={<span>Solicitud Material</span>}>
-              <Header className="default-title" icon="timeline" title="Timeline" />
-              <Timeline tokens={campaignsTimeline} onTokenSelected={this.gotoTokenPage}/>
-              <br/>
-            </Panel>
-          </Panel>
-
-          <Panel title="" collapsable={true} collapsed={false}>
+          <div>
             <Panel className="infopanel" icon="card_giftcard" title="PromoFans GranCasa Black Friday"  info="23 Noviembre ... 11 Diciembre 2016" collapsable={false} open={false} />
             <Panel className="infopanel" icon="card_giftcard" title="Black Friday: Club del Gourmet 2016"  info="24 ... 27 Noviembre 2016" collapsable={false} open={false} />
             <Panel className="infopanel" icon="card_giftcard" title="Black Friday: Supermercado"  info="24 ... 27 Noviembre 2016" collapsable={false} open={false} />
             <Panel className="infopanel" icon="card_giftcard" title="Black Friday 2016"  info="24 ... 27 Noviembre 2016" collapsable={false} open={false} />
             <Panel className="infopanel" icon="card_giftcard" title="Mascotas Black Friday"  info="23 Noviembre ... 11 Diciembre 2016" collapsable={false} open={false} />
             <Panel className="infopanel" icon="card_giftcard" title="Super Black Friday"  info="23 Noviembre ... 11 Diciembre 2016" collapsable={false} open={false} />
-          </Panel>
+          </div>
         </Stack>
 
         </div>

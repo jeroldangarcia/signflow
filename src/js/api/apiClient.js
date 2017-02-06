@@ -2,8 +2,6 @@
 const DOMAIN = window.DOMAIN;
 //const DOMAIN = 'http://192.168.2.62:5555';
 
-const URL_AUTHENTICATION = '/api/authenticate';
-
 // stores
 import session from '../stores/session';
 
@@ -15,13 +13,25 @@ const MESSAGES = {
   401: 'Usuario/Contraseña no encontrado.\r\n Por favor identifiquese de nuevo..',
   403: 'Su sesión a caducado.\r\n Por favor identifiquese de nuevo..',
   500: 'Error grave de sistema',
+  1000: 'Sin Conexion',
 }
 
-const errorHandler = (onError) => {
+const errorHandler0 = (onError) => {
   return (response) => {
     const e = {
       status: response.status,
       message: MESSAGES[response.status],
+    }
+    onError(e);
+  }
+}
+
+const errorHandler = (onError) => {
+  return (response, error) => {
+    const status = response && response.status ? response.status : 1000;
+    const e = {
+      status: status,
+      message: MESSAGES[status],
     }
     onError(e);
   }
@@ -43,24 +53,24 @@ const APIClient = {
 
   users(onSuccess, onError) {
     const USERS = '/api/users';
-    http.GET(USERS, onSuccess, onError);
+    http.GET(USERS, onSuccess, errorHandler(onError));
   },
 
   createUser(user, onSuccess, onError) {
     const USERS = '/api/users';
     const body = JSON.stringify(user);
-    http.POST(USERS, body, onSuccess, onError);
+    http.POST(USERS, body, onSuccess, errorHandler(onError));
   },
 
   updateUser(id, field, value, onSuccess, onError) {
     const USER = `/api/users/${id}`;
     const body = JSON.stringify({ [field]: value });
-    http.PATCH(USER, body, onSuccess, onError);
+    http.PATCH(USER, body, onSuccess, errorHandler(onError));
   },
 
   deleteUser(id, onSuccess, onError) {
     const USER = `/api/users/${id}`;
-    http.DELETE(USER, onSuccess, onError);
+    http.DELETE(USER, onSuccess, errorHandler(onError));
   },
 
   /*
@@ -68,7 +78,7 @@ const APIClient = {
    */
   centers(onSuccess, onError) {
     const CENTERS = '/api/centres';
-    http.GET(CENTERS, onSuccess, onError);
+    http.GET(CENTERS, onSuccess, errorHandler(onError));
   },
 
   /*
@@ -76,7 +86,7 @@ const APIClient = {
    */
   promotions(onSuccess, onError) {
     const PROMOTIONS = '/api/promotions';
-    http.GET(PROMOTIONS, onSuccess, onError);
+    http.GET(PROMOTIONS, onSuccess, errorHandler(onError));
   },
 
   /*
@@ -84,7 +94,7 @@ const APIClient = {
    */
   materials(onSuccess, onError) {
     const MATERIALS = '/materials';
-    http.GET(MATERIALS, onSuccess, onError);
+    http.GET(MATERIALS, onSuccess, errorHandler(onError));
   },
 
   /*
@@ -92,8 +102,13 @@ const APIClient = {
    */
   lamps(onSuccess, onError) {
     const LAMPS = '/api/lamps';
-    http.GET(LAMPS, onSuccess, onError);
+    http.GET(LAMPS, onSuccess, errorHandler(onError));
   },
+
+  subcampaigns(onSuccess, onError) {
+    const SUBCAMPAIGNS = '/subcampaigns';
+    http.GET(SUBCAMPAIGNS, onSuccess, errorHandler(onError));
+  }
 }
 
 export default APIClient;

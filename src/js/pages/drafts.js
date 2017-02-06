@@ -1,10 +1,9 @@
 import React from 'react';
 
 // components
-import { Page, Toolbar, Inbox } from 'tatami';
+import { Page, Toolbar, Inbox, ConfirmDialog } from 'tatami';
 import { Icon, FAB, Card, Header, Panel, List, Select} from 'seito';
 
-import { ConfirmDialog } from '../components/dialogs';
 import Form from '../components/form';
 import { JobItem, JobCard } from '../components/job';
 
@@ -50,7 +49,7 @@ class DRAFTS extends React.Component {
   }
 
   handleItemSelected = () => {
-    this.props.goto('LAMP');
+    this.setState({ draft: true })
   }
 
   handleUnSelect = () => {
@@ -98,10 +97,10 @@ class DRAFTS extends React.Component {
 
     const list = [
       <Panel title="Pendientes" collapsed={true}>
-        <JobItem ticket="0306 2019 0001 0001" title="Banderola GlassPack 60x140" motif="Nike"/>
-        <JobItem ticket="0306 2019 0001 0001" title="Banderola GlassPack 60x140" motif="Adidas"/>
-        <JobItem ticket="0306 2019 0001 0002" title="Canal Medio 200x100"  motif="Nike"/>
-        <JobItem ticket="0306 2019 0001 0003" title="Cartón Compacto 3mm"  motif="Nike"/>
+        <JobItem ticket="0306 2019 0001 0001" title="Banderola GlassPack 60x140" motif="Nike" onSelection={this.handleItemSelected}/>
+        <JobItem ticket="0306 2019 0001 0001" title="Banderola GlassPack 60x140" motif="Adidas" onSelection={this.handleItemSelected}/>
+        <JobItem ticket="0306 2019 0001 0002" title="Canal Medio 200x100"  motif="Nike" onSelection={this.handleItemSelected}/>
+        <JobItem ticket="0306 2019 0001 0003" title="Cartón Compacto 3mm"  motif="Nike" onSelection={this.handleItemSelected}/>
       </Panel>,
       <Panel title="Asignados">
         <JobItem ticket="0306 2019 0001 0004" title="Cartulina 12cm"  motif="Nike" img="cartel2.jpeg"/>

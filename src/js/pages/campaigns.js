@@ -1,12 +1,10 @@
 import React from 'react';
 
 // components
-import { Page, Toolbar} from 'tatami';
-import { Icon, Select, List, GroupList } from 'seito';
+import { Page, Toolbar, ConfirmDialog} from 'tatami';
+import { Icon, Select, List, GroupList, FAB } from 'seito';
 
-import { FAB } from '../components/button';
 import { InfoField, SearchBox } from '../components/field';
-import { ConfirmDialog } from '../components/dialogs';
 import Form from '../components/form';
 import API from '../api/apiClient';
 
@@ -142,14 +140,14 @@ const time = [
 const companies= [
     { label: 'EL CORTE INGLÉS', value: 'ECI' },
     { label: 'HIPERCOR', value: 'Hipercor' },
-    { label: 'ESFERA', value: 'Esfera' },
+    { label: 'SFERA', value: 'sfera' },
 ]
 
 const groups = [
   { label: 'Todos los grupos', value: '00000' },
-  { label: 'Clientes Moda', value: '00001' },
-  { label: 'Clientes Hogar', value: '00002' },
-  { label: 'Alimentación', value: '00003' },
+  { label: 'FV', value: '00001' },
+  { label: 'NV', value: '00002' },
+  { label: 'XV', value: '00003' },
 ]
 
 const clasifications = [

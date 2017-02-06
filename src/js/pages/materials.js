@@ -2,9 +2,7 @@ import React from 'react';
 
 // components
 import { Page, Toolbar } from 'tatami';
-import { List } from 'seito';
-
-import Icon from '../components/icon';
+import { Icon, Header, Button, List, SimpleListItem} from 'seito';
 
 // controller
 import controller from '../controllers/materials';
@@ -44,7 +42,7 @@ class Materials extends React.Component {
     this.state.items.forEach( material => {
       material.formats.forEach( format => {
         materials.push({
-          icon: 'recent_actors',
+          icon: 'burst_mode',
           title: material.mounting,
           subtitle: format,
           group: material.mounting
@@ -52,10 +50,15 @@ class Materials extends React.Component {
       })
     })
 
+    console.log(materials)
+
     return (
       <Page>
-        <Toolbar className="pageBar" icon="recent_actors" title="MATERIALES" />
-        <List title="Materiales" data={materials} itemStyle="tablerow" selected={true} groupBy="group"/>
+        <Toolbar className="pageBar" icon="burst_mode" title="MATERIALES" />
+        <List title="Materiales" data={materials} renderer= {SimpleListItem} groupBy="group"/>
+        <Header className="actionBar">
+          <Button label="New Material" className="primary" />
+        </Header>
       </Page>
     );
   }

@@ -44,3 +44,33 @@ $shadow1: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
   .grey {
     color: #888;
   }
+
+
+// button.scss
+
+  .primary {
+    background-color: $primary-color;
+    color: $primary-color-text;
+    &.disabled {
+      background-color: rgba($primary-color, .3);
+      cursor:inherit;
+    }
+  }
+
+  .danger {
+    background-color: $danger-color;
+    color: $primary-color-text;
+    &.disabled {
+      background-color: rgba($danger-color, .3);
+      cursor:inherit;
+    }
+  }
+
+  .accent {
+    background-color: $accent-color;
+    color: $primary-color-text;
+    &.disabled {
+      background-color: rgba($accent-color, .3);
+      cursor:inherit;
+    }
+  }

@@ -1,0 +1,12 @@
+@import '../app.scss';
+
+.material {
+  .inboxItem {
+    padding: 1rem;
+    border-bottom: solid 1px $divider-color;
+  }
+}
+
+.materialcard {
+  flex: 1;
+}

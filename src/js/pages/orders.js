@@ -2,9 +2,7 @@ import React from 'react';
 
 // components
 import { Page, Toolbar } from 'tatami';
-import { Header, Panel, List } from 'seito';
-
-import Icon from '../components/icon';
+import { Icon, Header, Panel, List } from 'seito';
 
 const Orders = (props) => {
 
