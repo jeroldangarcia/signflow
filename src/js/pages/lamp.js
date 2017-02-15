@@ -1,10 +1,9 @@
 import React from 'react';
 
 import { Page, Toolbar, Session, Dialog, ConfirmDialog } from 'tatami';
-import { Icon, Button, Header, Panel, List, Select } from 'seito';
+import { Icon, Button, Header, Panel, List, Select, Field } from 'seito';
 
 
-import { InfoField } from '../components/field';
 import Form from '../components/form';
 
 // controllers
@@ -29,16 +28,10 @@ class LAMP extends React.Component {
 
   handleAddDialog = () => {
     this.props.toggleDialog(
-      <ConfirmDialog title="Editar Material..." onClose={this.handleCloseDialog} onCancel={this.handleCloseDialog}>
+      <ConfirmDialog title="Seleccion Material..." onClose={this.handleCloseDialog} onCancel={this.handleCloseDialog}>
         <Form title="Material">
-          <InfoField label="Soporte" value=""/>
-          <InfoField label="Tamaño" value=""/>
-          <InfoField label="Motivo" value=""/>
-        </Form>
-        <Form title="Simulación coste">
-          <InfoField label="Unidades" value=""/>
-          <InfoField label="Proveedor" value=""/>
-          <InfoField label="Precio (€)" value=""/>
+          <Field label="Soporte" value=""/>
+          <Field label="Tamaño" value=""/>
         </Form>
       </ConfirmDialog>
     )
@@ -52,35 +45,19 @@ class LAMP extends React.Component {
     )
   }
 
-  handleEditDialog = () => {
+  handleEditDialog = (material) => {
     this.props.toggleDialog(
       <ConfirmDialog title="Editar Material..." onClose={this.handleCloseDialog} onCancel={this.handleCloseDialog}>
         <Form title="Material">
-          <InfoField label="Soporte" value="Banderola Glasspack"/>
-          <InfoField label="Tamaño" value="60x140"/>
-          <InfoField label="Motivo" value="Nike"/>
+          <Field label="Soporte" value="" readOnly={true}/>
+          <Field label="Tamaño" value="" readOnly={true}/>
+          <Field label="Motivo" value=""/>
         </Form>
-        <Form title="Simulación coste">
-          <InfoField label="Unidades" value="5"/>
-          <InfoField label="Proveedor" value="Proveedor 1"/>
-          <InfoField label="Precio (€)" value="100"/>
+        <Form title="Distribución">
+          <Field label="Idiomas" value=""/>
+          <Field label="Unidades" value=""/>
         </Form>
       </ConfirmDialog>
-    )
-  }
-
-  handleProviderDialog = () => {
-    const title = <div style={{ display: 'flex' }}>
-                    <span>Proveedor </span>
-                    <Select options={providerType} className="title-like"/>
-                  </div>
-
-    this.props.toggleDialog(
-      <Dialog title={title} onClose={this.handleCloseDialog} onCancel={this.handleCloseDialog}>
-        <div style={{ display: 'flex', flex: '1', overflow: 'auto', minHeight: '100px', maxHeight: '300px'}}>
-          <List data={providers} onSelection={this.handleCloseDialog} />
-        </div>
-      </Dialog>
     )
   }
 
@@ -89,9 +66,7 @@ class LAMP extends React.Component {
   }
 
   renderActions = () => {
-
     const me = Session.me();
-
     const actionsFor = {
       'marketing' : [
         <Button icon="done" label="Comentar" className="secondary"/>,
@@ -100,10 +75,6 @@ class LAMP extends React.Component {
       'ppv' : [
         <Button icon="done" label="Comentar" className="secondary"/>,
         <Button icon="cloud_upload" label="Publicar" className="primary"/>,
-        <Button icon="" label="Dotar Centros" className="accent"/>
-      ],
-      'realizacion': [
-        <Button icon="done" label="Asignar Proveedor" className="primary" action={this.handleProviderDialog}/>
       ]
     }
     const role = me.rol;
@@ -117,22 +88,29 @@ class LAMP extends React.Component {
     ] : '';
 
     const icons = [<span style={{ margin: '0', fontSize: '1.4rem'}}>Estimación: 500€</span>].concat(iconsFor);
-
-    const materials = this.state.materials.slice(0,5).map( (material,index) => {
-      const m = {
+    const info = (
+      <div style={{ flex: 1, display: 'flex', alignItems: 'center'}}>
+        <span className="flag-icon flag-icon-es flag-icon-squared"></span>
+        &nbsp;
+        <span className="flag-icon flag-icon-gb flag-icon-squared"></span>
+        &nbsp;&nbsp;&nbsp;
+        <span>5uds / 100€</span>
+      </div>
+    )
+    const materials = this.state.materials.slice(0,5).map((material,index) => {
+      return {
         id: '1',
         caption: '000 00000',
         icon: 'photo',
         label: `${material.mounting} ${material.formats[0]}`,
         subtitle: 'Nike',
-        info: '5uds / 100€',
+        info: info,
+        action: { icon: 'delete', do: this.handleDeleteDialog }
       }
-
-      return m;
     })
+
     return (
       <Page>
-
         <div style={{ paddingLeft: '.4rem', display: 'flex', justifyContent: 'flex-start', alignContent: 'center', lineHeight: '1.1rem', color: '#20A867', fontWeight: '400', fontSize: '1.3rem', textAlign: 'left' }}>
           <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>empresa:</span> El Corte Inglés</span> |
           <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>grupo:</span> ECI/FV Verticales OI 2016 </span> |
@@ -142,11 +120,9 @@ class LAMP extends React.Component {
         <Toolbar className="pageBar" icon="assignment" title="[21800] Directa - Catálogo - Black Friday 2016 Canarias" />
 
         <Panel title="Materiales"  collapsable={false} collapsed={false} actions={icons}>
-
           <div style={{ display: 'flex'}}>
-            <List data={materials} />
+            <List data={materials} onSelection={this.handleEditDialog}/>
           </div>
-
           <div style={{ display: 'flex', justifyContent: 'flex-end'}}>
             {this.renderActions()}
           </div>

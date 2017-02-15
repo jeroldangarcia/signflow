@@ -5,11 +5,17 @@ module.exports = env => {
     entry: {
       app: ['./js/main.js'],
       vendor: [
+        'chart.js',
         'react',
         'react-dom',
+        'react-hammerjs',
+        'react-sticky-position',
+        'react-chartjs-2',
         'blueimp-load-image',
         'es6-promise',
-        'whatwg-fetch'
+        'whatwg-fetch',
+        'clipboard-js',
+        'localforage',
       ],
     },
     output: {

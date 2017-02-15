@@ -37,7 +37,7 @@ const Order = (props) => {
 
 
   return (
-    <Page>
+    <Page className="order">
       <Toolbar icon="done" title="Solicitud de Materiales" />
 
       <Form title="Info ">

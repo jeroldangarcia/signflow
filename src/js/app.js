@@ -25,7 +25,6 @@ import Providers from './pages/providers';
 const Application = (props) => {
 
   const ctxMenu = [
-    { icon: 'fullscreen' , label: 'Full Screen'},
     { id: 'LOGIN', icon: 'exit_to_app', label: 'Exit'},
   ]
 

@@ -1,4 +1,4 @@
-@import './theme.scss';
+@import './zendo.scss';
 
 html {
   font-size:62.5%;
@@ -75,7 +75,6 @@ button {
 
 .badge {
   background-color: $primary-color-light;
-
   border-radius: 1rem;
   line-height: 1.1 !important;
   font-size: 1.1rem;
@@ -84,7 +83,6 @@ button {
   max-height: 2rem;
   align-self: center;
 }
-
 
 .flex20 {
   flex: .2;

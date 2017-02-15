@@ -1,11 +1,12 @@
 import React from 'react';
 
 // components
-import { Page, Toolbar, ConfirmDialog } from 'tatami';
+import { Page, Toolbar, ConfirmDialog, SearchBox } from 'tatami';
 import { Icon, FAB, Header, GroupList, Select } from 'seito';
-
-import { SearchBox } from '../components/field';
 import Form from '../components/form';
+
+// css
+import './lamps.scss';
 
 // controller
 import controller from '../controllers/lamps';
@@ -27,21 +28,6 @@ class LAMPS extends React.Component {
     controller.load((items) => {
       this.setState({ items });
     });
-  }
-
-  handleAddDialog = () => {
-    controller.load((promotions) => {
-      const options = promotions.map(promotion => {
-        return { label: promotion.title , value: promotion.id }
-      });
-      this.props.toggleDialog(
-        <ConfirmDialog title="Crear LAMP..." onClose={this.handleCloseDialog} onCancel={this.handleCloseDialog}>
-          <Form>
-            <Select label="Promocion" options={options}></Select>
-          </Form>
-        </ConfirmDialog>
-      )
-    })
   }
 
   handleCloseDialog = () => {
@@ -87,14 +73,13 @@ class LAMPS extends React.Component {
     });
 
     return (
-      <Page>
+      <Page className="lamps">
         <Toolbar className="pageBar" icon="inbox" title="SOLICITUDES de MATERIALES">
           <Select id="groupBy" label="Agrupadas por: " options={groupCriterias} onChange={this.handleGroupCriteria}/>
           <Icon icon="search" action={this.toggleSearch}/>
         </Toolbar>
         {searchBox}
         <GroupList data={solicitudes} onPrimaryAction={this.handleItemSelected}/>
-        <FAB icon="add" action={this.handleAddDialog} />
       </Page>
     );
   }
@@ -117,8 +102,6 @@ const groupCriterias = [
     ]},
     { id: '2', label: 'Aprobada', items: [
       { id: '11', icon: 'assignment', label: '[21800] Directa - Catálogo - Black Friday 2016', caption: '0000 / 00000', info: '10/11/2016' },
-    ]},
-    { id: '3', label: 'Pendiente Aprobación', items: [
       { id: '33', icon: 'assignment', label: '[21800] Directa - Catálogo - Black Friday 2016', caption: '0000 / 00000', info: '10/11/2016' },
       { id: '33', icon: 'assignment', label: '[21800] Directa - Catálogo - Black Friday 2016', caption: '0000 / 00000', info: '10/11/2016' },
     ]},

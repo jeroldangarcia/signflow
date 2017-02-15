@@ -3,17 +3,19 @@
 ## Reunión 1 Feb 2017
 
 #### Catálogo de Materiales para PPV
-- [ ] PPV solicita nuevo material a compras
+- [DONE] PPV solicita nuevo material a compras
 
 #### Solicitud de Materiales
-- [ ] Dialog de seleccion de materiales + motivo
+- [DONE] Dialog de edicion de materiales + motivo + unidades.
+
 - [ ] Después de la dotación a centros de PPV marketing asigna motivo y unidades a cada material.
-- [ ] La asignacion de motivos la hace Arte Final
-- [ ] generacionde codigos de OT con digitos de motivo
+- [ ] NO. La asignacion de motivos la hace Arte Final
+
+- [ ] generacion de codigos de OT con digitos de motivo.
 
 #### Idiomas
-El idioma lo decide MKT an la subcampaña
-- [ ] Generar un material por daca Idioma
+El idioma lo decide MKT en la subcampaña
+- [ ] Generar un material por cada idioma
 - [ ] Hay Materiales con formato específico. Reglas que prevalecen sobre la subcampaña:
   - Idiomas
   - distribucion
@@ -21,18 +23,10 @@ El idioma lo decide MKT an la subcampaña
 
  - [ ] PPV decide como se distribuyen los materiales/idioma a los centros.
 
-###### Tabla de listado de materiales
-
-    ----------------------------------------------
-    | Material | Formato | Idiomas | Centros     |
-    ----------------------------------------------
-    | arapiles |   ???   |  cast   | Castellana  |
-
-
 #### Provision de Materiales
 
-  - [ ] Sistema calcula desviación de coste respecto al primer proovedor
-  - [ ] Campo de observaciones para justificar el cambio de proveedor: Ofrece algunas razones frecuentes y/o un campo de texto libre.
+  - [DONE] Sistema muestra desviación de coste respecto al primer proovedor.
+  - [DONE] Campo de observaciones para justificar el cambio de proveedor: Ofrece algunas razones frecuentes y/o un campo de texto libre.
   - [ ] Vuelta atras de material acabado
     - al dar marcha atras especificar si conlleva coste adicional
     - mismo codigo OT aumentando el digito de version.
@@ -47,6 +41,11 @@ El idioma lo decide MKT an la subcampaña
   - [ ] Buscador
   - [ ] Seguimiento Solicitud
 
+###### Tabla de listado de materiales
+----------------------------------------------
+| Material | Formato | Idiomas | Centros     |
+----------------------------------------------
+| arapiles |   ???   |  cast   | Castellana  |
 
 
 ## Preguntas:

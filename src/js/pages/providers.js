@@ -1,10 +1,11 @@
 import React from 'react';
 
 import { Page, Toolbar, ConfirmDialog, Inbox, SearchBox } from 'tatami';
-import { List, Swapable, Field, HCard, Button, Icon, Panel, Tabs, Tab, Stack } from 'seito';
+import { Icon, List, Swapable, Field, HCard, Button, Panel, Tabs, Tab, Stack } from 'seito';
 import { MaterialListItem, MaterialInboxItem, MaterialCard } from '../components/material';
 
 import API from '../api/apiClient';
+import './providers.scss';
 
 const loadMaterials = (params, done) => {
   API.materials((data) => {
@@ -63,6 +64,7 @@ class Providers extends React.Component {
       <Page className="providers">
         <Toolbar icon="burst_mode" title="Provisión de Materiales" className="pageBar">
           <Field label="Agrupar por" value="Estado" />
+          <Icon icon="search" />
         </Toolbar>
         <Inbox items={items} viewer={viewer} onCloseViewer={this.handleUnSelect}/>
       </Page>

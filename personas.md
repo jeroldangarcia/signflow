@@ -13,6 +13,7 @@ Ejecutivo marketing.
 
 #### Necesidades
 - Quiere informacion en tiempo real del estado/progreso de una campaña.
+- Quiere que la solicitudes de materiales se inicien automaticamente.
 
 ## Julio Huete [PPV Central]
 
@@ -54,3 +55,8 @@ Ejecutivo marketing.
 
 #### Necesidades
 - Que el sistema asigne a cada material el proveedor recomendado automaticamente.
+
+## Javier Rayon
+
+#### Necesidades
+- Quiere un dashboard qque le permita hacer el seguimiento de los materiales.

@@ -7,6 +7,9 @@ import { Icon, FAB, Card, Header, Panel, List, Select} from 'seito';
 import Form from '../components/form';
 import { JobItem, JobCard } from '../components/job';
 
+// css
+import './drafts.scss';
+
 // controller
 import controller from '../controllers/lamps';
 import promotions from '../controllers/promotions';
@@ -96,7 +99,7 @@ class DRAFTS extends React.Component {
     })
 
     const list = [
-      <Panel title="Pendientes" collapsed={true}>
+      <Panel title="Pendientes" collapsed={false}>
         <JobItem ticket="0306 2019 0001 0001" title="Banderola GlassPack 60x140" motif="Nike" onSelection={this.handleItemSelected}/>
         <JobItem ticket="0306 2019 0001 0001" title="Banderola GlassPack 60x140" motif="Adidas" onSelection={this.handleItemSelected}/>
         <JobItem ticket="0306 2019 0001 0002" title="Canal Medio 200x100"  motif="Nike" onSelection={this.handleItemSelected}/>
@@ -115,12 +118,13 @@ class DRAFTS extends React.Component {
       : '';
 
     return (
-      <Page>
+      <Page className="drafts">
         {breadcrumb}
         <Toolbar icon="burst_mode" title={title} className="pageBar">
           <Select label="Ver como" options={views} />
           &nbsp;|&nbsp;
           <Select label="Agrupado por" options={groupBy} />
+          <Icon icon="search" />
         </Toolbar>
         <Inbox items={list} viewer={viewer} onCloseViewer={this.handleUnSelect} />
       </Page>

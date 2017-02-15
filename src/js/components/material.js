@@ -1,6 +1,6 @@
 import React from 'react';
 import { Dialog, ConfirmDialog } from 'tatami';
-import { Field, HCard, Tabs, Tab, Stack, Button, InfoLine, Select, List, Panel } from  'seito';
+import { Header, Field, HCard, Tabs, Tab, Stack, Button, InfoLine, Select, List, Panel } from  'seito';
 import './material.scss';
 import clipboard from 'clipboard-js';
 
@@ -54,11 +54,11 @@ class MaterialCard extends React.Component  {
     )
 
     this.props.toggleDialog(
-      <Dialog title={title} onClose={this.handleCloseDialog} onCancel={this.handleCloseDialog}>
-        <div style={{ display: 'flex', flex: '1', overflow: 'auto', minHeight: '100px', maxHeight: '300px'}}>
-          <List data={providers} onSelection={this.handleCloseDialog} />
-        </div>
-      </Dialog>
+      <ConfirmDialog title={title} onClose={this.handleCloseDialog} onCancel={this.handleCloseDialog}>
+          <Header className="pageBar" icon="burst_mode" title="[Nombre Material]" ></Header>
+          <List data={providers} />
+          <Field label="Razón:" />
+      </ConfirmDialog>
     )
   }
 
@@ -115,13 +115,13 @@ const providerType = [
 ]
 
 const providers = [
-    { icon: 'store', title:'Proveedor 1', subtitle:'load: 100%', info: '100$'},
-    { icon: 'store', title:'Proveedor 2', subtitle:'load: 200%', info: '200$'},
-    { icon: 'store', title:'Proveedor 3', subtitle:'load: 50%', info: '300$'},
-    { icon: 'store', title:'Proveedor 4', subtitle:'load: 20%', info: '320$'},
-    { icon: 'store', title:'Proveedor 6', subtitle:'load: 40%', info: '350$'},
-    { icon: 'store', title:'Proveedor 7', subtitle:'load: 120%', info: '400$'},
-    { icon: 'store', title:'Proveedor 8', subtitle:'load: 0%', info: '410$'},
+    { icon: 'local_shipping', title:'Proveedor 1', subtitle:'desviacion: +10€', info: '100$'},
+    { icon: 'local_shipping', title:'Proveedor 2', subtitle:'desviacion: +20€', info: '200$'},
+    { icon: 'local_shipping', title:'Proveedor 3', subtitle:'desviacion: +30€', info: '300$'},
+    { icon: 'local_shipping', title:'Proveedor 4', subtitle:'desviacion: +32€', info: '320$'},
+    { icon: 'local_shipping', title:'Proveedor 6', subtitle:'desviacion: +35€', info: '350$'},
+    { icon: 'local_shipping', title:'Proveedor 7', subtitle:'desviacion: +40€', info: '400$'},
+    { icon: 'local_shipping', title:'Proveedor 8', subtitle:'desviacion: +41€', info: '410$'},
 ]
 
 export { MaterialListItem, MaterialInboxItem, MaterialCard, Material }

@@ -1,12 +1,15 @@
 import React from 'react';
 
 // components
-import { Page, Toolbar, ConfirmDialog} from 'tatami';
+import { Page, Toolbar, ConfirmDialog, SearchBox} from 'tatami';
 import { Icon, Select, List, GroupList, FAB } from 'seito';
 
-import { InfoField, SearchBox } from '../components/field';
+import { InfoField } from '../components/field';
 import Form from '../components/form';
 import API from '../api/apiClient';
+
+// css
+import './campaigns.scss';
 
 // controller
 import controller from '../controllers/promotions';
@@ -16,7 +19,6 @@ import session from '../stores/session';
 
 const loadCampaigns = (params, done) => {
   API.campaigns((data) => {
-    console.log(data);
     done({campaigns: data})
   }, (error) => {
     console.log(error);
@@ -101,7 +103,7 @@ class Campaigns extends React.Component {
     </div> : '';
 
     return (
-      <Page>
+      <Page className="campaigns">
 
         <Toolbar className="pageBar" icon="card_giftcard" title={title}>
           <Select options={groups} />
