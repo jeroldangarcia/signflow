@@ -1,17 +1,14 @@
-//const DOMAIN = 'https://signflow.herokuapp.com';
 const DOMAIN = window.DOMAIN;
-//const DOMAIN = 'http://192.168.2.62:5555';
-
-// stores
-import session from '../stores/session';
 
 // IO
-import { HTTPClient } from 'tatami';
-const http = HTTPClient(DOMAIN, session);
+import { HTTPClient, Session } from 'tatami';
+const http = HTTPClient(DOMAIN, Session);
 
 const MESSAGES = {
+  400: 'Los datos enviados no son correctos',
   401: 'Usuario/Contraseña no encontrado.\r\n Por favor identifiquese de nuevo..',
   403: 'Su sesión a caducado.\r\n Por favor identifiquese de nuevo..',
+  404: 'Recurso no encontrado.',
   500: 'Error grave de sistema',
   1000: 'Sin Conexion',
 }

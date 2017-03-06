@@ -1,5 +1,10 @@
 @import './zendo.scss';
 
+  $red: #F00;
+  $green: #448844;
+  $blue: #440088;
+  $grey: #888;
+
 html {
   font-size:62.5%;
   box-sizing: border-box;
@@ -38,7 +43,7 @@ body {
     color: $primary-text-color;
     background-color: transparent !important;
     border-bottom: solid 2px;
-    margin-bottom: 1rem;
+    //margin-bottom: 1rem;
   }
 }
 
@@ -137,20 +142,36 @@ button {
   >.right {
     align-self: flex-end;
   }
+}
 
   .red {
-    color: #ff4400;
+    color: #ff4400 !important;
   }
 
   .green {
-    color: #00FF44;
+    color: #22a969 !important;
   }
 
   .blue {
-    color: #4400FF;
+    color: #4400FF !important;
   }
 
   .grey {
-    color: $divider-color;
+    color: $divider-color !important;
   }
-}
+
+  .bgred {
+    background-color: rgba($red, .5) !important;
+  }
+
+  .bggreen {
+    background-color: #22a969 !important;
+  }
+
+  .bgblue {
+    background-color: #4400FF !important;
+  }
+
+  .bggrey {
+    background-color: $divider-color !important;
+  }

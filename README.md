@@ -1,55 +1,51 @@
 # Signflow
 
-## Reunión 1 Feb 2017
+## Maqueta Funcional
 
-#### Catálogo de Materiales para PPV
-- [DONE] PPV solicita nuevo material a compras
+### Instalación
 
-#### Solicitud de Materiales
-- [DONE] Dialog de edicion de materiales + motivo + unidades.
+#### Requisitos Técnicos
+- NodeJS
+- GIT
 
-- [ ] Después de la dotación a centros de PPV marketing asigna motivo y unidades a cada material.
-- [ ] NO. La asignacion de motivos la hace Arte Final
+##### Obtención del proyecto
 
-- [ ] generacion de codigos de OT con digitos de motivo.
+La maqueta consta de dos piezas diferenciadas cada una en su propio repositorio. Sera necesario descargar ambos proyectos mediante GIT:
 
-#### Idiomas
-El idioma lo decide MKT en la subcampaña
-- [ ] Generar un material por cada idioma
-- [ ] Hay Materiales con formato específico. Reglas que prevalecen sobre la subcampaña:
-  - Idiomas
-  - distribucion
-  - costes
+ - API:
 
- - [ ] PPV decide como se distribuyen los materiales/idioma a los centros.
+        git clone [repo]/signflow
 
-#### Provision de Materiales
+ - Cliente Web
 
-  - [DONE] Sistema muestra desviación de coste respecto al primer proovedor.
-  - [DONE] Campo de observaciones para justificar el cambio de proveedor: Ofrece algunas razones frecuentes y/o un campo de texto libre.
-  - [ ] Vuelta atras de material acabado
-    - al dar marcha atras especificar si conlleva coste adicional
-    - mismo codigo OT aumentando el digito de version.
-    - reutiliza el mismo albaran y distribucion.
-
-#### Arte Final
- - [ ] Actividades:
-  - Quien hace el cartel
-  - Cuando lo acaba
-
-#### Nueva Pantalla: Reporte Estado Peticion de materiales
-  - [ ] Buscador
-  - [ ] Seguimiento Solicitud
-
-###### Tabla de listado de materiales
-----------------------------------------------
-| Material | Formato | Idiomas | Centros     |
-----------------------------------------------
-| arapiles |   ???   |  cast   | Castellana  |
+        git clone [repo]/signflow_api
 
 
-## Preguntas:
+##### Puesta en marcha
 
-  - [x] ¿ Como se calcula el coste medio por material/formato en la simulacion de la solicitud de materiales ?
+ - API:
 
-    > la media de los tres primeros
+        npm install
+        npm start
+
+  Arranca un API rest en la direccion http://localhost:5000
+
+ - Cliente Web: npm start
+
+        npm install
+        npm start
+
+  Arranca un servidor web en la dirección http://localhost:4444
+
+##### Uso
+
+  El Navegador recomendado es Chrome.
+  La direccion local es:
+
+      http://localhost:4444
+
+  En la pantalla de login, bajo la pestaña de USERS podemos encontrar un listado de clientes de la aplicación con distintos roles.
+
+  <center>
+    <img src="./doc/images/login1.png" alt="login" style="width: 200px;"/>
+  </center>

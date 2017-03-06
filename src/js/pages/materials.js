@@ -1,8 +1,8 @@
 import React from 'react';
 
 // components
-import { Page, Toolbar, ConfirmDialog } from 'tatami';
-import { Header, Button, Field, List, SimpleListItem} from 'seito';
+import { Page, Toolbar, ConfirmDialog, SearchBox } from 'tatami';
+import { Header, Icon, Button, Field, List, SimpleListItem} from 'seito';
 
 // controller
 import controller from '../controllers/materials';
@@ -35,7 +35,6 @@ class Materials extends React.Component {
   }
 
   render () {
-
     let materials = [];
     this.state.items.forEach( material => {
       material.formats.forEach( format => {
@@ -43,15 +42,30 @@ class Materials extends React.Component {
           icon: 'burst_mode',
           title: material.mounting,
           subtitle: format,
-          group: material.mounting
+          group: material.mounting,
+          actions: (
+                  <div style={{ flex: 1, display: 'flex', alignItems: 'center'}}>
+                    <Icon icon="store" className="small"/>
+                    <span>Todos</span>
+                    &nbsp;&nbsp;&nbsp;
+                    <span className="flag-icon flag-icon-es flag-icon-squared"></span>
+                    &nbsp;
+                    <span className="flag-icon flag-icon-gb flag-icon-squared"></span>
+                    &nbsp;&nbsp;&nbsp;
+                    <Icon icon="delete" className="small clickable"/>
+                  </div>
+
+          )
         })
       })
     })
 
     return (
       <Page>
-        <Toolbar className="pageBar" icon="burst_mode" title="MATERIALES" />
-        <List title="Materiales" data={materials} renderer={SimpleListItem} groupBy="group"/>
+        <Toolbar className="pageBar" icon="burst_mode" title="MATERIALES">
+          <SearchBox />
+        </Toolbar>
+        <List data={materials} renderer={SimpleListItem} groupBy="group"/>
         <Header className="actionBar">
           <Button label="New Material" className="primary" action={this.newMaterialDialog}/>
         </Header>

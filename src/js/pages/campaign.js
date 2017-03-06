@@ -5,10 +5,9 @@ import {Line, Doughnut} from 'react-chartjs-2';
 
 // components
 import { Page, Toolbar, ConfirmDialog } from 'tatami';
-import { Icon, Button, Header, Panel, Tabs, Tab, Stack } from 'seito';
+import { Icon, Button, Header, Panel, Tabs, Tab, Stack, Form, Field, Select } from 'seito';
 
-import Form from '../components/form';
-import { Select, InfoField } from '../components/field';
+import { InfoField } from '../components/field';
 import Timeline from '../components/timeline';
 
 import API from '../api/apiClient';
@@ -46,14 +45,14 @@ class Campaign extends React.Component {
       this.props.toggleDialog(
         <ConfirmDialog title="Info de Campaña" onClose={this.handleCloseDialog} onCancel={this.handleCloseDialog}>
           <Form title="Info">
-            <InfoField label="Empresa" value="" />
-            <InfoField label="Grupo" value="" />
-            <InfoField label="Clasificación" value="" />
-            <InfoField label="Nombre" value="" />
+            <Field label="Empresa" value="" />
+            <Field label="Grupo" value="" />
+            <Field label="Clasificación" value="" />
+            <Field label="Nombre" value="" />
           </Form>
           <Form title="Planificación">
-            <InfoField label="Fecha Inicio" value="" />
-            <InfoField label="Fecha Fin" value="" />
+            <Field label="Fecha Inicio" value="" />
+            <Field label="Fecha Fin" value="" />
           </Form>
         </ConfirmDialog>
       )
@@ -63,16 +62,12 @@ class Campaign extends React.Component {
       this.props.toggleDialog(
         <ConfirmDialog title="Objetivos" onClose={this.handleCloseDialog} onCancel={this.handleCloseDialog}>
           <Form title="Primario">
-            <InfoField label="Tipo" value="" />
-            <InfoField label="Objetivo" value="" />
+            <Select label="Tipo" options={targetTypes} value="" />
+            <Field label="Objetivo" value="" />
           </Form>
-          <Form title="Secundario 1">
-            <InfoField label="Tipo" value=""/>
-            <InfoField label="Objetivo" value=""/>
-          </Form>
-          <Form title="Secundario 2">
-            <InfoField label="Tipo" value=""/>
-            <InfoField label="Objetivo" value=""/>
+          <Form title="Secundario">
+            <Select label="Tipo" options={targetTypes} value=""/>
+            <Field label="Objetivo" value=""/>
           </Form>
         </ConfirmDialog>
       )
@@ -82,14 +77,14 @@ class Campaign extends React.Component {
       this.props.toggleDialog(
         <ConfirmDialog title="Nueva Subcampaña..." onClose={this.handleCloseDialog} onCancel={this.handleCloseDialog}>
           <Form title="Info">
-            <InfoField label="Codigo" value="" />
-            <InfoField label="Departamento" value="" />
-            <InfoField label="Tipo" value=""/>
-            <InfoField label="Nombre" value="" />
+            <Field label="Codigo" value="" />
+            <Field label="Departamento" value="" />
+            <Field label="Tipo" value=""/>
+            <Field label="Nombre" value="" />
           </Form>
           <Form title="Planificación">
-            <InfoField label="Inicio" value=""/>
-            <InfoField label="Fin" value=""/>
+            <Field label="Inicio" value=""/>
+            <Field label="Fin" value=""/>
           </Form>
         </ConfirmDialog>
       )
@@ -158,7 +153,7 @@ class Campaign extends React.Component {
 
     return (
       <Page>
-        <div style={{ paddingLeft: '.4rem', display: 'flex', justifyContent: 'flex-start', alignContent: 'center', lineHeight: '1.1rem', color: '#20A867', fontWeight: '400', fontSize: '1.3rem', textAlign: 'left' }}>
+        <div style={{ marginTop: '1rem', paddingLeft: '.4rem', display: 'flex', justifyContent: 'flex-start', alignContent: 'center', lineHeight: '1.1rem', color: '#20A867', fontWeight: '400', fontSize: '1.3rem', textAlign: 'left' }}>
           <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>empresa:</span> El Corte Inglés</span> |
           <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>grupo:</span> ECI/FV Verticales OI 2016 </span> |
           <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>clasificación:</span> Fuerza de Venta/mixta </span>
@@ -184,7 +179,7 @@ class Campaign extends React.Component {
           </div>
         </Panel>
 
-        <Panel title="Gastos Por Departamento" collapsable={true} collapsed={false} actions={budgetActions}>
+        <Panel title="Gastos Campaña" collapsable={true} collapsed={false} actions={budgetActions}>
           <div style={{ display: 'flex'}}>
             <div style={{ flex: '1.3'}}>
               <Panel className="infopanel" icon="attach_money" title="Medios" actions={<span>813.098,58€</span>} collapsable={true} collapsed={true}>
@@ -291,7 +286,6 @@ class Campaign extends React.Component {
         <Stack selected={this.state.tab}>
 
           <div>
-            {subcampaignsActions}
             {this.props.ctx.subcampaigns.map(this.renderSubcampaign)}
           </div>
 
@@ -346,6 +340,13 @@ const activity = [
   { icon: 'remove_circle_outline', title:'<usuario2> elimina <material4>', subtitle:'01/10/2016'},
   { icon: 'cloud_done', title:'<usuario2> aprueba <LAMP>', subtitle:'01/10/2016'},
   { icon: 'cloud_upload', title:'<usuario3> publica <LAMP>', subtitle:'01/10/2016'},
+]
+
+const targetTypes = [
+  { label: '', value: '0'},
+  { label: 'Venta Tráfico', value: '1'},
+  { label: 'Venta Tráfico Generico', value: '2'},
+  { label: 'Visibilidad', value: '3'}
 ]
 
 export default Campaign;

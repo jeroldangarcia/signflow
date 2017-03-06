@@ -2,15 +2,13 @@ import React from 'react';
 
 // components
 import { Page, Toolbar, ConfirmDialog, SearchBox } from 'tatami';
-import { Icon, FAB, Header, GroupList, Select } from 'seito';
-import Form from '../components/form';
+import { Icon, FAB, Header, GroupList, Form, Select } from 'seito';
 
 // css
 import './lamps.scss';
 
 // controller
 import controller from '../controllers/lamps';
-import promotions from '../controllers/promotions';
 
 /**
  * LAMPS Page

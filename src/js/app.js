@@ -15,7 +15,7 @@ import LAMP from './pages/lamp';
 import Orders from './pages/orders';
 import Order from './pages/order';
 import Drafts from './pages/drafts';
-import Draft from './pages/draft';
+//import Draft from './pages/draft';
 import Supplies from './pages/supply';
 import Providers from './pages/providers';
 
@@ -28,22 +28,31 @@ const Application = (props) => {
     { id: 'LOGIN', icon: 'exit_to_app', label: 'Exit'},
   ]
 
+  const menu0 = [
+    { id: 'MATERIALS'    , label: 'Materiales'            , icon: 'recent_actors' , roles: [ 'compras' ]},
+    { id: 'LAMPS'        , label: 'Solicitudes Materiales', icon: 'assignment'    , roles: [ 'compras' ], info: '7'},
+
+  ]
+
   const menu1 = [
-    { id: 'CAMPAIGNS'    , label: 'Campañas'              , icon: 'card_giftcard' , roles: [ 'marketing', 'ppv', 'realizacion', 'compras' ]},
-    { id: 'MATERIALS'    , label: 'Materiales'            , icon: 'recent_actors' , roles: [ 'compras', 'ppv' ]},
+    { id: 'MATERIALS'    , label: 'Materiales'            , icon: 'recent_actors' , roles: [ 'marketing' ]},
+    { id: 'CAMPAIGNS'    , label: 'Campañas'              , icon: 'card_giftcard' , roles: [ 'marketing', 'ppv', 'realizacion' ]},
   ]
 
   const menu2 = [
-    { id: 'LAMPS'        , label: 'Solicitudes Materiales', icon: 'assignment' , roles: [ 'ppv', 'marketing' ], info: '7'},
-    { id: 'SUPPLIES'     , label: 'Dotaciones Centros'    , icon: 'store'      , roles: [ 'ppv', 'marketing' ]},
+    { id: 'MATERIALS'    , label: 'Materiales'            , icon: 'recent_actors' , roles: [ 'ppv' ]},
+    { id: 'LAMPS'        , label: 'Solicitudes Materiales', icon: 'assignment'    , roles: [ 'ppv', 'marketing' ], info: '7'},
+    { id: 'SUPPLIES'     , label: 'Dotaciones Centros'    , icon: 'store'         , roles: [ 'ppv', 'marketing' ]},
   ]
 
   const menu3 = [
-    { id: 'PROVIDERS', label: 'Provision Materiales', icon: 'burst_mode', roles: [ 'realizacion' ], info: '10'},
-    { id: 'DRAFTS'   , label: 'Arte Final'          , icon: 'burst_mode', roles: [ 'artefinal' ]  , info: '10'},
+    { id: 'MATERIALS', label: 'Materiales'          , icon: 'recent_actors' , roles: [ 'realizacion' ]},
+    { id: 'PROVIDERS', label: 'Provision Materiales', icon: 'burst_mode'    , roles: [ 'realizacion' ], info: '10'},
+    { id: 'DRAFTS'   , label: 'Arte Final'          , icon: 'burst_mode'    , roles: [ 'artefinal' ]  , info: '10'},
   ]
 
   const appDrawer = <Drawer>
+                      <Menu title="Compras"        options={menu0} />
                       <Menu title="InterMarketing" options={menu1} />
                       <Menu title="PPV"            options={menu2} />
                       <Menu title="Realización"    options={menu3} />
@@ -61,7 +70,7 @@ const Application = (props) => {
     'LAMPS'     : <LAMPS     drawer={true} />,
     'LAMP'      : <LAMP      drawer={true} />,
     'DRAFTS'    : <Drafts    drawer={true} />,
-    'DRAFT'     : <Draft     drawer={true} />,
+//    'DRAFT'     : <Draft     drawer={true} />,
     'SUPPLIES'  : <Supplies  drawer={true} />,
     'ORDERS'    : <Orders    drawer={true} />,
     'ORDER'     : <Order     drawer={true} />,
@@ -78,7 +87,7 @@ export default Application;
 
   const users = [
     {id:'p_lopez', icon:'person', title:'Pedro Lopez', caption:'Compras', role: 'compras'},
-    {id:'d_echebarria', icon:'person', title:'David Echevarria', caption:'Marketing', role: 'marketing' },
+    {id:'d_echebarria', icon:'person', title:'David Echebarria', caption:'Marketing', role: 'marketing' },
     {id:'j_huete', icon:'person', title:'Julio Huete', caption:'PPV', role: 'ppv'},
     {id:'j_rayon', icon:'person', title:'Javier Rayón', caption:'Realización', role: 'realizacion'},
     {id:'p_mercado', icon:'person', title:'Paco Mercado', caption:'Arte Final', role: 'artefinal'},

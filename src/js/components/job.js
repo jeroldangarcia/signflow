@@ -78,36 +78,39 @@ const JobCard = (props) => {
 
       <main style={{ borderTop: '1px dotted #CCC', paddingTop: '2rem'}}>
         <aside>
-          <span><span className="grey">&nbsp; 10/10/2016 &nbsp;</span><Icon className="small red step" icon="brush" /></span>
+          <span><span className="grey">&nbsp; 10/10/2016 &nbsp;</span><Icon className="small red step" icon="subdirectory_arrow_left" /></span>
           <div style={{ border: 'dashed 2px #CCC', width: '2px', flex: '1', marginRight: '1.3rem'}} />
         </aside>
         <section>
-          <Icon className="thumb small" icon="person" />
-          <span><span className="subtitle">Javier Rayon</span><span> ha asignado el Boceto </span><span className="subtitle">a Daniel García</span></span>
+          <span>
+            <Icon className="thumb tiny" icon="person" />
+            <span className="subtitle">&nbsp;&nbsp;Paco Mercado</span><span> ha asignado el Trabajo </span><span className="subtitle">a Daniel García <Icon className="thumb tiny" icon="person" /></span>
+          </span>
         </section>
       </main>
 
       <main>
         <aside>
-          <span><span className="grey">&nbsp; 10/10/2016 &nbsp;</span><Icon className="small blue step" icon="brush" /></span>
+          <span><span className="grey">&nbsp; 10/10/2016 &nbsp;</span><Icon className="small blue step" icon="done" /></span>
           <div style={{ border: 'dashed 2px #CCC', width: '2px', flex: '1', marginRight: '1.3rem'}} />
         </aside>
         <section>
-          <Icon className="thumb small" icon="person" />
-          <span><span className="subtitle">Daniel Garcia</span><span> ha presentado el Boceto </span></span>
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-            <img src={props.img} width="30%"/>
-          </div>
+          <span>
+            <Icon className="thumb small" icon="person" />
+            <span className="subtitle">&nbsp;&nbsp;Daniel Garcia</span><span> ha terminado el Trabajo </span>
+          </span>
         </section>
       </main>
 
       <main>
         <aside>
-          <span><span className="grey">&nbsp; 10/10/2016 &nbsp;</span><Icon className="small green step" icon="done" /></span>
+          <span><span className="grey">&nbsp; 10/10/2016 &nbsp;</span><Icon className="small green step" icon="done_all" /></span>
         </aside>
         <section>
-          <Icon className="thumb small" icon="person" />
-          <span><span className="subtitle">Javier Rayón</span><span> ha validado el Boceto </span></span>
+          <span>
+            <Icon className="thumb small" icon="person" />
+            <span className="subtitle">&nbsp;&nbsp;Paco Mercado</span><span> ha validado el Trabajo </span>
+          </span>
         </section>
       </main>
 

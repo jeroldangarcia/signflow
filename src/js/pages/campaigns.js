@@ -1,11 +1,10 @@
 import React from 'react';
 
 // components
-import { Page, Toolbar, ConfirmDialog, SearchBox} from 'tatami';
-import { Icon, Select, List, GroupList, FAB } from 'seito';
+import { Page, Toolbar, ConfirmDialog, SearchBox, Schedule } from 'tatami';
+import { Icon, Select, Form, Field, List, SimpleListItem, GroupList, FAB, Panel, Switch, Menu } from 'seito';
 
 import { InfoField } from '../components/field';
-import Form from '../components/form';
 import API from '../api/apiClient';
 
 // css
@@ -15,11 +14,38 @@ import './campaigns.scss';
 import controller from '../controllers/promotions';
 
 // store
-import session from '../stores/session';
+import { Session } from 'tatami';
 
 const loadCampaigns = (params, done) => {
+
+  const onDelete = () => {
+    alert('TODO: Delete Campaign Dialog');
+  }
+
+  const onSwap = () => {
+    alert('TODO: Move Camapaign to other Group Dialog');
+  }
+
   API.campaigns((data) => {
-    done({campaigns: data})
+    const campaigns = data.map(cpn => {
+      const info = `${cpn.date1.day} ${cpn.date1.month} - ${cpn.date2.day} ${cpn.date2.month}`;
+      const actions = (
+        <span style={{ display: 'flex', alignItems: 'center', height: '100%'}}>
+          {cpn.date1.day} {cpn.date1.month} - {cpn.date2.day} {cpn.date2.month}
+          &nbsp;&nbsp;
+          <span className="badge">5</span>
+          &nbsp;&nbsp;
+          <Icon icon="swap_vert" className="clickable small green" action={onSwap}/>
+          &nbsp;&nbsp;
+          <Icon icon="delete" className="clickable small green" action={onDelete}/>
+        </span>
+      );
+      const icon = '';
+      const avatar = '';
+      const color = Math.random() >= .5 ? 'bgred' : 'bggreen';
+      return Object.assign( cpn, { info, icon, avatar, actions, color })
+    })
+    done({ campaigns })
   }, (error) => {
     console.log(error);
   })
@@ -59,14 +85,33 @@ class Campaigns extends React.Component {
     this.props.toggleDialog(
       <ConfirmDialog title="Nueva Campaña" onOK={onOK} onCancel={onOK} onClose={onOK}>
         <Form title="Campaña">
-          <InfoField id="" label="Nombre" />
-          <InfoField id="" label="Fecha Inicio" />
-          <InfoField id="" label="Fecha Fin" />
-          <InfoField id="" label="Empresa" />
+          <Field id="" label="Empresa" value="EL CORTE INGLES" readOnly={true}/>
+          <Field id="" label="Grupo" value="CO-Campañas Clientes Cultura, Ocio y Deportes 2017" readOnly={true}/>
+          <Field id="" label="Nombre" />
+          <Field id="" label="Fecha Inicio" />
+          <Field id="" label="Fecha Fin" />
+          <Field id="" label="Empresa" />
         </Form>
         <Form title="Subcampañas">
           <div><input type="checkbox" /><label>Catálogo</label></div>
           <div><input type="checkbox" /><label>Cartelería Gran Formato</label></div>
+        </Form>
+      </ConfirmDialog>
+    )
+  }
+
+  handleAddGroup = () => {
+    const onOK = () => {
+      this.props.toggleDialog(null);
+    }
+
+    this.props.toggleDialog(
+      <ConfirmDialog title="Nuevo Grupo de Campaña" onOK={onOK} onCancel={onOK} onClose={onOK}>
+        <Form title="Grupo">
+          <Field id="" label="Empresa" value="EL CORTE INGLES" readOnly={true}/>
+          <Field id="" label="Nombre" />
+          <Field id="" label="Fecha Inicio" />
+          <Field id="" label="Fecha Fin" />
         </Form>
       </ConfirmDialog>
     )
@@ -84,39 +129,62 @@ class Campaigns extends React.Component {
     this.setState({ search: value });
   }
 
+  handleEdit = () => {
+    alert("TODO: edit/view group info dialog")
+  }
+
   renderFAB() {
-    const rol = session.rol();
+    const rol = Session.rol();
     return rol === 'marketing' || rol === 'ppv' ? <FAB icon="add" action={this.handleAdd}/> : '';
+  }
+
+  renderGroup = (props) => {
+    const actions = [
+      <Icon icon="edit" className="clickable small" action={this.handleEdit}/>,
+      <Icon icon="add" className="clickable " action={this.handleAdd} />,
+    ]
+    return (
+      <li style={{ position: 'relative', top: 0, backgroundColor: '#FFF', listStyleType: 'none', paddingLeft: '1.6rem'}}>
+        <Panel title={props.title} collapsed={true} collapsable={false} actions={actions}/>
+      </li>
+    )
   }
 
   render () {
 
-    console.log('CAMPIGNS', this.props.ctx)
+    const pageMenu = [
+      { icon: 'check_circle', label: 'Ver Grupos' },
+      { icon: 'radio_button_unchecked', label: 'Ver SubCampañas' },
+      { icon: 'insert_drive_file', label: 'Informe Excel'}
+    ]
 
-    const title = <div style={{ display: 'flex' }}>
-                    <span>CAMPAÑAS</span>
-                    <Select options={companies} className="title-like"/>
-                  </div>
+    const title = [
+      <span>CAMPAÑAS</span>,
+      <Select options={companies} value="0"/>
+    ]
 
-    const searchBox = this.state.searching ? <div style={{ display: 'flex'}}>
-      <SearchBox onChange={this.handleSearch} />
+    const searchBox = this.state.searching ? <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around' }}>
+      <SearchBox onChange={this.handleSearch} className="flex80"/>
+      OrderBy:
+      <Icon icon="date_range" className="clickable small" />
+      <Icon icon="sort_by_alpha" className="clickable small" />
     </div> : '';
 
     return (
       <Page className="campaigns">
 
-        <Toolbar className="pageBar" icon="card_giftcard" title={title}>
-          <Select options={groups} />
-          <Select options={stateCriterias} />
+        <Toolbar className="pageBar" icon="card_giftcard" title={title} menu={pageMenu}>
           <Select options={time} />
-          <Icon icon="search" action={this.toggleSearch}/>
+          <Select options={stateCriterias} />
+          <Icon icon="search" action={this.toggleSearch} />
         </Toolbar>
 
         {searchBox}
 
-        <GroupList data={this.props.ctx.campaigns} onPrimaryAction={this.gotoCampaign}/>
+        <List data={this.props.ctx.campaigns} renderer={SimpleListItem} onSelection={this.gotoCampaign} groupBy="groupBy" groupRenderer={this.renderGroup}/>
 
-        <FAB icon="add" action={this.handleAdd}/>
+        <FAB icon="add" action={this.handleAddGroup}/>
+
       </Page>
     );
   }
@@ -124,8 +192,20 @@ class Campaigns extends React.Component {
 };
 
 export default Campaigns;
-
-
+/*
+<Select options={groups}         />
+<Select options={stateCriterias} />
+<Select options={time}           />
+<Schedule events={this.props.ctx.campaigns2} groupBy="groupBy" onSelection={this.gotoCampaign} groupRenderer={this.renderGroup}/>
+<GroupList data={this.props.ctx.campaigns} onPrimaryAction={this.gotoCampaign}/>
+  const events = [
+      { "id": "11", color: "#FF8888", "title": "BLACK FRIDAY 2016",                  "caption": "0306 / 20129", "info": "hasta 27/11/2016...", groupBy: "2016", date1: { month: "OCT", day: "5"  }, date2: { month: "OCT", day: "8"  }, avatar: "https://randomuser.me/api/portraits/thumb/men/12.jpg" },
+      { "id": "12", color: "#88AA88", "title": "BLACK FRIDAY CLUB DEL GOURMET",      "caption": "0166 / 21354", "info": "hasta 27/11/2016...", groupBy: "2016", date1: { month: "NOV", day: "10" }, date2: { month: "NOV", day: "15" }, avatar: "https://randomuser.me/api/portraits/thumb/men/13.jpg" },
+      { "id": "13", color: "#8888AA", "title": "BLACK FRIDAY SUPERMERCADO",          "caption": "0212 / 20364", "info": "hasta 27/11/2016...", groupBy: "2016", date1: { month: "DIC", day: "20" }, date2: { month: "DIC", day: "25" }, avatar: "https://randomuser.me/api/portraits/thumb/men/14.jpg" },
+      { "id": "14", color: "#6688DD", "title": "MASCOTAS BLACK FRIDAY SUPERMERCADO", "caption": "0166 / 21059", "info": "hasta 27/11/2016...", groupBy: "2017", date1: { month: "JAN", day: "1"  }, date2: { month: "JAN", day: "5"  }, avatar: "https://randomuser.me/api/portraits/thumb/men/15.jpg" },
+      { "id": "15", color: "#66AAAA", "title": "MOTOR TOWN BLACK FRIDAY 2016",       "caption": "1168 / 21510", "info": "hasta 27/11/2016...", groupBy: "2017", date1: { month: "FEB", day: "25" }, date2: { month: "MAR", day: "1"  }, avatar: "https://randomuser.me/api/portraits/thumb/men/16.jpg" },
+  ]
+*/
 const user = {
   icon: 'person',
   name: 'John Doe',
@@ -133,10 +213,10 @@ const user = {
 }
 
 const time = [
-  { label: 'Últimos 6 meses', value: '6MONTH' },
-  { label: 'Últimos 12 meses', value: '12MONTH' },
-  { label: 'Último Mes', value: '1MONTH' },
-  { label: 'Año Actual', value: 'THISYEAR' },
+  { label: 'Ejercicio Actual', value: 'ACTUAL' },
+  { label: 'Ej. 2016-2017', value: 'PREV' },
+  { label: 'Ej. 2015-2016', value: 'THISYEAR' },
+  { label: 'Todos los Ejercicios', value: 'ALL' },
 ]
 
 const companies= [
@@ -168,8 +248,8 @@ const subjects = [
 ]
 
 const orderCriterias = [
-  { label: 'Fecha', value: 'FECHA' },
-  { label: 'Nombre', value: '1MONTH' },
+  { label: 'Fecha', value: 'DATE' },
+  { label: 'Nombre', value: 'NAME' },
 ]
 
 const groupCriterias = [

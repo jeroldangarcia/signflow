@@ -1,10 +1,7 @@
 import React from 'react';
 
 import { Page, Toolbar, Session, Dialog, ConfirmDialog } from 'tatami';
-import { Icon, Button, Header, Panel, List, Select, Field } from 'seito';
-
-
-import Form from '../components/form';
+import { Icon, Button, Header, Panel, List, Form, Select, Field } from 'seito';
 
 // controllers
 import materials from '../controllers/materials';

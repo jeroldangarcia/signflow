@@ -1,6 +1,7 @@
 @import '../app.scss';
 
 .campaigns {
+
   @media (max-width: $break-small) {
     >.pageBar {
       select {

@@ -20,7 +20,8 @@ module.exports = env => {
     },
     output: {
       filename: 'bundle.[name].js',
-      path: resolve(__dirname, 'dist'),
+      //path: resolve(__dirname, 'dist'),
+      path: '/Users/jeroldan/Code/eclipse/workspace/signflow_API/src/main/webapp',
       pathinfo: !env.prod,
     },
     context: resolve(__dirname, 'src'),

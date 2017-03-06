@@ -2,9 +2,8 @@ import React from 'react';
 
 // components
 import { Page, Toolbar, Inbox, ConfirmDialog } from 'tatami';
-import { Icon, FAB, Card, Header, Panel, List, Select} from 'seito';
+import { Icon, FAB, Card, Header, Panel, List, Form, Select } from 'seito';
 
-import Form from '../components/form';
 import { JobItem, JobCard } from '../components/job';
 
 // css
@@ -121,9 +120,9 @@ class DRAFTS extends React.Component {
       <Page className="drafts">
         {breadcrumb}
         <Toolbar icon="burst_mode" title={title} className="pageBar">
-          <Select label="Ver como" options={views} />
+          <Select label="Ver como" options={views} value="1" />
           &nbsp;|&nbsp;
-          <Select label="Agrupado por" options={groupBy} />
+          <Select label="Agrupar por" options={groupBy} value="0"/>
           <Icon icon="search" />
         </Toolbar>
         <Inbox items={list} viewer={viewer} onCloseViewer={this.handleUnSelect} />
