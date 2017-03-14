@@ -6,7 +6,7 @@
   $grey: #888;
 
 html {
-  font-size:62.5%;
+  font-size:52.5%;
   box-sizing: border-box;
 }
 
@@ -19,7 +19,7 @@ body {
   //background-color: $primary-color;
   //background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9ImczNTciIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iODYuMTU2MzUxNzkxNTMwOTUlIiB5MT0iODEuNzg1NzE0Mjg1NzE0MjglIiB4Mj0iMjEuOTg2OTcwNjg0MDM5MDg2JSIgeTI9IjE4LjU3MTQyODU3MTQyODU3MyUiPgo8c3RvcCBzdG9wLWNvbG9yPSIjRUVFRUVFIiBvZmZzZXQ9IjAiLz48c3RvcCBzdG9wLWNvbG9yPSIjMDkwRjBDIiBvZmZzZXQ9IjEiLz4KPC9saW5lYXJHcmFkaWVudD4KPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNnMzU3KSIgLz4KPC9zdmc+);
   color: $primary-text-color;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-family: 'Fira Sans', sans-serif;
   text-rendering: auto;
 }
@@ -175,3 +175,8 @@ button {
   .bggrey {
     background-color: $divider-color !important;
   }
+
+
+.icon {
+  font-size: 2.3rem;
+}

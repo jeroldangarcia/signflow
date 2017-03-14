@@ -12,12 +12,10 @@ import Timeline from '../components/timeline';
 
 import API from '../api/apiClient';
 
-const loadCampaign = (params, done) => {
-  API.subcampaigns((data) => {
-    done({
-      subcampaigns: data,
-    })
-  })
+const loadCampaign = (id, done) => {
+  API.campaign(id, (campaign) => {
+      done({ campaign })
+  }, console.log);
 }
 
 /**
@@ -99,7 +97,11 @@ class Campaign extends React.Component {
   }
 
   renderSubcampaign = (data) => {
-    const title = `[${data.id}] ${data.type} - ${data.name}`;
+    const title = <span>
+      <span style={{ fontSize: '1.4rem', fontWeight: 400 }}>{`[ ${data.id} ]`}</span>
+      <span style={{ fontSize: '1.4rem', fontWeight: 300 }}>{` ${data.type} `}</span>
+      <span style={{ fontSize: '1.5rem', fontWeight: 500 }}>{`${data.name}`}</span>
+    </span>;
     const actions = <span>{data.state}</span>
     return (
       <Panel className="infopanel" icon="import_contacts" title={title}  info="24 ... 27 Noviembre 2016" collapsable={true} open={false}  actions={actions}>
@@ -114,8 +116,8 @@ class Campaign extends React.Component {
 
       const data = {
       	labels: [
+          'Medios',
       		'Prod. Gráfica',
-      		'Medios',
       		'Otros'
       	],
       	datasets: [{
@@ -151,6 +153,13 @@ class Campaign extends React.Component {
       { icon: 'assignment' , label: 'Enviar Briefing'},
     ]
 
+    const title=(
+      <div style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <Icon icon="card_giftcard"/>
+        <span>{this.props.ctx.campaign.title}</span>
+      </div>
+    )
+
     return (
       <Page>
         <div style={{ marginTop: '1rem', paddingLeft: '.4rem', display: 'flex', justifyContent: 'flex-start', alignContent: 'center', lineHeight: '1.1rem', color: '#20A867', fontWeight: '400', fontSize: '1.3rem', textAlign: 'left' }}>
@@ -159,23 +168,27 @@ class Campaign extends React.Component {
           <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>clasificación:</span> Fuerza de Venta/mixta </span>
         </div>
         <br/>
-        <Toolbar icon="card_giftcard" className="pageBar" title="BLACK FRIDAY" menu={pageMenu}>
-            <span style={{ lineHeight: '1.5rem', margin: '0 .5rem', display: 'flex', alignItems: 'center', fontWeight: '200', fontSize: '1.5rem'}}>
-            <span style={{ color: '#555', fontWeight: '200', display: 'none'}}>desde:</span> 11-11-2016 /
-            <span style={{ color: '#555', fontWeight: '200', display: 'none'}}>hasta:</span> 17-11-2016</span>
+        <Toolbar icon="arrow_back" className="pageBar" title={title} menu={pageMenu} action={this.back}>
+          <span style={{ lineHeight: '1.5rem', margin: '0 .5rem', display: 'flex', alignItems: 'center', fontWeight: '200', fontSize: '1.5rem'}}>
+            <span style={{ color: '#555', fontWeight: '200', display: 'none'}}>desde:</span> {this.props.ctx.campaign.date1.day}&nbsp;{this.props.ctx.campaign.date1.month}
+            <Icon icon="arrow_forward" className="small"/>
+            <span style={{ color: '#555', fontWeight: '200', display: 'none'}}>hasta:</span> {this.props.ctx.campaign.date2.day}&nbsp;{this.props.ctx.campaign.date2.month}
+          </span>
         </Toolbar>
 
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'auto'}}>
 
-        <Panel title="Objetivos" collapsable={true} collapsed={true} actions={targetActions}>
-          <Panel className="infopanel" icon="flag" title="Venta Trafico --> Venta Tráfico (Generico)" collapsable={false} open={false} />
+        <Panel title="Objetivos" collapsable={true} collapsed={false} actions={targetActions}>
+          <Panel className="infopanel" icon="flag" title="1: Visibilidad --> Visibilidad (Genérico)" collapsable={false} open={false} />
+          <Panel className="infopanel" icon="flag" title="2: Venta Trafico --> Venta Tráfico (Genérico)" collapsable={false} open={false} />
         </Panel>
 
-        <Panel title="Seguimiento" collapsable={true} collapsed={true}>
-          <div style={{ display: 'flex', padding: '1.6rem 5.6rem' }}>
-            <label for="mktroi">Seguimiento MKT ROI</label>
+        <Panel title="Seguimiento" collapsable={true} collapsed={false}>
+          <div style={{ display: 'flex', padding: '1rem 3rem', alignItems: 'center', backgroundColor: '#f4f5f6', borderBottom: 'solid 1px #DDD' }}>
             <input id="mktroi" type="checkbox" />
-            <Select options={portadores}/>
+            <label for="mktroi">Seguimiento MKT ROI</label>
+            &nbsp;
+            <Select label="Portador" options={portadores} value=""/>
           </div>
         </Panel>
 
@@ -286,7 +299,8 @@ class Campaign extends React.Component {
         <Stack selected={this.state.tab}>
 
           <div>
-            {this.props.ctx.subcampaigns.map(this.renderSubcampaign)}
+            <Header><span>Nueva Subcampaña</span><Icon icon="add" action={this.handleAddSubCampaignDialog}/></Header>
+            {this.props.ctx.campaign.subcampaigns.map(this.renderSubcampaign)}
           </div>
 
           <div>

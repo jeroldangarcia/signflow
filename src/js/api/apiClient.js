@@ -44,6 +44,11 @@ const APIClient = {
     http.GET(CAMPAIGNS, onSuccess, errorHandler(onError))
   },
 
+  campaign(id, onSuccess, onError) {
+    const CAMPAIGN = `/campaigns/${id}`;
+    http.GET(CAMPAIGN, onSuccess, errorHandler(onError));
+  },
+
   /**
    * users
    */

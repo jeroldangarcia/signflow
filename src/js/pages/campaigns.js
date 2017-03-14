@@ -2,7 +2,7 @@ import React from 'react';
 
 // components
 import { Page, Toolbar, ConfirmDialog, SearchBox, Schedule } from 'tatami';
-import { Icon, Select, Form, Field, List, SimpleListItem, GroupList, FAB, Panel, Switch, Menu } from 'seito';
+import { Icon, Select, Form, Field, List, SimpleListItem, GroupList, FAB, Panel, Switch, Menu, Validator } from 'seito';
 
 import { InfoField } from '../components/field';
 import API from '../api/apiClient';
@@ -61,16 +61,17 @@ class Campaigns extends React.Component {
   }
 
   state = {
-    searching: false,
-    search: '',
+    searching: true,
+    search_group: '',
+    search_campaign: '',
   }
 
   exit = () => {
     this.props.goto('SPLASH');
   }
 
-  gotoCampaign = () => {
-    this.props.goto('CAMPAIGN');
+  gotoCampaign = (campaign) => {
+    this.props.goto('CAMPAIGN', campaign.id);
   }
 
   goto = () => {
@@ -125,8 +126,12 @@ class Campaigns extends React.Component {
     this.setState({ searching: !this.state.searching });
   }
 
-  handleSearch = (id, value) => {
-    this.setState({ search: value });
+  handleFilterGroups= (id, value) => {
+    this.setState({ search_group: value });
+  }
+
+  handleFilterCampaigns= (id, value) => {
+    this.setState({ search_campaign: value });
   }
 
   handleEdit = () => {
@@ -152,6 +157,15 @@ class Campaigns extends React.Component {
 
   render () {
 
+    const campaigns = this.props.ctx.campaigns.filter( campaign => {
+      return Validator.notEmpty(this.state.search_group) ?
+        campaign.groupBy.toUpperCase().indexOf(this.state.search_group.toUpperCase()) >= 0 : true;
+    }).filter( campaign => {
+      const values = campaign.caption + campaign.title;
+      return Validator.notEmpty(this.state.search_campaign) ?
+        values.toUpperCase().indexOf(this.state.search_campaign.toUpperCase()) >= 0 : true;
+    });
+
     const pageMenu = [
       { icon: 'check_circle', label: 'Ver Grupos' },
       { icon: 'radio_button_unchecked', label: 'Ver SubCampañas' },
@@ -163,8 +177,10 @@ class Campaigns extends React.Component {
       <Select options={companies} value="0"/>
     ]
 
-    const searchBox = this.state.searching ? <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around' }}>
-      <SearchBox onChange={this.handleSearch} className="flex80"/>
+    const searchBox = this.state.searching ? <div style={{ borderRadius: '5px', margin: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'space-around', backgroundColor: '#DDD' }}>
+      <Icon icon="search" className="" />
+      <SearchBox label="Grupo Campaña" onChange={this.handleFilterGroups}    value={this.state.search_group}    className="flex40"/>
+      <SearchBox label="Campaña"       onChange={this.handleFilterCampaigns} value={this.state.search_campaign} className="flex40"/>
       OrderBy:
       <Icon icon="date_range" className="clickable small" />
       <Icon icon="sort_by_alpha" className="clickable small" />
@@ -181,7 +197,7 @@ class Campaigns extends React.Component {
 
         {searchBox}
 
-        <List data={this.props.ctx.campaigns} renderer={SimpleListItem} onSelection={this.gotoCampaign} groupBy="groupBy" groupRenderer={this.renderGroup}/>
+        <List data={campaigns} renderer={SimpleListItem} onSelection={this.gotoCampaign} groupBy="groupBy" groupRenderer={this.renderGroup}/>
 
         <FAB icon="add" action={this.handleAddGroup}/>
 

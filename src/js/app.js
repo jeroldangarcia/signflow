@@ -19,6 +19,8 @@ import Drafts from './pages/drafts';
 import Supplies from './pages/supply';
 import Providers from './pages/providers';
 
+import IMMenu from './pages/immenu';
+
 /**
  * Application
  */
@@ -60,8 +62,10 @@ const Application = (props) => {
 
   const pages = {
     'WAIT'      : <Wait     />,
-    'LOGIN'     : <Login title="SignFlow" next="LOAD" fullscreen={true} users={users}/>,
+    'LOGIN'     : <Login title="SignFlow" next="IMMENU" fullscreen={true} users={users}/>,
     'EXIT'      : <Exit       />,
+
+    'IMMENU'    : <IMMenu    drawer={false} fullscreen={true}/>,
 
     'LOAD'      : <Load      drawer={true} />,
     'CAMPAIGNS' : <Campaigns drawer={true} />,
