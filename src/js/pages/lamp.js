@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Page, Toolbar, Session, Dialog, ConfirmDialog } from 'tatami';
-import { Icon, Button, Header, Panel, List, Form, Select, Field } from 'seito';
+import { Icon, Button, Header, Panel, List, Form, Select, Field, Tabs, Tab, Stack} from 'seito';
 
 // controllers
 import materials from '../controllers/materials';
@@ -11,6 +11,7 @@ class LAMP extends React.Component {
   state = {
     materials: [],
     activity: [],
+    tab: this.props.tab ? this.props.tab : 0,
   }
 
   componentWillMount() {
@@ -21,6 +22,10 @@ class LAMP extends React.Component {
 
   back = () => {
     this.props.goto('CAMPAIGN');
+  }
+
+  handleChangeTab = (tab) => {
+    this.setState({ tab })
   }
 
   handleAddDialog = () => {
@@ -86,7 +91,7 @@ class LAMP extends React.Component {
 
     const icons = [<span style={{ margin: '0', fontSize: '1.4rem'}}>Estimación: 500€</span>].concat(iconsFor);
     const info = (
-      <div style={{ flex: 1, display: 'flex', alignItems: 'center'}}>
+      <div style={{ flex: 1, display: 'flex', alignItems: 'center', fontSize: '1.5rem'}}>
         <span className="flag-icon flag-icon-es flag-icon-squared"></span>
         &nbsp;
         <span className="flag-icon flag-icon-gb flag-icon-squared"></span>
@@ -106,9 +111,17 @@ class LAMP extends React.Component {
       }
     })
 
+    const seguimiento = [
+      <span style={{ display: 'flex', margin: '0', fontSize: '1.4rem'}}>
+        <Icon icon="message" badge="5"/>
+        <Icon icon="supervisor_account" decorator="filter_3"/>
+      </span>
+    ].concat(iconsFor);
+
     return (
-      <Page>
-        <div style={{ paddingLeft: '.4rem', display: 'flex', justifyContent: 'flex-start', alignContent: 'center', lineHeight: '1.1rem', color: '#20A867', fontWeight: '400', fontSize: '1.3rem', textAlign: 'left' }}>
+      <Page className="scrollable">
+        <Icon icon="message" badge="5"/>
+        <div style={{ paddingLeft: '.4rem', paddingTop:'.5rem', display: 'flex', justifyContent: 'flex-start', alignContent: 'center', lineHeight: '1.1rem', color: '#20A867', fontWeight: '400', fontSize: '1.3rem', textAlign: 'left' }}>
           <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>empresa:</span> El Corte Inglés</span> |
           <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>grupo:</span> ECI/FV Verticales OI 2016 </span> |
           <span style={{ lineHeight: '1.5rem', margin: '0 .5rem'}}><span style={{ color: '#555', fontWeight: '200', display: 'none'}}>grupo:</span> Fuerza de Venta/mixta </span> |
@@ -116,14 +129,96 @@ class LAMP extends React.Component {
 
         <Toolbar className="pageBar" icon="assignment" title="[21800] Directa - Catálogo - Black Friday 2016 Canarias" />
 
-        <Panel title="Materiales"  collapsable={false} collapsed={false} actions={icons}>
-          <div style={{ display: 'flex'}}>
+        <Panel title="Briefing subcampaña" collapsable={false} collapsed={false}>
+
+              <Header title="Centros" />
+              <div style={{ border: 'solid 1px #eee',margin: '0 4.6rem', minHeight: '3rem', display: 'flex' }}>
+                {['Castellana', 'H.Meridiana', 'León'].map(item => {
+                  return (
+                    <span className="badge" style={{ backgroundColor: '#456', maxWidth: '10rem',padding: '1rem', margin:'0 1rem 0 0'}}>
+                      {item}
+                    </span>
+                  )
+                })}
+              </div>
+
+              <Header title="Divisiones" />
+              <div style={{ border: 'solid 1px #eee',margin: '0 4.6rem', minHeight: '3rem', display: 'flex' }}>
+                {['Infantil', 'Mujer', 'Perfumería'].map(item => {
+                  return (
+                    <span className="badge" style={{ backgroundColor: '#456', maxWidth: '10rem', padding: '1rem', margin:'0 1rem 0 0'}}>
+                      {item}
+                    </span>
+                  )
+                })}
+              </div>
+        </Panel>
+
+        <br/><br/>
+
+        <Panel title="Materiales" collapsable={false} collapsed={false} actions={icons}>
+          <div style={{ display: 'flex', flexDirection: 'column'}}>
+            <Panel className="infopanel noicon" actions={<span>| Idiomas | unidades | $ |</span>} collapsed={false} collapsable={false} />
             <List data={materials} onSelection={this.handleEditDialog}/>
+            <Panel className="infopanel noicon" actions={<span style={{ fontSize: '1.4rem', fontWeight: '600'}} collapsed={false} collapsable={false}>25uds | 500€</span>}/>
           </div>
           <div style={{ display: 'flex', justifyContent: 'flex-end'}}>
             {this.renderActions()}
           </div>
         </Panel>
+
+        <br/><br/>
+
+        <Panel title="Seguimiento" collapsed={true} actions={seguimiento}>
+        <Tabs selected={this.state.tab} onChange={this.handleChangeTab}>
+          <Tab label="Comentarios" />
+          <Tab label="Actividad" />
+        </Tabs>
+        <Stack selected={this.state.tab}>
+          <div> Comentarios </div>
+          <div>
+
+            <main style={{ borderTop: '1px dotted #CCC', paddingTop: '2rem'}}>
+              <aside>
+                <span><span className="grey">&nbsp; 10/10/2016 &nbsp;</span><Icon className="small red step" icon="subdirectory_arrow_left" /></span>
+                <div style={{ border: 'dashed 2px #CCC', width: '2px', flex: '1', marginRight: '1.3rem'}} />
+              </aside>
+              <section>
+                <span>
+                  <Icon className="thumb tiny" icon="person" />
+                  <span className="subtitle">&nbsp;&nbsp;Paco Mercado</span><span> ha asignado el Trabajo </span><span className="subtitle">a Daniel García <Icon className="thumb tiny" icon="person" /></span>
+                </span>
+              </section>
+            </main>
+
+            <main>
+              <aside>
+                <span><span className="grey">&nbsp; 10/10/2016 &nbsp;</span><Icon className="small blue step" icon="done" /></span>
+                <div style={{ border: 'dashed 2px #CCC', width: '2px', flex: '1', marginRight: '1.3rem'}} />
+              </aside>
+              <section>
+                <span>
+                  <Icon className="thumb small" icon="person" />
+                  <span className="subtitle">&nbsp;&nbsp;Daniel Garcia</span><span> ha terminado el Trabajo </span>
+                </span>
+              </section>
+            </main>
+
+            <main>
+              <aside>
+                <span><span className="grey">&nbsp; 10/10/2016 &nbsp;</span><Icon className="small green step" icon="done_all" /></span>
+              </aside>
+              <section>
+                <span>
+                  <Icon className="thumb small" icon="person" />
+                  <span className="subtitle">&nbsp;&nbsp;Paco Mercado</span><span> ha validado el Trabajo </span>
+                </span>
+              </section>
+            </main>
+
+          </div>
+        </Stack>
+      </Panel>
       </Page>
     )
   }

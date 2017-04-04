@@ -2,10 +2,14 @@ import React from 'react';
 
 // components
 import { Page, Toolbar, ConfirmDialog, SearchBox, Schedule } from 'tatami';
-import { Icon, Select, Form, Field, List, SimpleListItem, GroupList, FAB, Panel, Switch, Menu, Validator } from 'seito';
-
+import { Icon, Select, Form, Field, DateField, List, SimpleListItem, GroupList, FAB, Panel, Switch, Menu, Validator } from 'seito';
 import { InfoField } from '../components/field';
+import MainNav from '../components2/main-nav';
 import API from '../api/apiClient';
+
+// fragments
+import CampaignTarget from '../fragments/campaign-target';
+import CampaignTracking from '../fragments/campaign-tracking';
 
 // css
 import './campaigns.scss';
@@ -85,18 +89,20 @@ class Campaigns extends React.Component {
 
     this.props.toggleDialog(
       <ConfirmDialog title="Nueva Campaña" onOK={onOK} onCancel={onOK} onClose={onOK}>
-        <Form title="Campaña">
-          <Field id="" label="Empresa" value="EL CORTE INGLES" readOnly={true}/>
-          <Field id="" label="Grupo" value="CO-Campañas Clientes Cultura, Ocio y Deportes 2017" readOnly={true}/>
-          <Field id="" label="Nombre" />
-          <Field id="" label="Fecha Inicio" />
-          <Field id="" label="Fecha Fin" />
-          <Field id="" label="Empresa" />
+
+        <Form title="Datos Generales">
+          <Field  id="" label="Empresa" value="EL CORTE INGLES" readOnly={true}/>
+          <Field  id="" label="Grupo" value="CO-Campañas Clientes Cultura, Ocio y Deportes 2017" readOnly={true}/>
+          <Field  id="" label="Nombre" />
+          <DateField  id="" label="Fecha Inicio" />
+          <DateField  id="" label="Fecha Fin" />
+          <Select id="" label="Clasificación" options={clasifications} />
         </Form>
-        <Form title="Subcampañas">
-          <div><input type="checkbox" /><label>Catálogo</label></div>
-          <div><input type="checkbox" /><label>Cartelería Gran Formato</label></div>
-        </Form>
+
+        <CampaignTarget />
+
+        <CampaignTracking />
+
       </ConfirmDialog>
     )
   }

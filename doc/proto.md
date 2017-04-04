@@ -16,13 +16,15 @@ Las paginas se ajustan a una estructura común.
   - cabecera de pagina
   - contenido de pagina
 
-[imagen]
+
+<center><img src="./images/welcome.png" alt="Drawing" style="width: 200px;"/></center>
+
 
 ## Area Personal:
 Funciona como Landing Page.
 Se podrá acceder desde el area de usuario del menu lateral.
 
-[imagen]
+<center><img src="./images/welcome.png" alt="Drawing" style="width: 200px;"/></center>
 
 ### Area de notificaciones
 Mostrará las notificaciones para el usuario.
@@ -31,21 +33,26 @@ Cada notificación cuenta con acciones de "pronta respuesta" o de navegación a 
 
 - [ ] las notificaciones también se envian por correo.
 
-[imagen]
+<center><img src="./images/welcome.png" alt="Drawing" style="width: 200px;"/></center>
 
 ### Perfil usuario
-[imagen]
+
+<center><img src="./images/welcome.png" alt="Drawing" style="width: 200px;"/></center>
+
 - avatar
 - Datos de contacto
 
 ### Personalizacion.
-[imagen]
+
+<center><img src="./images/welcome.png" alt="Drawing" style="width: 200px;"/></center>
+
 - niveles de notificaciones
 - filtros por defecto
 
 ### prop: barra lateral (dcha, oculta) de notificaciones.
 Al estilo de la barra lateral de notificaciones OSX
-[imagen]
+
+<center><img src="./images/welcome.png" alt="Drawing" style="width: 200px;"/></center>
 
 ## Campañas
 
@@ -55,12 +62,12 @@ Proponer API REST refactorizando los DAOs existentes.
 
 Mostrar el arbol de grupos/campañas.
 
-[imagen]
+<center><img src="./images/campaigns.png" alt="Drawing" style="width: 200px;"/></center>
 
 ### menú página
 opciones de configuración del arbol.
 
-[imagen]
+<center><img src="./images/campaigns.png" alt="Drawing" style="width: 200px;"/></center>
 
 - checkbox: mostrar grupos
 - checkbox mostrar subcampañas
@@ -82,7 +89,7 @@ Rol: marketing
 Muestra el listado de campañas filtrado para el usuario.
 Vista tipo calendario
 
-[imagen]
+<center><img src="./images/campaigns.png" alt="Drawing" style="width: 200px;"/></center>
 
 ### Menú página
 Se añade una opción de "Grabar preferencias" para que el usuario pueda configurar sus filtros por defecto y sean recordados por la app (persistencia en el browser)
@@ -92,10 +99,17 @@ Se añade una opción de "Grabar preferencias" para que el usuario pueda configu
 
 Reestilyng de la pantalla actual de intermarketing.
 
-[imagen]
+<center><img src="./images/campaign1.png" alt="Drawing" style="width: 200px;"/></center>
+
+<center><img src="./images/campaign2.png" alt="Drawing" style="width: 200px;"/></center>
+
+<center><img src="./images/campaign3.png" alt="Drawing" style="width: 200px;"/></center>
+
+<center><img src="./images/campaign4.png" alt="Drawing" style="width: 200px;"/></center>
 
 #### nueva campaña:
 - [ ] seleccion de ejercicio
+<img src="./images/campaigns<center><center>_new.png" alt="Drawing" style="width: 200px;"/>
 
 ### Subcampañas
 

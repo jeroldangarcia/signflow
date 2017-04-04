@@ -110,3 +110,51 @@ TODO: Revision maqueta. Contraste con intermarketing de MAriJose
 
 ### Notificaciones
 Pantalla de notificaciones a usuario
+
+
+----------------------------------------------------------------------- 20170324
+
+Reunión con PPV
+---------------
+
+ [ ] Marketing crea la campaña, y tienen un 'briefing' con PPV donde se dan los centros a los que va dirigda y se negocian/establecen las 'implantaciones' (departamental, interdepartamental, vertical) (¿Nos pueden dar un ejemplo de este doc?):
+
+    1) En función de la implantación en tienda añade los formatos de carteleria.
+      - se conoce/dispone de un listado de formatos por defecto para cada implantación.
+
+    2) Se informa el listado de formatos elaborado a MKT
+
+    3) MKT manda los formatos a creatividad para que confeccionen los bocetos.
+       - los motivos, esta info podria venir dada en el briefing.
+       - los idiomas los pide mkt xq saben a que centros va dirigida la subcampaña (castellano, catalan, euskera ), esta info podria venir dada en el briefing.
+
+    4) MKT aprueba los bocetos (comenta) y creatividad se los pasa a Arte Final
+
+    5) Arte Final manda los pdf de arte final a fotografia (Agustin)
+
+    6) Fotografia llama a PPV que le da las unidades de cada linea
+
+    7) Realizacion manda los PDF al proveedor
+
+    8) Proveedor Pide a PPV cantidades
+
+    9) PPV manda al proveedor la Orden de Trabajo (dotaciones a centros)
+     - la gestion de incidencias con el proveedor llega a PPV
+     - El dato de cuando llega el trabajo al proveedor es importante para PPV realizar el seguimiento de la OT
+
+
+ [ ] PPV solicita frecuentemente nuevos materiales que se van a usar de forma puntual.
+    - ¿Como actua compras? ¿Lo añade al concurso del año?
+    - PPV quiere poder añadir lineas de presupuesto como campos libres, sin depender del concurso.
+
+ [ ] Dotaciones a centros.
+    - Los motivos influyen en la dotacion a centros, ya que pueden ir dirigidos a distintas "divisiones" que pueden estar presentes o no en cada centro.
+
+ [ ] PPV es el arbitro de la visibilidad en centro entre las distintas campañas que compiten en el mismo espacio de tiempo.
+     --> Calendario de subcampañas + centro(divisiones)
+     La info de como se dota a cada centro para cada subcampaña es sensible, ya que puede ocasionar "conflicto de intereses" con cada responsable de campaña.
+
+ [ ] La info de lass divisiones de un centro las maneja compras. Aunque PPV dispone de un "historico" es decir mantienen un listado en funcion de los trabajos que van realizando.
+     - PPV categoriza los centros en funcion de la carteleria que han necesitado en el pasado. (A, B, C)
+        | num centro | categoria centro | nombre centro | divisiones * materiales |
+        ( * ) Nos pueden dar un ejemplo de este doc?

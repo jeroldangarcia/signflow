@@ -77,7 +77,7 @@ class LAMPS extends React.Component {
           <Icon icon="search" action={this.toggleSearch}/>
         </Toolbar>
         {searchBox}
-        <GroupList data={solicitudes} onPrimaryAction={this.handleItemSelected}/>
+        <GroupList data={solicitudes} onPrimaryAction={this.handleItemSelected} collapsed={false}/>
       </Page>
     );
   }

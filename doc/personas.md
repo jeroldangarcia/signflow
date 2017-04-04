@@ -17,25 +17,22 @@
 
 ## Julio Huete [PPV Central]
 
+Confecciona el presupuesto de cartelería de una subcampaña.
+
+Es el arbitro de la visibilidad en centro de la publicidad entre las distintas campañas que compiten en un mismo periodo de tiempo.
+
 #### Actividad
-- Propone nuevos materiales a Compras
-- Recibe las solicitudes de materiales de Marketing.
-- Añade y Elimina materiales de la solicitud.
+- Recibe el plan de implantaciones de Marketing para cada subcampaña (centros y divisiones).
+- Añade y Elimina materiales y formatos de la solicitud.
+- Propone/Solicita nuevos materiales a Compras.
 - Establece las dotaciones de cada material a los centros.
-- Recibe solicitudes de cambio desde los centros.
-- Presenta la propuesta al ejecutivo de marketing para su aprobación.
+- Manda el presupuesto al ejecutivo de marketing de cada subcampaña.
 
 #### Necesidades
-- Quiere plantillas para la solicitudes nuevas
+- Quiere plantillas para la solicitudes nuevas.
 - Quiere poder inicilizar solicitudes nuevas a partir de otra anterior.
 - Necesita acceder al listado de materiales aprobados.
 - Simulacion de costes en tiempo real.
-
-## PPV Tienda
-
-- Ve las solicitudes de material de una promoción.
-- Puede solicitar cambios de material y/o de cantidad a PPV Central.
-
 
 
 ## Paco Mercado [Arte Final]

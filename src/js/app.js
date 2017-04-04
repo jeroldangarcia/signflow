@@ -44,7 +44,7 @@ const Application = (props) => {
   const menu2 = [
     { id: 'MATERIALS'    , label: 'Materiales'            , icon: 'recent_actors' , roles: [ 'ppv' ]},
     { id: 'LAMPS'        , label: 'Solicitudes Materiales', icon: 'assignment'    , roles: [ 'ppv', 'marketing' ], info: '7'},
-    { id: 'SUPPLIES'     , label: 'Dotaciones Centros'    , icon: 'store'         , roles: [ 'ppv', 'marketing' ]},
+  //  { id: 'SUPPLIES'     , label: 'Dotaciones Centros'    , icon: 'store'         , roles: [ 'ppv', 'marketing' ]},
   ]
 
   const menu3 = [
@@ -53,16 +53,16 @@ const Application = (props) => {
     { id: 'DRAFTS'   , label: 'Arte Final'          , icon: 'burst_mode'    , roles: [ 'artefinal' ]  , info: '10'},
   ]
 
-  const appDrawer = <Drawer>
-                      <Menu title="Compras"        options={menu0} />
-                      <Menu title="InterMarketing" options={menu1} />
-                      <Menu title="PPV"            options={menu2} />
-                      <Menu title="Realización"    options={menu3} />
-                    </Drawer>
+  const drawer = <Drawer>
+                    <Menu title="Compras"        options={menu0} />
+                    <Menu title="InterMarketing" options={menu1} />
+                    <Menu title="PPV"            options={menu2} />
+                    <Menu title="Realización"    options={menu3} />
+                  </Drawer>
 
   const pages = {
     'WAIT'      : <Wait     />,
-    'LOGIN'     : <Login title="SignFlow" next="IMMENU" fullscreen={true} users={users}/>,
+    'LOGIN'     : <Login title="SignFlow" next="CAMPAIGNS" fullscreen={true} users={users}/>,
     'EXIT'      : <Exit       />,
 
     'IMMENU'    : <IMMenu    drawer={false} fullscreen={true}/>,
@@ -72,7 +72,7 @@ const Application = (props) => {
     'CAMPAIGN'  : <Campaign  drawer={true} />,
     'MATERIALS' : <Materials drawer={true} />,
     'LAMPS'     : <LAMPS     drawer={true} />,
-    'LAMP'      : <LAMP      drawer={true} />,
+    'LAMP'      : <LAMP      drawer={true} tab={0}/>,
     'DRAFTS'    : <Drafts    drawer={true} />,
 //    'DRAFT'     : <Draft     drawer={true} />,
     'SUPPLIES'  : <Supplies  drawer={true} />,
@@ -81,8 +81,12 @@ const Application = (props) => {
     'PROVIDERS' : <Providers drawer={true} />,
   }
 
+  const tools = [
+    { icon: 'messages', content: drawer }
+  ]
+
   return (
-    <Tatami title="SignFlow" pages={pages} init="LOGIN" menu={ctxMenu} drawer={appDrawer} />
+    <Tatami title="SignFlow" pages={pages} init="LOGIN" drawer={drawer} tools={tools} menu={ctxMenu} />
   );
 
 }
@@ -91,7 +95,7 @@ export default Application;
 
   const users = [
     {id:'p_lopez', icon:'person', title:'Pedro Lopez', caption:'Compras', role: 'compras'},
-    {id:'d_echebarria', icon:'person', title:'David Echebarria', caption:'Marketing', role: 'marketing' },
+    {id:'d_echevarria', icon:'person', title:'David Echevarria', caption:'Marketing', role: 'marketing' },
     {id:'j_huete', icon:'person', title:'Julio Huete', caption:'PPV', role: 'ppv'},
     {id:'j_rayon', icon:'person', title:'Javier Rayón', caption:'Realización', role: 'realizacion'},
     {id:'p_mercado', icon:'person', title:'Paco Mercado', caption:'Arte Final', role: 'artefinal'},
