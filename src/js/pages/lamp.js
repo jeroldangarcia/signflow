@@ -94,7 +94,7 @@ class LAMP extends React.Component {
       <div style={{ flex: 1, display: 'flex', alignItems: 'center', fontSize: '1.5rem'}}>
         <span className="flag-icon flag-icon-es flag-icon-squared"></span>
         &nbsp;
-        <span className="flag-icon flag-icon-gb flag-icon-squared"></span>
+        <span className="flag-icon flag-icon-es-ct flag-icon-squared"></span>
         &nbsp;&nbsp;&nbsp;
         <span>5uds / 100€</span>
       </div>
