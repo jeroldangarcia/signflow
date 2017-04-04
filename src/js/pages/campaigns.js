@@ -156,7 +156,7 @@ class Campaigns extends React.Component {
     ]
     return (
       <li style={{ position: 'relative', top: 0, backgroundColor: '#FFF', listStyleType: 'none', paddingLeft: '1.6rem'}}>
-        <Panel title={props.title} collapsed={true} collapsable={false} actions={actions}/>
+        <Panel title={props.title} collapsed={true} collapsable={true} actions={actions}/>
       </li>
     )
   }
