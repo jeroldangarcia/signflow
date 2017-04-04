@@ -19,7 +19,7 @@ const CampaignCost = (props) => {
     labels: [ 'Medios', 'Prod. Gráfica', 'Otros' ],
     datasets: [
       {
-        data:                 [200, 100, 900],
+        data:                 [800, 30, 100],
         backgroundColor:      ['#FF6384','#36A2EB','#FFCE56'],
       	hoverBackgroundColor: ['#FF6384','#36A2EB','#FFCE56']
       }
