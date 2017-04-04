@@ -32,6 +32,7 @@ const loadCampaigns = (params, done) => {
 
   API.campaigns((data) => {
     const campaigns = data.map(cpn => {
+      const groupId = cpn.groupId;
       const info = `${cpn.date1.day} ${cpn.date1.month} - ${cpn.date2.day} ${cpn.date2.month}`;
       const actions = (
         <span style={{ display: 'flex', alignItems: 'center', height: '100%'}}>
@@ -47,7 +48,7 @@ const loadCampaigns = (params, done) => {
       const icon = '';
       const avatar = '';
       const color = Math.random() >= .5 ? 'bgred' : Math.random() >= .5 ? 'bgblue' : 'bggreen';
-      return Object.assign( cpn, { info, icon, avatar, actions, color })
+      return Object.assign( cpn, { info, icon, avatar, actions, color , groupId })
     })
     done({ campaigns })
   }, (error) => {
@@ -162,10 +163,10 @@ class Campaigns extends React.Component {
   }
 
   render () {
-
     const campaigns = this.props.ctx.campaigns.filter( campaign => {
+      const groups = campaign.groupId + campaign.groupBy;
       return Validator.notEmpty(this.state.search_group) ?
-        campaign.groupBy.toUpperCase().indexOf(this.state.search_group.toUpperCase()) >= 0 : true;
+        groups.toUpperCase().indexOf(this.state.search_group.toUpperCase()) >= 0 : true;
     }).filter( campaign => {
       const values = campaign.caption + campaign.title;
       return Validator.notEmpty(this.state.search_campaign) ?
