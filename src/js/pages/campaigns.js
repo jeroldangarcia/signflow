@@ -46,7 +46,7 @@ const loadCampaigns = (params, done) => {
       );
       const icon = '';
       const avatar = '';
-      const color = Math.random() >= .5 ? 'bgred' : 'bggreen';
+      const color = Math.random() >= .5 ? 'bgred' : Math.random() >= .5 ? 'bgblue' : 'bggreen';
       return Object.assign( cpn, { info, icon, avatar, actions, color })
     })
     done({ campaigns })
@@ -281,6 +281,7 @@ const groupCriterias = [
 ]
 
 const stateCriterias = [
+  { label: 'Futuras', value: 'FUTURE' },
   { label: 'En Curso', value: 'OPEN' },
   { label: 'Terminadas', value: 'CLOSED' },
   { label: 'Todas', value: 'ALL' },
