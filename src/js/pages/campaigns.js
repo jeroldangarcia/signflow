@@ -90,14 +90,14 @@ class Campaigns extends React.Component {
     this.props.toggleDialog(
       <ConfirmDialog title="Nueva Campaña" onOK={onOK} onCancel={onOK} onClose={onOK}>
 
-        <Form title="Datos Generales">
+        <Panel title="Gastos Campaña" collapsable={true} collapsed={false}>
           <Field  id="" label="Empresa" value="EL CORTE INGLES" readOnly={true}/>
           <Field  id="" label="Grupo" value="CO-Campañas Clientes Cultura, Ocio y Deportes 2017" readOnly={true}/>
           <Field  id="" label="Nombre" />
           <DateField  id="" label="Fecha Inicio" />
           <DateField  id="" label="Fecha Fin" />
           <Select id="" label="Clasificación" options={clasifications} />
-        </Form>
+        </Panel>
 
         <CampaignTarget />
 
