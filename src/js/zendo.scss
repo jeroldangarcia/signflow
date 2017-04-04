@@ -82,6 +82,9 @@ body {
   &:hover {
     background-color: rgba($accent-color, 1);
   }
+  @media(min-width: $break-big) {
+    right: calc((100vw - 1240px + 50px) / 2) !important;
+  }
 }
 
 .link {
