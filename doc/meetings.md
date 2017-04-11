@@ -158,3 +158,84 @@ Reunión con PPV
      - PPV categoriza los centros en funcion de la carteleria que han necesitado en el pasado. (A, B, C)
         | num centro | categoria centro | nombre centro | divisiones * materiales |
         ( * ) Nos pueden dar un ejemplo de este doc?
+
+
+    -----------
+
+
+
+
+
+    caso ideal
+    ----------
+    [] calendario de promociones de marketing. Se envia uno por (trimestre (primaver verano) (PPV lo llama campaña)). (pedir ejemplo) (El dueño es marketing).
+    [] compras a mkt
+      --> mkt --briefing( centros )--> ppv  (presupuesta asigna formatos)
+        --> ppv se lo pasa a mkt
+          --> mkt pide arte final de los formatos a creatividad
+            --> mkt manda los artes finales a "fotografi" agustin
+    [] vuelta al cole: PPV le dice a mkt las necesidades de fomatos de la campaña
+
+    caso real
+    ---------
+    - en realidad los centros los decide ppv basandosa en sus historicos de implantaciones anteriores
+      - tienen plantillas
+
+
+    [] ejemplo correcto para PPV
+    - mkt de lenceria trabaja bien porque
+      - los formatos se repiten y mandan ya centros y creatividad
+
+
+    excepcion
+    ----------
+    [] los centros de la campaña tb depende de compras (del surtido que tengan los centros)
+    [] las campañas arrancan tb desde compras. PPV decide el formato y Marketing encarga el arte final.
+
+    [] hay muchas veces que solicitan distintos formatos para el mismo arte final por las restricciones del centro
+
+
+    concurso materiales y formatos
+    ------------------------------
+    ppv propone formatos a compras
+    todo lo que se sale de carton y papel lo hace compras, no esta en el concurso.
+
+    envios urgentes
+    ---------------
+    - dejar constancia de quien lo ha decidido
+
+    [] idea: calcular carga de proveedores (en funcion de trabajos de ECI que tenga en curso)
+
+    [] idea: inicialmente usar campañas verticales recurrentes son candidatas para entrar al sistema.
+
+    [] idea: en concurso de materiales poner a cada material - formato el tiempo medio de fabricacion
+
+
+    [] la descripcion de los materiales del concurso deberia ser mas detallada (PPV la tiene) nos lo pasa. Puede ser que PPV tenga permiso para
+     detallar un material.
+
+    [] en el listado de materiales PPV especifica las cantidades de cada cartel que va a cada centro (donde pone HOGAR, MODA, OCIO se esta refiriendo a la creatividad creada)
+       tb tienen un dosier paralelo con las creatividades y sus nombres.
+
+
+
+
+
+------------------------------
+
+
+
+[] filtro por temporada ( primaver-verano, otoño-invierno)
+[] icon de subcampaña (tipo de subcampaña con catalogo, con gastos...)
+  - decorador ROI
+
+  []  catalogo, carteleria, servicios generales, sms, mail, postal, spots, fotos
+
+  [] borrado de campaña ->
+      - quitar boton si las subcampañas tienen gastos
+
+ [] motivos -> Paco mercado tiene capacidad de modificar las creatividades y generar el arte final
+      decide los motivos hablando con mkt
+
+
+subcampaña: listitem : toda la matricula con el codigo de subcampaña resaltado.

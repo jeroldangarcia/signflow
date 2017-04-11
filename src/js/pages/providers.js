@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Page, Toolbar, ConfirmDialog, Inbox, SearchBox } from 'tatami';
-import { Icon, List, Swapable, Field, HCard, Button, Panel, Tabs, Tab, Stack } from 'seito';
+import { Page, Toolbar, ConfirmDialog, SearchBox } from 'tatami';
+import { Icon, List, Swapable, Field, HCard, Button, Panel, Tabs, Tab, Stack, Inbox } from 'seito';
 import { MaterialListItem, MaterialInboxItem, MaterialCard } from '../components/material';
 
 import API from '../api/apiClient';

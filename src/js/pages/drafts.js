@@ -1,8 +1,8 @@
 import React from 'react';
 
 // components
-import { Page, Toolbar, Inbox, ConfirmDialog } from 'tatami';
-import { Icon, FAB, Card, Header, Panel, List, Form, Select } from 'seito';
+import { Page, Toolbar, ConfirmDialog } from 'tatami';
+import { Icon, FAB, Card, Header, Panel, List, Form, Select, Inbox } from 'seito';
 
 import { JobItem, JobCard } from '../components/job';
 

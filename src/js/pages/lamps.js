@@ -1,8 +1,8 @@
 import React from 'react';
 
 // components
-import { Page, Toolbar, ConfirmDialog, SearchBox } from 'tatami';
-import { Icon, FAB, Header, GroupList, Form, Select } from 'seito';
+import { Page, Toolbar, ConfirmDialog} from 'tatami';
+import { Icon, FAB, Header, GroupList, Form, Select, SearchBox } from 'seito';
 
 // css
 import './lamps.scss';

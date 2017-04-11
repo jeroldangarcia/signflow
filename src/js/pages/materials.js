@@ -1,8 +1,8 @@
 import React from 'react';
 
 // components
-import { Page, Toolbar, ConfirmDialog, SearchBox } from 'tatami';
-import { Header, Icon, Button, Field, List, SimpleListItem} from 'seito';
+import { Page, Toolbar, ConfirmDialog} from 'tatami';
+import { Header, Icon, Button, Field, List, SimpleListItem, SearchBox } from 'seito';
 
 // controller
 import controller from '../controllers/materials';

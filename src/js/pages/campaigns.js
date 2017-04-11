@@ -1,8 +1,8 @@
 import React from 'react';
 
 // components
-import { Page, Toolbar, ConfirmDialog, SearchBox, Schedule } from 'tatami';
-import { Icon, Select, Form, Field, DateField, List, SimpleListItem, GroupList, FAB, Panel, Switch, Menu, Validator } from 'seito';
+import { Page, Toolbar, ConfirmDialog,} from 'tatami';
+import { Icon, Select, Form, Field, DateField, List, SimpleListItem, GroupList, FAB, Panel, Switch, Menu, Validator,  SearchBox, Schedule  } from 'seito';
 import { InfoField } from '../components/field';
 import MainNav from '../components2/main-nav';
 import API from '../api/apiClient';
