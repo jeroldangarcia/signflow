@@ -1,0 +1,24 @@
+@import '../app.scss';
+
+.campaigns-list {
+
+  .campaign-group-header {
+    .title {
+      font-variant: small-caps
+    }
+  }
+
+  .campaign-group-item {
+
+  }
+
+  .campaign-item {
+    display: flex;
+    overflow: hidden;
+    max-height: 6rem;
+  }
+}
+
+.campaigns-list-toolbar {
+  background-color: $background;
+}

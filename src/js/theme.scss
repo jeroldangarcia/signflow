@@ -15,34 +15,32 @@ $floating-drawer-width: 85vw;
 $screen-content-width: 325px;
 $break-small: 575px;
 $break-medium: 800px;
-$break-big: 1240px;
+$break-big: 1024px;
 
-$page-max-width: 1240px;
+/* Palette Green *
+$primary-color-dark:   #00796B;
+$primary-color:        #009688;
+$primary-color-light:  #B2DFDB;
+$primary-color-text:   #FFFFFF;
+$accent-color:         #4CAF50;
+$accent-color-light:   #7CDF80;
+*/
 
-/* Palette Green */
-$primary-color-dark:   #455A64;
-$primary-color:        #20A867;
-$primary-color-light:  #CFD8DC;
-$primary-color-text:   rgba(255,255,255,.94);
-$accent-color:         #455A64; //#4CAF50;
-$accent-color-light:   #758A94; //#4CAF50;
-
-
-/* Palette Blue *
+/* Palette Blue */
 $primary-color-dark:   #512DA8;
 $primary-color:        #673AB7;
 $primary-color-light:  #D1C4E9;
 $primary-color-text:   #FFFFFF;
-$accent-color:         #FFC107;
-$accent-color-light:   #FFF137;
-*/
+$accent-color:         #FF9800;
+$accent-color-light:   #FFAF2F;
+
 
 /* Palette commons */
 $danger-color:                #ff4400;
 $danger-color-light:          #ff7470;
-$primary-color-dark-trans:    rgba( $primary-color-dark,  .58);
-$primary-color-trans:         rgba( $primary-color,       .58);
-$primary-color-light-trans:   rgba( $primary-color-light, .58);
+$primary-color-dark-trans:    rgba( $primary-color-dark, .87);
+$primary-color-trans:         rgba( $primary-color, .5);
+$primary-color-light-trans:   rgba( $primary-color-light, .5);
 $primary-color-lighter-trans: rgba( $primary-color-light, .15);
 $accent-color-trans:          rgba( $accent-color,        .58);
 $accent-color-light-trans:    rgba( $accent-color-light,  .58);
@@ -52,6 +50,7 @@ $danger-color-light-trans:    rgba( $danger-color-light,  .58);
 
 /* light theme */
 $background:           #FAFAFA;
+$field-background:     transparent;
 $paper:                #FFF;
 $primary-text-color:   rgba(0,0,0,0.87);
 $secondary-text-color: rgba(0,0,0,0.54);
@@ -61,6 +60,7 @@ $divider-color:        #BDBDBD;
 
 /* dark theme
 $background:           #303030;
+$field-background:     transparent;
 $paper:                #424242;
 $primary-text-color:   #FFF;
 $secondary-text-color: #9A9A9A;
@@ -70,46 +70,14 @@ $divider-color:        #CCC;
 // icons
 $icon-active:   rgba(0,0,0,.54);
 $icon-inactive: rgba(0,0,0,.38);
-$icon-hover:    rgba(220,220,220,.32);
+$icon-hover:    rgba(255,255,255,.12);
 
 // shadows
 $shadow1: 0 0   2px rgba(0,0,0,.12),
           0 2px 4px rgba(0,0,0,.24);
 
-// other...
+$shadow2: 0px 3px 4px 5px rgba(100,100,100,0.24);
+$overlay: rgba(0,0,50,.54);
 
-$status:     #E0E0E0;
-$header:     #F5F5F5;
-$info:       #FFFFFF;
-
-
-
-
-// button.scss
-
-  .primary {
-    background-color: $primary-color;
-    color: $primary-color-text;
-    &.disabled {
-      background-color: rgba($primary-color, .3);
-      cursor:inherit;
-    }
-  }
-
-  .danger {
-    background-color: $danger-color;
-    color: $primary-color-text;
-    &.disabled {
-      background-color: rgba($danger-color, .3);
-      cursor:inherit;
-    }
-  }
-
-  .accent {
-    background-color: $accent-color;
-    color: $primary-color-text;
-    &.disabled {
-      background-color: rgba($accent-color, .3);
-      cursor:inherit;
-    }
-  }
+$field-background: $paper;
+$drawer-bgcolor: $background;

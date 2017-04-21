@@ -1,26 +1,28 @@
 import React from 'react';
-import { Page, Toolbar } from 'tatami';
+import { Page } from 'tatami';
+import CampaignsHeader from './campaignsHeader';
+import { CampaignsList, CampaignsListToolbar } from './campaignsList';
+import controller from '../controllers2/campaigns';
 
-class CampaignsPage extends React.Component {
+class Campaigns extends React.Component {
 
-  renderHeader = () => {
-    return (
-      <Toolbar icon="card_giftcard" title="CAMPAÑAS" >
-        xxx
-      </Toolbar>
-    )
+  componentWillMount() {
+    controller.loadCampaigns();
   }
+
+  header = <CampaignsHeader />
+  stickyHeader = <CampaignsListToolbar />
 
   render() {
     return (
-      <Page
-        className="campaigns-page"
-        fixedHeader={this.renderHeader}
-      >
-        campaigns
+      <Page className="campaigns-page"
+        threshold={0}
+        fixedHeader={this.header}
+        stickyHeader={this.stickyHeader}>
+        <CampaignsList />
       </Page>
     )
   }
 }
 
-export default CampaignsPage;
+export default Campaigns;

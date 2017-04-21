@@ -1,4 +1,4 @@
------------------------------------------------------------------------ 20170201
+------------------------------------------------------------------------- 20170201
 
 # Signflow
 
@@ -168,7 +168,7 @@ Reunión con PPV
 
     caso ideal
     ----------
-    [] calendario de promociones de marketing. Se envia uno por (trimestre (primaver verano) (PPV lo llama campaña)). (pedir ejemplo) (El dueño es marketing).
+    [] calendario de promociones de marketing. Se envia uno por temporada (primaver verano) (PPV lo llama campaña)). (pedir ejemplo) (El dueño es marketing).
     [] compras a mkt
       --> mkt --briefing( centros )--> ppv  (presupuesta asigna formatos)
         --> ppv se lo pasa a mkt
@@ -224,11 +224,12 @@ Reunión con PPV
 ------------------------------
 
 
+[OK] filtro por temporada ( primaver-verano, otoño-invierno)
 
-[] filtro por temporada ( primaver-verano, otoño-invierno)
 [] icon de subcampaña (tipo de subcampaña con catalogo, con gastos...)
   - decorador ROI
 
+  tipos de subcampaña
   []  catalogo, carteleria, servicios generales, sms, mail, postal, spots, fotos
 
   [] borrado de campaña ->
@@ -239,3 +240,20 @@ Reunión con PPV
 
 
 subcampaña: listitem : toda la matricula con el codigo de subcampaña resaltado.
+
+
+------------------------------------
+
+# reunión con compras:
+
+[ ] Gestión de Materiales
+
+- como la gestiona esta actualmente ?
+- tecnologia?
+- posible integracion?
+- sincronizacion frecuente ?
+- solicitudes de nuevos materiales ? como?
+
+[] Gestión de Stock de centros
+
+- que influencia puede tener en la elaboracion del presupuesto de materiales?

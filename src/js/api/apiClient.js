@@ -100,6 +100,13 @@ const APIClient = {
   },
 
   /*
+   * materials
+   */
+  materials2(onSuccess, onError) {
+    const MATERIALS = '/materials2';
+    http.GET(MATERIALS, onSuccess, errorHandler(onError));
+  },
+  /*
    * lamps
    */
   lamps(onSuccess, onError) {

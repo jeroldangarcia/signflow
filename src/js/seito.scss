@@ -1,25 +1,19 @@
-@import './theme.scss';
 @import '../../node_modules/seito/src/styles/seito.scss';
 
-html {
-  font-size:62.5%;
-  box-sizing: border-box;
+.clickable:hover {
+  cursor: pointer;
+  background-color: rgba(180,180,180,.5);
 }
 
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  background-color: $background;
-  //background-image: url('/background6.svg');
-  background-size: cover;
+input, select {
   color: $primary-text-color;
+  background-color: $field-background;
+}
+
+.secondary-text {
   font-size: 1.3rem;
-  font-family: 'Roboto', sans-serif;
-  text-rendering: auto;
-  overflow-y: hidden;
+  font-weight: 300;
+  color: $secondary-text-color;
 }
 
 /*
@@ -81,9 +75,6 @@ body {
   }
   &:hover {
     background-color: rgba($accent-color, 1);
-  }
-  @media(min-width: $break-big) {
-    right: calc((100vw - 1240px + 50px) / 2) !important;
   }
 }
 

@@ -7,9 +7,13 @@ import { Header, Menu } from 'seito';
 // pages
 import { Login, Exit, Wait } from 'tatami';
 import Load from './pages/load';
-import Campaigns from './pages/campaigns';
+import Campaigns from './pages2/campaigns';
 import Campaign from './pages/campaign';
 import Materials from './pages/materials';
+
+import Catalog from './pages2/catalog';
+import Product from './pages2/product';
+
 import LAMPS from './pages/lamps';
 import LAMP from './pages/lamp';
 import Orders from './pages/orders';
@@ -31,7 +35,7 @@ const Application = (props) => {
   ]
 
   const menu0 = [
-    { id: 'MATERIALS'    , label: 'Materiales'            , icon: 'recent_actors' , roles: [ 'compras' ]},
+    { id: 'CATALOG'      , label: 'Materiales'            , icon: 'recent_actors' , roles: [ 'compras' ]},
     { id: 'LAMPS'        , label: 'Solicitudes Materiales', icon: 'assignment'    , roles: [ 'compras' ], info: '7'},
 
   ]
@@ -62,7 +66,7 @@ const Application = (props) => {
 
   const pages = {
     'WAIT'      : <Wait     />,
-    'LOGIN'     : <Login title="SignFlow" next="CAMPAIGNS" fullscreen={true} users={users}/>,
+    'LOGIN'     : <Login title="SignFlow" next="PRODUCT" fullscreen={true} users={users}/>,
     'EXIT'      : <Exit       />,
 
     'IMMENU'    : <IMMenu    drawer={false} fullscreen={true}/>,
@@ -71,6 +75,10 @@ const Application = (props) => {
     'CAMPAIGNS' : <Campaigns drawer={true} />,
     'CAMPAIGN'  : <Campaign  drawer={true} />,
     'MATERIALS' : <Materials drawer={true} />,
+
+    'CATALOG'   : <Catalog drawer={true} />,
+    'PRODUCT'   : <Product drawer={true} />,
+
     'LAMPS'     : <LAMPS     drawer={true} />,
     'LAMP'      : <LAMP      drawer={true} tab={0}/>,
     'DRAFTS'    : <Drafts    drawer={true} />,
