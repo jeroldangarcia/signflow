@@ -224,7 +224,7 @@ Reunión con PPV
 ------------------------------
 
 
-[OK] filtro por temporada ( primaver-verano, otoño-invierno)
+[] filtro por temporada ( primaver-verano, otoño-invierno)
 
 [] icon de subcampaña (tipo de subcampaña con catalogo, con gastos...)
   - decorador ROI
@@ -244,16 +244,58 @@ subcampaña: listitem : toda la matricula con el codigo de subcampaña resaltado
 
 ------------------------------------
 
-# reunión con compras:
+# reunión con TODOS:
+
+### marketing
+Sacar centros y divisiones de la subcampaña de sus promociones SGP
+
+
+### ppv
+En el presupuesto cambiar "comentarios" por "incidencias". Que no se convierta en un Chat.
+Al añadir materiales y formatos al presupuesto puede necesitar materiales nuevos,
+al hacerlo se debe enviar una solicitud de nuevo material a compras
+
+### realizacion
+Agustin me pasara listado de razones de cambio de proveedor.
+
+
+### fechas de entrega (Eventos)
+MKT da la fecha de inicio de campaña
+PPV da la fecha de Presupuesto preparado (listado de materiales)
+PPV da la fecha de entrega de materiales
+Realizacion da la fecha de entrega de arte final
+
+
+### cierre de campaña
+
+Los proveedores no facturan hasta que no se cierra la campaña
+PPV cierra la campaña.
+-> Boton de cierre de la subcampaña en presupuesto.
+  -> on click: notificar a proveedores
+
+flujo actual:
+ppv cierra la campaña
+prov envia albaranes y notas de entrega
+ppv valida y envia albaranes a compras
+compras
+
+
+
+
+### compras
 
 [ ] Gestión de Materiales
 
 - como la gestiona esta actualmente ?
-- tecnologia?
-- posible integracion?
-- sincronizacion frecuente ?
+  en un excel ... nos lo pasara Eduardo
+  catagorizacion: grupo/familia/subfamilia
+
 - solicitudes de nuevos materiales ? como?
+  llegaran solicitudes de PPV desde el presupuesto.
+  compras necesita minimo 24h.
 
-[] Gestión de Stock de centros
+- necesita una app "catalogo" y se compromete a mantenerla.
 
-- que influencia puede tener en la elaboracion del presupuesto de materiales?
+
+[] Informacion de pedido a recibir:
+ quiere recibir solo la FACTURA le sobra el albaran

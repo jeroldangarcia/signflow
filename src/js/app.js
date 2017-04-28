@@ -7,15 +7,17 @@ import { Header, Menu } from 'seito';
 // pages
 import { Login, Exit, Wait } from 'tatami';
 import Load from './pages/load';
-import Campaigns from './pages2/campaigns';
+import Campaigns from './pages/campaigns';
+import Campaigns2 from './pages2/campaigns';
 import Campaign from './pages/campaign';
 import Materials from './pages/materials';
 
-import Catalog from './pages2/catalog';
-import Product from './pages2/product';
+import { MaterialPage } from './pages2/catalog';
+import Product from './pages2/product0';
 
 import LAMPS from './pages/lamps';
 import LAMP from './pages/lamp';
+import BudgetPage from './pages2/budget/page';
 import Orders from './pages/orders';
 import Order from './pages/order';
 import Drafts from './pages/drafts';
@@ -35,14 +37,16 @@ const Application = (props) => {
   ]
 
   const menu0 = [
-    { id: 'CATALOG'      , label: 'Materiales'            , icon: 'recent_actors' , roles: [ 'compras' ]},
-    { id: 'LAMPS'        , label: 'Solicitudes Materiales', icon: 'assignment'    , roles: [ 'compras' ], info: '7'},
+    { id: 'MATERIALS' , label: 'Materiales'            , icon: 'recent_actors' , roles: [ 'compras' ]},
+    { id: 'LAMPS'     , label: 'Solicitudes Materiales', icon: 'assignment'    , roles: [ 'compras' ], info: '7'},
 
   ]
 
   const menu1 = [
-    { id: 'MATERIALS'    , label: 'Materiales'            , icon: 'recent_actors' , roles: [ 'marketing' ]},
+    { id: 'MATERIALS'    , label: 'Materiales'            , icon: 'recent_actors' , roles: [ 'marketing', 'compras' ]},
     { id: 'CAMPAIGNS'    , label: 'Campañas'              , icon: 'card_giftcard' , roles: [ 'marketing', 'ppv', 'realizacion' ]},
+    { id: 'CAMPAIGNS2'    , label: 'Campañas 2'              , icon: 'card_giftcard' , roles: [ 'marketing', 'ppv', 'realizacion' ]},
+
   ]
 
   const menu2 = [
@@ -64,23 +68,38 @@ const Application = (props) => {
                     <Menu title="Realización"    options={menu3} />
                   </Drawer>
 
+  const onLogin = (user) => { console.log(user.rol)
+    const landing = {
+      'ppv' : 'LAMPS',
+      'manager' : 'STORE'
+    }
+    return landing[user.rol] || 'CAMPAIGNS';
+  }
+
   const pages = {
     'WAIT'      : <Wait     />,
-    'LOGIN'     : <Login title="SignFlow" next="PRODUCT" fullscreen={true} users={users}/>,
+    'LOGIN'     : <Login title="Signflow" next="CAMPAIGNS" next={onLogin} fullscreen={true} users={users}/>,
     'EXIT'      : <Exit       />,
 
     'IMMENU'    : <IMMenu    drawer={false} fullscreen={true}/>,
 
     'LOAD'      : <Load      drawer={true} />,
-    'CAMPAIGNS' : <Campaigns drawer={true} />,
-    'CAMPAIGN'  : <Campaign  drawer={true} />,
-    'MATERIALS' : <Materials drawer={true} />,
 
-    'CATALOG'   : <Catalog drawer={true} />,
+    'CAMPAIGNS' : <Campaigns drawer={true} />,
+    'CAMPAIGNS2' : <Campaigns2 drawer={true} />,
+
+    'CAMPAIGN'  : <Campaign  drawer={true} />,
+
+    'MATERIALS0' : <Materials drawer={true} />,
+    'MATERIALS'   : <MaterialPage drawer={true} />,
+
     'PRODUCT'   : <Product drawer={true} />,
 
     'LAMPS'     : <LAMPS     drawer={true} />,
     'LAMP'      : <LAMP      drawer={true} tab={0}/>,
+
+    'BUDGET'    : <BudgetPage drawer={true} />,
+
     'DRAFTS'    : <Drafts    drawer={true} />,
 //    'DRAFT'     : <Draft     drawer={true} />,
     'SUPPLIES'  : <Supplies  drawer={true} />,
@@ -94,7 +113,7 @@ const Application = (props) => {
   ]
 
   return (
-    <Tatami title="SignFlow" pages={pages} init="LOGIN" drawer={drawer} tools={tools} menu={ctxMenu} />
+    <Tatami title="Signflow" pages={pages} init="LOGIN" drawer={drawer} tools={tools} menu={ctxMenu} />
   );
 
 }
@@ -102,7 +121,7 @@ const Application = (props) => {
 export default Application;
 
   const users = [
-    {id:'p_lopez', icon:'person', title:'Pedro Lopez', caption:'Compras', role: 'compras'},
+    {id:'p_lopez', icon:'person', title:'Eduardo', caption:'Compras', role: 'compras'},
     {id:'d_echevarria', icon:'person', title:'David Echevarria', caption:'Marketing', role: 'marketing' },
     {id:'j_huete', icon:'person', title:'Julio Huete', caption:'PPV', role: 'ppv'},
     {id:'j_rayon', icon:'person', title:'Javier Rayón', caption:'Realización', role: 'realizacion'},

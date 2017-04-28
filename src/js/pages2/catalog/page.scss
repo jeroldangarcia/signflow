@@ -1,0 +1,32 @@
+.lane {
+  justify-content: flex-end;
+  padding-bottom: 6rem;
+
+  .lane-card {
+    display: flex;
+    flex-direction: row-reverse;
+    overflow-x: auto;
+
+    .lane-item {
+      header {
+        font-weight: 500;
+        font-size: 1.4rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        color: rgba(10,10,10, .6);
+        margin-left: 0;
+      }
+      &:hover {
+        cursor: pointer;
+        background-color: rgba(200,200,220, .3);
+      }
+    }
+  }
+}
+
+.catalog-page {
+  .tab {
+    min-width: 12rem !important;
+  }
+}

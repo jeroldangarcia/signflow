@@ -2,7 +2,7 @@ import React from 'react';
 
 // components
 import { Page, Toolbar, ConfirmDialog} from 'tatami';
-import { Icon, FAB, Header, GroupList, Form, Select, SearchBox } from 'seito';
+import { Icon, FAB, Header, GroupList0, Form, Select, SearchBox } from 'seito';
 
 // css
 import './lamps.scss';
@@ -33,7 +33,7 @@ class LAMPS extends React.Component {
   }
 
   handleItemSelected = () => {
-    this.props.goto('LAMP');
+    this.props.goto('BUDGET');
   }
 
   exit = () => {
@@ -77,7 +77,7 @@ class LAMPS extends React.Component {
           <Icon icon="search" action={this.toggleSearch}/>
         </Toolbar>
         {searchBox}
-        <GroupList data={solicitudes} onPrimaryAction={this.handleItemSelected} collapsed={false}/>
+        <GroupList0 data={solicitudes} onPrimaryAction={this.handleItemSelected} collapsed={false}/>
       </Page>
     );
   }

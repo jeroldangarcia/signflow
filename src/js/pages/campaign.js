@@ -5,7 +5,7 @@ import {Line, Doughnut} from 'react-chartjs-2';
 
 // components
 import { Page, Toolbar, ConfirmDialog } from 'tatami';
-import { FAB, Icon, Button, Header, Panel, Tabs, Tab, Stack, Form, Field, DateField, Select } from 'seito';
+import { FAB, Icon, Icon2, Button, Header, Panel, Tabs, Tab, Stack, Form, Field, DateField, Select } from 'seito';
 
 import { InfoField } from '../components/field';
 import Timeline from '../components/timeline';
@@ -107,20 +107,21 @@ class Campaign extends React.Component {
         <Stack selected={this.state.tab2}>
 
           <Form>
-            <Field icon="fingerprint"      label="Nombre" value="" />
-            <DateField icon="date_range"   label="Inicio" value="" />
-            <DateField icon="none"         label="Fin" value="" />
-            <Select    icon="store"        label="Empresa" options={[]} value="" />
-            <Select    icon="dashboard"    label="Departamento" options={[]} value="" />
-            <Select    icon="attach_money" label="Con Cargo a ...." options={[]} value="" />
-            <Field     icon="person"       label="Contacto" value="" />
-            <Field     icon=""             label="Observaciones" type="textarea" />
+            <Field icon="fingerprint"      label="Nombre" value="" readOnly={true}/>
+            <DateField icon="date_range"   label="Inicio" value="" readOnly={true}/>
+            <DateField icon="none"         label="Fin" value="" readOnly={true}/>
+            <Select    icon="store"        label="Empresa" options={[]} value="" readOnly={true}/>
+            <Select    icon="dashboard"    label="Departamento" options={[]} value="" readOnly={true}/>
+            <Select    icon="attach_money" label="Con Cargo a ...." options={[]} value="" readOnly={true}/>
+            <Field     icon="person"       label="Contacto" value="" readOnly={true}/>
+            <Field     icon=""             label="Observaciones" type="textarea" readOnly={true}/>
           </Form>
 
           <Form>
-            <Header icon="store" title="Centros" className="default-title"/>
-            <Header icon="dashboard" title="Divisiones" className="default-title"/>
-            <Field label="Tipo Implantacion"/>
+            <Header icon="store" title="Centros" className="default-title" ><Icon2 icon="add" clickable/></Header>
+            <Header icon="dashboard" title="Divisiones" className="default-title" ><Icon2 icon="add" clickable/></Header>
+            <Field label="Tipo Implantacion" />
+            <Field label="Peticion" />
           </Form>
 
           <Form>

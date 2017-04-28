@@ -1,0 +1,85 @@
+#%RAML 1.0
+title: ECI Signflow API
+version: v1
+baseUri: http://localhost:5000/
+mediaType:  application/json
+
+types:
+
+  User:
+    properties:
+      id: string
+      name: string
+      familyName: string
+      login: string
+      rol: string
+
+
+  UserList:
+    properties:
+      items:
+        type: array
+        items: User
+
+  Format:
+    properties:
+      id:
+        type: string
+        required: true
+      name:
+        type: string
+        required: true
+      volume: string
+      weight: string
+      langs:
+        type: string[]
+      centers:
+        type: string[]
+
+  Material:
+    properties:
+      id: string
+      mounting: string
+      formats:
+        type: array
+        items: Format
+      providers:
+        type: array
+        items: !include types/Provider.dataType.raml
+
+  MaterialList:
+    properties:
+      items:
+        type: Material[]
+        required: true
+
+
+
+/users:
+          get:
+            description: Obtener todos los usuarios registrados
+            responses:
+              200:
+                body:
+                  application/json:
+                    type: UserList
+          post:
+            description: registro de usuario
+            responses:
+              201:
+                headers:
+                  Location:
+                    description: URI del nuevo usuario
+
+        /users/{id}:
+          description: Obtener los datos de un usuario por su id
+          uriParameters:
+            id:
+              description: resource id
+              type: string
+          get:
+            responses:
+              200:
+                body:
+                  application/json:
+                    type: User

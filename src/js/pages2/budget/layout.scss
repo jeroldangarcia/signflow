@@ -1,0 +1,27 @@
+@import '../../app.scss';
+
+
+.budget-header {
+  margin: .5rem 0;
+  @media (max-width: $break-medium) {
+    h4 {
+      display: none;
+    }
+  }
+}
+
+
+.budget-list {
+
+}
+
+.budget-list-item {
+  display: flex;
+  align-items: center;
+
+
+    img {
+      width: 10rem;
+    }
+
+}

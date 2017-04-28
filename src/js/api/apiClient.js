@@ -110,7 +110,7 @@ const APIClient = {
    * lamps
    */
   lamps(onSuccess, onError) {
-    const LAMPS = '/api/lamps';
+    const LAMPS = '/lamps';
     http.GET(LAMPS, onSuccess, errorHandler(onError));
   },
 
