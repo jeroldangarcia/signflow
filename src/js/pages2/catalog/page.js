@@ -86,7 +86,7 @@ class CatalogPage extends React.Component {
   }
 
   header = (
-    <Toolbar className="appBar" icon="store" title="Catálogo">
+    <Toolbar className="appBar" icon="store" title="Catálogo Materiales">
     </Toolbar>
   );
 

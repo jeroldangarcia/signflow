@@ -37,28 +37,21 @@ const Application = (props) => {
   ]
 
   const menu0 = [
-    { id: 'MATERIALS' , label: 'Materiales'            , icon: 'recent_actors' , roles: [ 'compras', 'realizacion' ]},
-    { id: 'LAMPS'     , label: 'Solicitudes Materiales', icon: 'assignment'    , roles: [ 'compras', 'realizacion' ], info: '7'},
-
+    { id: 'MATERIALS' , label: 'Catálogo'   , icon: 'burst_mode' , roles: [ 'compras', 'realizacion' ]},
   ]
 
   const menu1 = [
-    { id: 'MATERIALS'    , label: 'Materiales'            , icon: 'recent_actors' , roles: [ 'marketing', 'compras', 'realizacion' ]},
     { id: 'CAMPAIGNS'    , label: 'Campañas'              , icon: 'card_giftcard' , roles: [ 'marketing', 'ppv', 'realizacion' ]},
-    { id: 'CAMPAIGNS2'    , label: 'Campañas 2'              , icon: 'card_giftcard' , roles: [ 'marketing', 'ppv', 'realizacion' ]},
-
   ]
 
   const menu2 = [
-    { id: 'MATERIALS'    , label: 'Materiales'            , icon: 'recent_actors' , roles: [ 'ppv', 'realizacion' ]},
+    { id: 'MATERIALS'    , label: 'Catálogo'   , icon: 'burst_mode' , roles: [ 'ppv', 'realizacion' ]},
     { id: 'LAMPS'        , label: 'Solicitudes Materiales', icon: 'assignment'    , roles: [ 'ppv', 'marketing', 'realizacion' ], info: '7'},
-  //  { id: 'SUPPLIES'     , label: 'Dotaciones Centros'    , icon: 'store'         , roles: [ 'ppv', 'marketing' ]},
   ]
 
   const menu3 = [
-    { id: 'MATERIALS', label: 'Materiales'          , icon: 'recent_actors' , roles: [ 'realizacion' ]},
-    { id: 'PROVIDERS', label: 'Provision Materiales', icon: 'burst_mode'    , roles: [ 'realizacion' ], info: '10'},
-    { id: 'DRAFTS'   , label: 'Arte Final'          , icon: 'burst_mode'    , roles: [ 'artefinal', 'realizacion' ]  , info: '10'},
+    { id: 'MATERIALS', label: 'Catálogo' , icon: 'burst_mode' , roles: [ 'realizacion' ]},
+    { id: 'LAMPS'        , label: 'Solicitudes Materiales', icon: 'assignment'    , roles: [ 'ppv', 'marketing', 'realizacion' ], info: '7'},
   ]
 
   const drawer = <Drawer>
