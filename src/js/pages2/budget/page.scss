@@ -1,5 +1,10 @@
 @import '../../app.scss';
 
+.budget-page {
+  .tab {
+    background-color: $background;
+  }
+}
 
 .budget-header {
   margin: .5rem 0;
@@ -8,20 +13,4 @@
       display: none;
     }
   }
-}
-
-
-.budget-list {
-
-}
-
-.budget-list-item {
-  display: flex;
-  align-items: center;
-
-
-    img {
-      width: 10rem;
-    }
-
 }

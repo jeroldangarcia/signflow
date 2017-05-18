@@ -1,0 +1,45 @@
+@import '../../app.scss';
+
+.upload-dialog {
+  max-width: $break-medium;
+}
+
+.upload-wizard {
+  min-height: 70rem;
+  @media (max-width: $break-medium) {
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
+.upload-file {
+  .drop-area {
+    min-height: 30rem;
+    background-color: $background;
+    border: dashed 3px $divider-color;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+  }
+  .bar {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.upload-preview {
+  .file-preview {
+    min-height: 30rem;
+    background-color: $background;
+    border: solid 1px $divider-color;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+  }
+}

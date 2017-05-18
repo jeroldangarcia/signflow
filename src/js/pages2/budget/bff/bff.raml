@@ -1,0 +1,105 @@
+#%RAML 1.0
+title: Catalog
+version: v1
+baseUri: http://localhost:3000/
+mediaType:  application/json
+
+types:
+
+  url: string
+
+  Center:
+    properties:
+      id: string
+      name: string
+      type: string
+      langs: string[]
+      rules:
+        type: string
+        enum: ["exclude material", "exclude model"]
+
+  Distribution:
+    properties:
+      name: string
+      centers: Center[]
+
+  ItemDistribution:
+    properties:
+      centerType: string
+      amount: number
+
+  Assignment:
+    properties:
+      level: number
+      provider: string
+      price: string
+
+  BudgetItem:
+    properties:
+      id: string
+      product: string
+      detail: string
+      pdf?: url
+      distribution: ItemDistribution[]
+      assignment: Assignment
+
+  BudgetItemForm:
+    properties:
+      product: number
+      detail: string
+      pdf: url
+
+  BudgetItemPatch:
+    properties:
+      detail?: string
+      pdf?: url
+      distribution?: Assignment
+
+  Budget:
+    properties:
+      id: number
+      subcampaign: number
+      description: string
+      items: BudgetItem
+      distribution: Center[]
+
+  BudgetForm:
+    properties:
+      subcampaign: number
+      description: string
+
+/budgets:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: Budget[]
+  post:
+    body:
+      application/json:
+        type: BudgetForm
+
+/budgets/{budgetID}:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type:
+              Budget
+  patch:
+    description: Modificacion de una categoría
+    body:
+      application/json:
+        type: BudgetItemPatch
+
+/budgets/{budgetID}/items:
+  post:
+    body:
+      application/json:
+        type: BudgetItemForm
+
+/budgets/{budgetID}/dashboard:
+/budgets/{budgetID}/forum:
+/budgets/{budgetID}/activity:

@@ -13,7 +13,8 @@ const LaneItem = (props) => {
       <Card className="lane-item">
         <header>{props.title}</header>
         <main>
-          <img src={props.src}/>
+          <div>Disponibilidad......<strong>OK</strong></div>
+          <div>Precio medio........<strong>1.5 €</strong></div>
         </main>
         <footer>
           {props.description}

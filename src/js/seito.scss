@@ -88,6 +88,17 @@ input, select {
 /**
  * tab
  */
+.tabs {
+  &.vertical {
+    .tab {
+      &.selected {
+         border-right: solid 2px $accent-color !important;
+         border-bottom: 0;
+      }
+    }
+  }
+}
+
  .tab {
    color: $divider-color;
 

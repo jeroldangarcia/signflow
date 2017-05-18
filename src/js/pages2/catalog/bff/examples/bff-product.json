@@ -1,0 +1,28 @@
+{
+  "id": 111,
+  "name": "60x140",
+  "category": 11,
+  "properties": [
+    { "group": "print", "name": "Acabado", "value": "Mate" },
+    { "group": "print", "name": "Papel"  , "value": "Satinado" }
+  ],
+  "contest":   {
+    "id": 1111,
+    "period": {
+      "start": "2017-01-01",
+      "end": "2017-12-31"
+    },
+    "averagePrice": "12.1000",
+    "prices": [
+      { "lot": 1, "ranking": 1, "price": "10,0000" , "provider": { "id": "P1", "name": "FRAGMA" }},
+      { "lot": 2, "ranking": 1, "price":  "9,0000" , "provider": { "id": "P1", "name": "FRAGMA" }},
+      { "lot": 3, "ranking": 1, "price":  "8,5000" , "provider": { "id": "P1", "name": "FRAGMA" }},
+      { "lot": 1, "ranking": 2, "price": "16,8000" , "provider": { "id": "P2", "name": "JDJ" }},
+      { "lot": 2, "ranking": 2, "price": "16,8000" , "provider": { "id": "P2", "name": "JDJ" }},
+      { "lot": 3, "ranking": 2, "price": "16,8000" , "provider": { "id": "P2", "name": "JDJ" }},
+      { "lot": 1, "ranking": 3, "price": "20,2000" , "provider": { "id": "P1", "name": "GRAFISER" }},
+      { "lot": 2, "ranking": 3, "price": "20,2000" , "provider": { "id": "P1", "name": "GRAFISER" }},
+      { "lot": 3, "ranking": 3, "price": "20,2000" , "provider": { "id": "P1", "name": "GRAFISER" }}
+    ]
+  }
+}

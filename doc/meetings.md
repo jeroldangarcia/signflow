@@ -280,8 +280,6 @@ ppv valida y envia albaranes a compras
 compras
 
 
-
-
 ### compras
 
 [ ] Gestión de Materiales
@@ -299,3 +297,40 @@ compras
 
 [] Informacion de pedido a recibir:
  quiere recibir solo la FACTURA le sobra el albaran
+
+
+------------------------------------ 20170511
+
+Externalizacion del módulo de realización:
+Finalmente se unifican las pantallas de arte final, seleccion de proveedor y listado de materiales:
+
+[ ] Realizacion crea un listado de matriales vacio con un numero de subcampaña.
+    - en el futuro PPV podra crearlo a partir de una plantilla.
+
+[ ] el modulo debe mantener un mapa de formatos - materiales.
+    - en el futuro este mapa debería integrarse con la BBDD de materiales de compras.
+
+[ ] Arte final añade sus PDFs
+    - nomenclatura del PDF : [fmt]_[motivo]_[idioma].PDF
+    - el sistema añade el material segun el fmt dado en el nombre del PDF
+    - si hay mas de un material por fmt:
+        - se pueden seleccionar varios
+        - si no se sabe se marca como "pendiente de material"
+    - realizacion o ppv debera resolver los motivos pendientes de material
+
+[ ] Una vez añadidos los motivos PPV puede añadir la distribucion de cada uno de ellos segun el tipo de centros (A,B,C)
+
+[ ] Con la distribucion Realizacion puede aprobar el proveedor y hacer el envio
+
+[ ] Envio:
+    - PDF
+    - excel de distribucion por centros
+
+[ ] Idiomas:
+    Si un motivo tiene varios idiomas -> tiene varios PDFs
+    La distribucion total se reparte a partes iguales. (o bien son carteles de 2 caras)
+    - para cada idioma el pdf se llamara igual +  un sufijo de idioma, asi el
+      sistema al detectarlo sabe que lo tiene que asociar a un motivo ya existente.
+
+[ ] Repeticiones
+    Habilitar opcion de repeticion para un motivo.

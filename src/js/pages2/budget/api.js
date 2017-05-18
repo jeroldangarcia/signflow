@@ -1,5 +1,5 @@
-const DOMAIN = window.DOMAIN;
-//const DOMAIN = "http://localhost:3000";
+//const DOMAIN = window.DOMAIN;
+const DOMAIN = "http://localhost:3000";
 
 // IO
 import { HTTPClient, Session } from 'tatami';
@@ -38,13 +38,13 @@ const errorHandler = (onError) => {
 /**
  * API Client
  */
-const APIClient = {
+const API = {
 
-  catalog(onSuccess, onError) {
-    const CATALOG = '/catalogs/1';
-    http.GET(CATALOG, onSuccess, errorHandler(onError));
-  },
+  budget(id, onSuccess, onError) {
+    const BUDGET = `/budgets/${id}`;
+    http.GET(BUDGET, onSuccess, errorHandler(onError));
+  }
 
 }
 
-export default APIClient;
+export default API;

@@ -1,0 +1,216 @@
+#%RAML 1.0
+title: Catalog
+version: v1
+baseUri: http://localhost:3000/
+mediaType:  application/json
+
+types:
+
+  url: string
+  period:
+    properties:
+      start: date-only
+      end: date-only
+
+  Catalog:
+    properties:
+      name: string
+      date: date-only
+      categories: Category[]
+      products: Product[]
+
+  CatalogForm:
+    properties:
+      name: string
+
+  Category:
+    properties:
+      id: number
+      level: string
+      name: string
+      thumb?: url
+      parent?: number
+
+  CategoryForm:
+    properties:
+      level: string
+      name: string
+      thumb?: url
+      parent?: number
+
+  CategoryPatch:
+    properties:
+      level?: string
+      name?: string
+      thumb?: url
+      parent?: number
+
+  Product:
+    properties:
+      id: number
+      name: string
+      category: number
+      properties?: Property[]
+      contest?: Contest
+
+  ProductForm:
+    properties:
+      category: number
+      name: string
+
+  ProductPatch:
+    properties:
+      name?: string
+      category?: number
+      properties?: Property[]
+
+  Property:
+    properties:
+      group?: string
+      name: string
+      value: string
+
+  Contest:
+    properties:
+      id: number
+      period: period
+      averagePrice: string
+      prices: array
+
+  ContestForm:
+    properties:
+      period: period
+      prices: array
+
+  ContestPatch:
+    properties:
+      averagePrice?: string
+      prices: array
+
+/catalogs:
+  description: Colección de catálogos
+  post:
+    body:
+      application/json:
+        type: CatalogForm
+        example: !include ./examples/bff-catalogCreateRequest.json
+    responses:
+      201:
+        headers:
+          location:
+            description: URI pointing to the location of the newly created resource
+        body:
+          application/json:
+            type:
+            example: !include ./examples/bff-catalogCreateResponse.json
+
+/catalogs/{catalogID}:
+  description: Catalogo de productos
+  get:
+    description: Obtener un catálogo
+    responses:
+      200:
+        body:
+          application/json:
+            type: Catalog
+            example: !include ./examples/bff-catalog.json
+
+/catalogs/{catalogID}/categories:
+  post:
+    description: Crear un nuevo catálogo
+    body:
+      application/json:
+        type: CategoryForm
+
+/catalogs/{catalogID}/categories/{categoryID}:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: Category
+  patch:
+    description: Modificacion de una categoría
+    body:
+      application/json:
+        type: CategoryPatch
+  delete:
+    description: Borrado de una categoría
+    responses:
+      200:
+        body:
+          example: { "success": true, "mssg": "Category Deleted"}
+
+/catalogs/{catalogID}/products:
+  post:
+    description: Añadir un nuevo producto al catálogo
+    body:
+      application/json:
+        type: ProductForm
+        example: !include ./examples/bff-productCreateRequest.json
+    responses:
+      201:
+        headers:
+          location:
+            description: URI pointing to the location of the newly created resource
+        body:
+          application/json:
+            type: Product
+            example: !include ./examples/bff-productCreateResponse.json
+
+/catalogs/{catalogID}/products/{productID}:
+  get:
+    description: Obtener el detalle de un producto
+    responses:
+      200:
+        body:
+          application/json:
+            type: Product
+            example: !include ./examples/bff-product.json
+  patch:
+    description: Modificar un productos
+    body:
+      application/json:
+        type: ProductPatch
+
+  delete:
+    description: Borrado de un producto
+    responses:
+      200:
+        body:
+          example: { "success": true, "mssg": "Product Deleted"}
+
+/contests:
+  description: |
+    Colección de concursos de proveedores.
+    Cada concurso corresponde a un producto en un periodo de tiempo.
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: Contest[]
+  post:
+    description: Añadir un nuevo concurso de producto
+    body:
+      application/json:
+        type: ContestForm
+
+/contests/{productID}:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: Contest
+            example: !include ./examples/bff-contest.json
+  patch:
+    body:
+      application/json:
+        type: ContestPatch
+  delete:
+    description: Borrado de una concurso
+    responses:
+      200:
+        body:
+          example: { "success": true, "mssg": "Contest Deleted"}

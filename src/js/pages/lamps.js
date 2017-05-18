@@ -1,14 +1,54 @@
 import React from 'react';
 
 // components
-import { Page, Toolbar, ConfirmDialog} from 'tatami';
-import { Icon, FAB, Header, GroupList0, Form, Select, SearchBox } from 'seito';
+import { Page, Toolbar, ConfirmDialog, Session} from 'tatami';
+import { Icon, FAB, Header, GroupList0, Form, Field, Select, SearchBox, UserTag } from 'seito';
+import { Validator as check } from 'seito';
 
 // css
 import './lamps.scss';
 
 // controller
 import controller from '../controllers/lamps';
+
+class NewLAMPDialog extends React.Component {
+  state = {
+    subcampaign: '',
+    description: '',
+    template: ''
+  }
+
+  handleCloseDialog = () => {
+    this.props.toggleDialog(null);
+  }
+
+  handleChangeField = (id, value) => {
+    this.setState({ [id]: value });
+  }
+
+  handleValidations = () => {
+    return check.notEmpty(this.state.subcampaign);
+  }
+
+  handleOK = () => {
+    console.log('OKKKK', this.state)
+  }
+
+  render() {
+    const me = Session.me();
+    console.log(me)
+    return (
+      <ConfirmDialog title="Solicitud de Materiales" onClose={this.handleCloseDialog} canOK={this.handleValidations()} onOK={this.handleOK}>
+        <UserTag avatar="https://randomuser.me/api/portraits/thumb/men/3.jpg"  title={`${me.name} ${me.family_name}`} subtitle={me.email} />
+        <Form>
+          <Field  id="subcampaign" label="ID Subcampaña" value={this.state.subcampaign} onChange={this.handleChangeField} required/>
+          <Field  id="description" label="Descripcion"   value={this.state.description} onChange={this.handleChangeField}/>
+          <Select id="template"    label="Distribución"  value={this.state.template}    onChange={this.handleChangeField} options={templates} />
+        </Form>
+      </ConfirmDialog>
+    )
+  }
+}
 
 /**
  * LAMPS Page
@@ -28,8 +68,10 @@ class LAMPS extends React.Component {
     });
   }
 
-  handleCloseDialog = () => {
-    this.props.toggleDialog(null);
+  handleAddDialog = () => {
+    this.props.toggleDialog(
+      <NewLAMPDialog toggleDialog={this.props.toggleDialog} />
+    )
   }
 
   handleItemSelected = () => {
@@ -78,6 +120,7 @@ class LAMPS extends React.Component {
         </Toolbar>
         {searchBox}
         <GroupList0 data={solicitudes} onPrimaryAction={this.handleItemSelected} collapsed={false}/>
+        <FAB icon="add" action={this.handleAddDialog}/>
       </Page>
     );
   }
@@ -105,5 +148,11 @@ const groupCriterias = [
     ]},
   ]
 
+const templates = [
+  { label: '...', value: ''},
+  { label: '8 Dias de Oro', value: 'template00001'},
+  { label: 'Black Friday', value: 'template00002'},
+  { label: 'Navidad', value: 'template00001'}
+]
 
 export default LAMPS;

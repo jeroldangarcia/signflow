@@ -45,7 +45,6 @@ types:
         items: Format
       providers:
         type: array
-        items: !include types/Provider.dataType.raml
 
   MaterialList:
     properties:
@@ -53,33 +52,27 @@ types:
         type: Material[]
         required: true
 
-
-
 /users:
-          get:
-            description: Obtener todos los usuarios registrados
-            responses:
-              200:
-                body:
-                  application/json:
-                    type: UserList
-          post:
-            description: registro de usuario
-            responses:
-              201:
-                headers:
-                  Location:
-                    description: URI del nuevo usuario
+  get:
+    description: Obtener todos los usuarios registrados
+    responses:
+      200:
+        body:
+          application/json:
+            type: UserList
+  post:
+    description: registro de usuario
+    responses:
+      201:
+        headers:
+          Location:
+            description: URI del nuevo usuario
 
-        /users/{id}:
-          description: Obtener los datos de un usuario por su id
-          uriParameters:
-            id:
-              description: resource id
-              type: string
-          get:
-            responses:
-              200:
-                body:
-                  application/json:
-                    type: User
+/users/{id}:
+  description: Obtener los datos de un usuario por su id
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: User

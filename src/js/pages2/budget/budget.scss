@@ -1,0 +1,85 @@
+
+.budget{
+
+}
+
+.budget-group {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin: 1rem 0 .5rem 0;
+  .title{
+    flex:1;
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-shadow: 1px 1px #ddd;
+    color: rgba(0,0,0,.8);
+  }
+}
+
+
+.budget-item {
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  .thumbnail {
+    overflow: hidden;
+    margin: 0 2rem 0 0;
+    img {
+      width: 10rem;
+    }
+  }
+
+  .container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 50fr 25fr 25fr;
+    .material {
+      display: flex;
+      flex-direction: column;
+      font-weight:200;
+      font-size: 1.4rem
+    }
+    .distribution {
+      display: flex;
+      align-items: center;
+      margin: 0;
+      padding: 1rem;
+      background-color: rgba(100,100,100,.2);
+      height: 7rem;
+      input {
+        height: 4rem;
+        width: 4rem;
+        text-align: center;
+      }
+      .sum {
+        width: 8rem;
+        font-size: 1.4rem;
+        font-weight: 300;
+        text-align: center
+      }
+    }
+    .cost {
+      display: flex;
+      align-items: center;
+      margin: 0;
+      padding: 1rem;
+      background-color: rgba(200,200,200,.2);
+      height: 7rem;
+      input,select {
+        height: 4rem;
+        width: 10rem;
+        text-align: center;
+      }
+      .sum {
+        width: 8rem;
+        font-size: 1.4rem;
+        font-weight: 300;
+        text-align: center
+      }
+    }
+  }
+}

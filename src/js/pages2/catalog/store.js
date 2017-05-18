@@ -1,82 +1,32 @@
 import mobx from 'mobx';
 import { observable, computed, action} from 'mobx';
 
-class MaterialStore {
+class CatalogStore {
 
-  @observable _materials = example1;
+  @observable _catalog = {};
 
-  @observable _material = {};
-
-  @computed get materials() {
-    return this._materials;
+  @computed get catalog() {
+    return this._catalog;
   }
 
+  set catalog(data) {
+    this._catalog = data;
+  }
+
+  @computed get categories() {
+    return this._catalog.categories || [];
+  }
+
+  @computed get categoryRoot() {
+    return this.categories.filter( category => {
+      return category.parent === 0;
+    });
+  }
+
+  @computed get contents() {
+    return this._catalog.products || [];
+  }
 }
 
-const singleton = new MaterialStore();
+const singleton = new CatalogStore();
 export default singleton;
-
-
-const example1 = [
-  {
-    "id": "00001",
-    "family": "Hosteleria",
-    "mounting": "Posavasos",
-    "formats": [
-        { "img": "/glasspack.jpg", "name": "Tipo1" },
-        { "img": "/glasspack.jpg", "name": "Tipo2" }
-    ],
-    "providers" : [
-      { "id": "00001", "name": "Imprentas Alcantara", "workload": "60%"}
-    ]
-  },
-  {
-    "id": "00002",
-    "family": "Hosteleria",
-    "mounting": "Manteles",
-    "formats": [
-        { "img": "/vinilo.jpg", "name": "Tipo1" },
-        { "img": "/vinilo.jpg", "name": "Tipo2" }
-    ],
-    "providers" : [
-      { "id": "00001", "name": "Imprentas Alcantara", "workload": "60%"}
-    ]
-  },
-  {
-    "id": "00003",
-    "family": "Lonas",
-    "mounting": "Lonas Tipo1",
-    "formats": [
-        { "img": "/lonas.jpg", "name": "500cm" },
-        { "img": "/lonas.jpg", "name": "800cm" }
-    ],
-    "providers" : [
-      { "id": "00001", "name": "Imprentas Alcantara", "workload": "60%"}
-    ]
-  },
-  {
-    "id": "00003",
-    "family": "Lonas",
-    "mounting": "Lonas Gran Formato",
-    "formats": [
-        { "img": "/lonas.jpg", "name": "5m" },
-        { "img": "/lonas.jpg", "name": "10m " },
-        { "img": "/lonas.jpg", "name": "20m" }
-    ],
-    "providers" : [
-      { "id": "00001", "name": "Imprentas Alcantara", "workload": "60%"}
-    ]
-  },
-  {
-    "id": "00003",
-    "family": "Vinilos",
-    "mounting": "Vinilos Tipo1",
-    "formats": [
-        { "img": "/vinilo.jpg", "name": "500cm" },
-        { "img": "/vinilo.jpg", "name": "800cm" }
-    ],
-    "providers" : [
-      { "id": "00001", "name": "Imprentas Alcantara", "workload": "60%"}
-    ]
-  },
-];
