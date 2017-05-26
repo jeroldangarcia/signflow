@@ -1,7 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import { Page, Toolbar } from 'tatami';
-import { FAB, Icon2, Badge2, Card, Header, Tabs, Tab, Stack, SearchBox, Lane } from 'seito';
+import { Page, Toolbar, ConfirmDialog } from 'tatami';
+import { FAB, FAM, Icon2, Micon, Menu, Badge2, Card, Header, Tabs, Tab, Stack, SearchBox, Lane, Field } from 'seito';
 import LaneItem from './laneItem';
 
 import './page.scss';
@@ -22,6 +22,28 @@ const Product = ({id, name}) => {
 @observer
 class CategoryLane extends React.Component {
 
+  handleEditCategoryDialog = (material = { name: 'Banderola 1'}) => {
+    const onClose = () => { this.props.toggleDialog(null);}
+    this.props.toggleDialog(
+      <ConfirmDialog title="Editar Material" onCancel={onClose} onClose={onClose} >
+        <Field id="name" label="Nombre" value={material.name} required={true} />
+        <Field id="description" label="Descripcion" value={material.description} />
+        <Field id="thumbnail" label="Icono" value={material.thumbnail} />
+      </ConfirmDialog>
+    )
+  }
+
+  handleAddProductDialog = () => {
+    const onClose = () => { this.props.toggleDialog(null);}
+    this.props.toggleDialog(
+      <ConfirmDialog title="Nuevo Formato" onCancel={onClose} onClose={onClose} >
+        <Field id="root" label="Familia" value="GlassPack" readOnly={true} />
+        <Field id="parent" label="Material" value="Banderola 1" readOnly={true} />
+        <Field id="name" label="Nombre" value="" required={true}/>
+      </ConfirmDialog>
+    )
+  }
+
   products = store.contents.filter( content => {
     return content.category === this.props.category.id
   });
@@ -36,11 +58,17 @@ class CategoryLane extends React.Component {
       <Tab label="5" />
     </Tabs>
   ]
+
   render() {
     return (
       <div style={{ flex:1, display: 'flex', flexDirection: 'column', position: 'relative', margin: '1rem'}}>
         <Header icon="burst_mode" title={this.props.category.name} >
-          <Icon2 icon="add" clickable />
+          <Micon icon="more_vert" clickable >
+            <Menu title="Material" options={[
+              { icon:'edit', label:'Editar Material', action: this.handleEditCategoryDialog },
+              { icon:'add', label:'Nuevo Formato', action: this.handleAddProductDialog },
+            ]} />
+          </Micon>
         </Header>
         <Lane actions={this.actions} image={this.props.category.thumb}>
           {this.products.map( product => <Product key={product.id} {...product}/> )}
@@ -64,7 +92,7 @@ class CatalogList extends React.Component {
   render() {
     return (
       <div>
-        {this.categories.map( category => <CategoryLane category={category}/>)}
+        {this.categories.map( category => <CategoryLane category={category} {...this.props}/>)}
       </div>
     )
   }
@@ -85,8 +113,44 @@ class CatalogPage extends React.Component {
     this.setState({ tab });
   }
 
+  handleAddFamilyDialog = () => {
+    const onClose = () => { this.props.toggleDialog(null);}
+    this.props.toggleDialog(
+      <ConfirmDialog title="Nueva Familia" onCancel={onClose} onClose={onClose} >
+        <Field id="name" label="Nombre" required={true}/>
+        <Field id="description" label="description" />
+        <Field id="thumbnail" label="Icono" />
+      </ConfirmDialog>
+    )
+  }
+
+  handleEditFamilyDialog = (family = { name: 'GlassPack'}) => {
+    const onClose = () => { this.props.toggleDialog(null);}
+    this.props.toggleDialog(
+      <ConfirmDialog title="Editar Familia" onCancel={onClose} onClose={onClose} >
+        <Field id="name" label="Nombre" value={family.name} required={true} />
+        <Field id="description" label="Descripcion" value={family.description} />
+        <Field id="thumbnail" label="Icono" value="" />
+      </ConfirmDialog>
+    )
+  }
+
+  handleAddMaterialDialog = () => {
+    const onClose = () => { this.props.toggleDialog(null);}
+    this.props.toggleDialog(
+      <ConfirmDialog title="Nuevo Material" onCancel={onClose} onClose={onClose} >
+        <Field id="name" label="Nombre" value="" required={true} />
+        <Field id="description" label="Descripcion" value="" />
+        <Field id="thumbnail" label="Icono" value="" />
+      </ConfirmDialog>
+    )
+  }
+
   header = (
-    <Toolbar className="appBar" icon="store" title="Catálogo Materiales">
+    <Toolbar className="appBar" icon="store" title="Catálogo" menu={[
+      { icon: 'add', label: 'Nueva Familia', action: this.handleAddFamilyDialog},
+      { icon: 'edit', label: 'Editar Familia', action: this.handleEditFamilyDialog}
+    ]}>
     </Toolbar>
   );
 
@@ -108,7 +172,7 @@ class CatalogPage extends React.Component {
 
         <Stack selected={this.state.tab}>
           {store.categoryRoot.map( category => {
-            return <CatalogList key={category.id} parent={category.id} />
+            return <CatalogList key={category.id} parent={category.id} onEdit={this.handleEditMaterialDialog} onAdd={this.handleAddFormatDialog} {...this.props}/>
           })}
         </Stack>
 
@@ -116,6 +180,7 @@ class CatalogPage extends React.Component {
           <Icon2 icon="search" /><SearchBox icon="search" className="flex100"/>
         </footer>
 
+        <FAB icon="add" action={this.handleAddMaterialDialog}/>
       </Page>
     )
   }

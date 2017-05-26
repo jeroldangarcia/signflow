@@ -1,6 +1,6 @@
 {
   "name": "Materiales",
-
+  "date": "2017-01-01",
   "categories": [
     { "id": 1 , "parent": 0, "level": "family"  , "name": "GlassPack" },
     { "id": 2 , "parent": 0, "level": "family"  , "name": "Carton"    },

@@ -2,7 +2,7 @@ import React from 'react';
 import { Page, ConfirmDialog } from 'tatami';
 import { Icon2, Micon, Menu, Header, Select, Panel, BreadCrumb, Badge2, Tabs, Tab, Stack, Comment, CommentBox, Field, Button, List } from 'seito';
 import { Budget, BudgetInfo } from './budget';
-import { MaterialList } from '../catalog/page';
+import { CatalogList } from '../catalog/page';
 import Distribution from './distribution';
 import Activity from './activity';
 import controller from './controller';
@@ -37,7 +37,7 @@ class BudgetPage extends React.Component {
     }
     this.props.toggleDialog(
       <ConfirmDialog title="Selección de material" onClose={onClose} onCancel={onClose}>
-        <MaterialList />
+        <CatalogList />
       </ConfirmDialog>
     )
   }
@@ -67,6 +67,5 @@ class BudgetPage extends React.Component {
     )
   }
 }
-
 
 export default BudgetPage;

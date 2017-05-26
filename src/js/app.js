@@ -41,17 +41,17 @@ const Application = (props) => {
   ]
 
   const menu1 = [
-    { id: 'CAMPAIGNS'    , label: 'Campañas'              , icon: 'card_giftcard' , roles: [ 'marketing', 'ppv', 'realizacion' ]},
+    { id: 'CAMPAIGNS'    , label: 'Campañas' , icon: 'card_giftcard' , roles: [ 'marketing', 'ppv', 'realizacion' ]},
   ]
 
   const menu2 = [
     { id: 'MATERIALS'    , label: 'Catálogo'   , icon: 'burst_mode' , roles: [ 'ppv', 'realizacion' ]},
-    { id: 'LAMPS'        , label: 'Solicitudes Materiales', icon: 'assignment'    , roles: [ 'ppv', 'marketing', 'realizacion' ], info: '7'},
+    { id: 'LAMPS'        , label: 'Solicitudes Material', icon: 'assignment'    , roles: [ 'ppv', 'marketing', 'realizacion' ], info: '7'},
   ]
 
   const menu3 = [
     { id: 'MATERIALS', label: 'Catálogo' , icon: 'burst_mode' , roles: [ 'realizacion' ]},
-    { id: 'LAMPS'        , label: 'Solicitudes Materiales', icon: 'assignment'    , roles: [ 'ppv', 'marketing', 'realizacion' ], info: '7'},
+    { id: 'LAMPS'        , label: 'Solicitudes Material', icon: 'assignment'    , roles: [ 'ppv', 'marketing', 'realizacion' ], info: '7'},
   ]
 
   const drawer = <Drawer>

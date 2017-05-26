@@ -1,7 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { ConfirmDialog } from 'tatami';
-import { Icon2, Micon, Menu, List, Panel, Field } from 'seito';
+import { Icon2, Micon, Menu, List, Panel, Form, Field } from 'seito';
 import { CatalogList } from '../catalog/page';
 import { UploadWizard } from './upload.js'
 import store from './store.js';
@@ -56,7 +56,12 @@ const BudgetGroup = (props) => { console.log(props)
   return (
     <div className="budget-group">
       <span className="title">{props.title}</span>
-      <Icon2 icon="more_vert" clickable/>
+      <Micon icon="more_vert" clickable>
+        <Menu title="Material/Formato" options={[
+          {label: 'Eliminar', icon:'delete'},
+          {label: 'Añadir Motivo ', icon:'picture_as_pdf'},
+        ]} toggle={props.toggleDialog}/>
+      </Micon>
     </div>
   )
 }
@@ -115,6 +120,20 @@ class Budget extends React.Component {
       this.props.toggleDialog(null);
     }
     this.props.toggleDialog(
+      <ConfirmDialog className="upload-dialog" title="Añadir Material" onClose={onClose} onCancel={onClose}>
+        <Form>
+          <Field id="material" label="Material" />
+          <Field id="format" label="Formato" />
+        </Form>
+      </ConfirmDialog>
+    )
+  }
+
+  handleAddPDFDialog = () => {
+    const onClose = () => {
+      this.props.toggleDialog(null);
+    }
+    this.props.toggleDialog(
       <ConfirmDialog className="upload-dialog" title="Añadir PDF" onClose={onClose} onCancel={onClose}>
         <UploadWizard />
       </ConfirmDialog>
@@ -122,10 +141,13 @@ class Budget extends React.Component {
   }
 
   render() {
-    const addButton = <Icon2 icon="add" clickable action={this.handleAddMaterialDialog} />;
+    const addButton = [
+      <Icon2 icon="burst_mode" clickable action={this.handleAddMaterialDialog} />,
+      <Icon2 icon="picture_as_pdf" clickable action={this.handleAddPDFDialog} />
+    ];
     return (
       <Panel title="Materiales" collapsable={false} collapsed={false} actions={addButton}>
-        <List data={store.budget.materials} renderer={BudgetItem} groupBy="name" groupRenderer={BudgetGroup}/>
+        <List data={store.budget.materials} renderer={BudgetItem} groupBy="name" groupRenderer={BudgetGroup} toggleDialog={this.props.toggleDialog}/>
         <Panel className="infopanel noicon" actions={<span style={{ fontSize: '1.4rem', fontWeight: '600'}}> Estimación: 25uds | 500€ </span>} collapsed={false} collapsable={false} />
       </Panel>
     )

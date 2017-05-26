@@ -70,12 +70,24 @@ types:
       name: string
       value: string
 
+  ProviderDescriptor:
+    properties:
+      id: string
+      name: string
+
+  Price:
+    properties:
+      lot: number
+      ranking: number
+      price: string
+      provider: ProviderDescriptor
+
   Contest:
     properties:
       id: number
       period: period
       averagePrice: string
-      prices: array
+      prices: Price[]
 
   ContestForm:
     properties:
@@ -179,6 +191,13 @@ types:
       200:
         body:
           example: { "success": true, "mssg": "Product Deleted"}
+
+/catalogs/{catalogID}/products/{productID}/contest:
+  put:
+    description: Añadir un nuevo concurso de producto
+    body:
+      application/json:
+        type: ContestForm
 
 /contests:
   description: |
