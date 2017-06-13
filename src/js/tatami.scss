@@ -12,11 +12,16 @@ body {
   background-color: $background;
   //background-image: url('/background6.svg');
   background-size:cover;
+  overflow-y: hidden;
+
   color: $primary-text-color;
   font-size: 1.3rem;
-  font-family: 'Roboto', sans-serif;
+  //font-family: 'Roboto', sans-serif;
+  font-family: "Calibri Light", "Helvetica Neue", Roboto, sans-serif;
+  letter-spacing: 0.02em;
   text-rendering: auto;
-  overflow-y: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .drawer {
